@@ -1,0 +1,22 @@
+@import 'pages/Variables.scss';
+
+.box {
+   
+    border-radius: 1vmin;
+    border: solid 0.1vmin #ccc;
+    background-color: #ffffff;
+    margin-left:$manager-margin-left;
+    width:50vmax;
+    margin-right:20vmin;
+
+}
+
+.box.sw {
+    margin-left:0;
+    border-top-left-radius: 0;
+
+}
+
+.box.first {
+    margin-top:$manager-margin-top;
+}

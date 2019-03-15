@@ -1,0 +1,11 @@
+@import "node_modules/react-image-gallery/styles/scss/image-gallery.scss";
+
+
+
+.other-labels {
+    flex:1;
+    display:flex;
+    flex-direction: column;
+    width: 20vmin;
+    padding:10vmin;
+}

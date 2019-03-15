@@ -1,0 +1,16 @@
+@import 'pages/Variables.scss';
+
+.printpage-template {
+    .main{
+        min-height: calc(100vh - 50vmin);
+        //height:auto;
+        width:100%;
+    }
+    .both-sliders{
+            background: #ccc;
+            
+            display:flex;
+            width: 100%;
+
+    }
+}
