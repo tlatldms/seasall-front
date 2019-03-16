@@ -1,43 +1,54 @@
 import React, { Component } from 'react';
 import './OtherLabels.scss';
-import ImageGallery from 'react-image-gallery';
-import A from 'images/bi_4.png';
-import B from 'images/logo.png';
-import C from 'images/bi_4.png';
-import D from 'images/network.png';
 import Popup from "reactjs-popup";
+import Modal from 'react-responsive-modal';
+import Ask from './modals/Ask';
+import Carousel from './img-slider/Carousel';
+
 
 class OtherLabels extends Component {
-    render() {
-        const images = [
-            {
-              original: A,
-              thumbnail: A,
-            },
-            {
-              original: B,
-              thumbnail: B,
-            },
-            {
-              original: C,
-              thumbnail: C,
-            },
-            {
-                original: D,
-                thumbnail: D,
-            }
-          ]
 
-        return (
-            <div class="other-labels">
-                <Popup trigger={<p>기타라벨출력 </p>} position="right center">
-                  테스트
-                </Popup>
-                <ImageGallery items={images} />
-            </div>
+  state = {
+    open: false,
 
-        );
-    }
+  };
+  
+  onOpenModal = () => {
+    this.setState({ open: true });
+  };
+
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
+
+  render() {
+
+    
+
+    return (
+      <div class="other-labels">
+
+        <button onClick={this.onOpenModal}>Open modal</button>
+        <Modal open={this.state.open} onClose={this.onCloseModal} center>
+          <Ask></Ask>
+        </Modal>
+
+        <Popup trigger={<p>기타라벨출력 </p>} position="right center" modal>
+          테스트<br></br><br></br>
+        </Popup>
+
+
+         { /* 
+         <ImageGallery items={images} onClick={this.handleImageClick}/>
+        */}
+        
+
+
+        <Carousel />
+      </div>
+
+    );
+  }
 }
 
 export default OtherLabels;
