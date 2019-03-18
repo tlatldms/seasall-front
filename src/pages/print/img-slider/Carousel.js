@@ -6,6 +6,7 @@ import D from 'images/network.png';
 import './Carousel.scss';
 import Modal from 'react-responsive-modal';
 import InnerModal from '../modals/InnerModal';
+import '../modals/Modal.scss';
 
 
 const imgUrls = [
@@ -91,6 +92,10 @@ const Arrow = ({ direction, clickFunction, glyph }) => (
     </div>
 );
 
+const nopad = {
+    padding: '0px',
+}
+
 class ImageSlide extends Component {
     state = {
         imgopen: false,
@@ -113,8 +118,8 @@ class ImageSlide extends Component {
 
         return (
             <div>
-                <Modal open={this.state.imgopen} onClose={this.onCloseImgModal} center>
-                    <InnerModal idx={curidx} />
+                <Modal open={this.state.imgopen} onClose={this.onCloseImgModal} center style={nopad}>
+                    <InnerModal idx={curidx} class="modal-innerbox"/>
                 </Modal>
                 <div className="image-slide">
                     <img src={url} alt="" onClick={this.onOpenImgModal}></img>
