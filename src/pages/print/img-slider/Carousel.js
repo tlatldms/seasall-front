@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import A from 'images/bi_4.png';
-import B from 'images/logo.png';
-import C from 'images/bi_4.png';
-import D from 'images/network.png';
+import A from 'images/labelA.png';
+import B from 'images/labelB.png';
+import C from 'images/labelC.png';
+import D from 'images/labelD.png';
 import './Carousel.scss';
 import Modal from 'react-responsive-modal';
 import InnerModal from '../modals/InnerModal';
@@ -77,7 +77,7 @@ class Carousel extends Component {
         return (
             <div class="carousel">
                 <Arrow direction="left" clickFunction={this.previousSlide} glyph="&#9664;" />
-                <ImageSlide url={imgUrls[this.state.currentImageIndex]} func={this.func()} curidx={this.state.currentImageIndex} />
+                <ImageSlide url={imgUrls[this.state.currentImageIndex]} func={this.func()} curidx={this.state.currentImageIndex} class="tmptmp"/>
                 <Arrow direction="right" clickFunction={this.nextSlide} glyph="&#9654;" />
             </div>
         );
@@ -86,7 +86,7 @@ class Carousel extends Component {
 
 const Arrow = ({ direction, clickFunction, glyph }) => (
     <div
-        className={`slide-arrow ${direction}`}
+        className={`slide-arrow ${direction} testtest`}
         onClick={clickFunction}>
         {glyph}
     </div>
@@ -122,7 +122,7 @@ class ImageSlide extends Component {
                     <InnerModal idx={curidx} class="modal-innerbox"/>
                 </Modal>
                 <div className="image-slide">
-                    <img src={url} alt="" onClick={this.onOpenImgModal}></img>
+                    <img src={url} alt="" onClick={this.onOpenImgModal} class="testtest"></img>
                 </div>
             </div>
         );

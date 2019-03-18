@@ -1,7 +1,83 @@
 import React, { Component } from 'react';
 import './Main.scss';
+import axios from 'axios';
+
+const URL='http://52.78.132.176:3002/users/sign_up';
 
 class Find extends Component {
+    
+    state = {
+        userName:'',
+        userEmail: '',
+        phoneNumber:'',
+        redirect: false,
+        isSubmitted:''
+    }
+
+    handleNameChange = (e) => {
+        this.setState({
+            userName:e.target.value,
+        })
+    }
+    handleEmailChange = (e) => {
+        this.setState({
+            userEmail:e.target.value,
+          
+        })
+    }
+
+    handlePhoneNumberChange = (e) => {
+        this.setState({
+            password:e.target.value,
+            
+        })
+    }
+
+
+    redirect = () => {
+        if (this.state.redirect) {
+            window.location.replace("http://localhost:3000/login/main");
+        }
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+
+        axios.post(`${URL}`,  {
+            userName: this.state.userName,
+            userEmail: this.state.userEmail,
+            phoneNumber: this.state.phoneNumber,
+        })
+            .then(res => {
+                if (res.data.success) {
+                    console.log("성공~~~");
+                    alert("회원가입을 완료하였습니다.");
+                    this.setState({
+                        redirect: true
+                    });
+                }
+                console.log(res);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+    }
+
+
+    constructor(props) {
+        super(props);
+        this.handleNameChange= this.handleNameChange.bind(this);
+        this.handleEmailChange= this.handleEmailChange.bind(this);
+        this.handlePhoneNumberChange= this.handlePhoneNumberChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.state ={
+            userName:'',
+            userEmail: '',
+            password:'',
+        }
+    }
+
     render() {
         return (
             <div>

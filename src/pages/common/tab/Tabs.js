@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import './TabStyle.scss';
 import Tab from './Tab';
 
 class Tabs extends Component {

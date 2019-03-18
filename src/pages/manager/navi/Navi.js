@@ -18,7 +18,7 @@ const Navi = () => {
                     <img id="menu-pic" src= {MENU} alt=""/>
                     <div class="menu-font">MENU</div>
                 </div>
-                <hr></hr>
+                <hr id="navhr"></hr>
                 <ul>
                     <li class= { `${checkFocused("/manager/main")} big`}><Link to="/manager/main">메인</Link></li>
                     <li class= { `${checkFocused("/manager/rack")} big`}><Link to="/manager/rack">렉관리</Link></li>

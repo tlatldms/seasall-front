@@ -1,9 +1,14 @@
 .underheader-box {
     height: 5vmin;
     font-size:2vmin;
-    width:100vmin;
-    padding-right:1vmin;
-    display:table-cell;
-    vertical-align: middle;
-    text-align:right;
+    width:100%;
+
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+h4#underheader-day {
+    margin-left:70vmax;
 }

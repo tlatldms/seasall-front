@@ -9,7 +9,7 @@ class List extends Component {
         
         this.state= {
             currentPage: 1,
-            datasPerPage: 3,
+            datasPerPage: 5,
         };
         this.handleClick = this.handleClick.bind(this);
     }

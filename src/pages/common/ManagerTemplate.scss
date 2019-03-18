@@ -3,19 +3,23 @@
 
 
 .page-template {
+
     .both-navibox{
             background: $oc-gray-1;
             min-height: calc(100vh - 27vmin);
             display:flex;
             width: 100%;
-        .navionly {
-            margin-top: $manager-margin-top;
-            margin-left: 20vmin;
-        }
-
-    }
-}
-
-.for-margin {
-   
+            .navibox-for-margin{
+                display:flex;
+                width:auto;
+                margin:0 auto;
+                .navionly {
+                    margin-top: $manager-margin-top;
+                    
+                }
+                .details-box {
+                    display:flex;
+                }        
+            }
+    } 
 }

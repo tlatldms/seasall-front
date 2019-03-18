@@ -53,6 +53,7 @@ class New extends Component {
             .then(res => {
                 if (res.data.success) {
                     console.log("성공~~~");
+                    alert("회원가입을 완료하였습니다.");
                     this.setState({
                         redirect: true
                     });

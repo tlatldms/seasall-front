@@ -13,9 +13,10 @@ class ManagerHeader extends Component {
                 <div class="welcome">
                     <div></div>
                     <img src={Logo} class="header-logo" alt=""/>    
-                    <div class="logout-button">로그아웃</div>
-                    <div class="hi">이흥수 님, 안녕하세요</div>
                     <div class="on"></div>
+                    <div class="hi">이흥수 님, 안녕하세요</div>
+                    <div class="logout-button">로그아웃</div>
+                    
                 </div>
             </div>
             </div>

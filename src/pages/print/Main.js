@@ -3,7 +3,23 @@ import List from 'pages/manager/report/List';
 import * as service from 'AxiosGetApi';
 
 
+let date = new Date(); 
+let year = date.getFullYear(); 
+let month = new String(date.getMonth()+1); 
+let day = new String(date.getDate()); 
+let hours = new String(date.getHours()); 
+let minutes = new String(date.getMinutes()); 
+
+// 한자리수일 경우 0을 채워준다. 
+if(month.length == 1){ 
+  month = "0" + month; 
+} 
+if(day.length == 1){ 
+  day = "0" + day; 
+} 
+
 class Main extends Component {
+
     constructor(props) {
         super();
         this.handleKeywordChange = this.handleKeywordChange.bind(this);
@@ -58,13 +74,16 @@ render() {
       const {fetching, todos, searched} = this.state;
         return (
           <div>
-    
+              <h2>라벨대기목록 </h2><br></br>
+              {year}년 {month}월 {day}일 {hours}:{minutes} 기준 실시간 정보
+            <br></br>
             <input 
                 value={this.state.keyword}
                 onChange={this.handleKeywordChange}
                 placeholder="검색하세요"
             />
             <button onClick={this.changeState}>검색</button>
+            <br></br>
             Rack page<br></br>
             API from: https://jsonplaceholder.typicode.com/todos<br></br><br></br>
           <List

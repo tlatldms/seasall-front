@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="49px" viewBox="0 0 50 49" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 53.2 (72643) - https://sketchapp.com -->
+    <title>0C3DD85C-7F0F-4A75-BB7E-6E0E5550925D</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <filter x="-17.1%" y="-21.3%" width="134.2%" height="142.7%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="10" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="15" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.3 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="출력_메인_프린터_문의" transform="translate(-692.000000, -433.000000)">
+            <rect id="Rectangle-Copy-12" fill="#FFFFFF" x="0" y="60" width="1440" height="510"></rect>
+            <g id="label_list" transform="translate(278.000000, 90.000000)">
+                <g id="table" transform="translate(2.000000, 105.000000)">
+                    <g id="list_full" transform="translate(0.000000, 223.000000)">
+                        <text id="AB12D-DG23H-EKDIG" font-family="NotoSansCJKkr-Regular, Noto Sans CJK KR" font-size="14" font-weight="normal" fill="#262626">
+                            <tspan x="313.844302" y="32">61300-UD970</tspan>
+                        </text>
+                        <text id="일반출고" font-family="NotoSansCJKkr-Regular, Noto Sans CJK KR" font-size="14" font-weight="normal" fill="#262626">
+                            <tspan x="66.3330233" y="32">일반출고</tspan>
+                        </text>
+                        <text id="2018.12.12" font-family="NotoSansCJKkr-Regular, Noto Sans CJK KR" font-size="13" font-weight="normal" fill="#262626">
+                            <tspan x="171.712047" y="32">2018.12.12</tspan>
+                        </text>
+                        <text id="이지영" font-family="NotoSansCJKkr-Regular, Noto Sans CJK KR" font-size="13" font-weight="normal" fill="#262626">
+                            <tspan x="803.455349" y="32">이지영</tspan>
+                        </text>
+                        <text id="10개/100개" font-family="NotoSansCJKkr-Regular, Noto Sans CJK KR" font-size="13" font-weight="normal"></text>
+                        <text id="CONTACT-ASSY-CLOCK" font-family="NotoSansCJKkr-Regular, Noto Sans CJK KR" font-size="13" font-weight="normal" fill="#262626">
+                            <tspan x="483.310849" y="32">GATE ASSY-REAR DECK,RR</tspan>
+                        </text>
+                        <g id="btn/radio/select_off" transform="translate(-1.023256, 16.000000)" fill="#262626" fill-rule="nonzero">
+                            <path d="M11.5,18 C15.5417202,18 18.8181818,14.8659932 18.8181818,11 C18.8181818,7.13400675 15.5417202,4 11.5,4 C7.45827979,4 4.18181818,7.13400675 4.18181818,11 C4.18181818,14.8659932 7.45827979,18 11.5,18 Z M11.5,19 C6.88089118,19 3.13636364,15.418278 3.13636364,11 C3.13636364,6.581722 6.88089118,3 11.5,3 C16.1191088,3 19.8636364,6.581722 19.8636364,11 C19.8636364,15.418278 16.1191088,19 11.5,19 Z" id="Oval-2-Copy"></path>
+                        </g>
+                        <rect id="Rectangle" fill="#D8D8D8" fill-rule="evenodd" x="0" y="55" width="880" height="1"></rect>
+                    </g>
+                    <rect id="Rectangle-Copy" fill="#262626" x="0" y="278" width="880" height="1"></rect>
+                </g>
+            </g>
+            <rect id="dim" fill="#000000" opacity="0.300000012" x="0" y="0" width="1441" height="1024"></rect>
+            <g id="popup" filter="url(#filter-1)" transform="translate(496.000000, 332.000000)">
+                <rect id="Rectangle-3" fill="#FFFFFF" x="0" y="1" width="450" height="360" rx="8"></rect>
+                <g id="icon" transform="translate(196.000000, 101.000000)">
+                    <path d="M10.3080048,40 L-5.73585623e-12,48.7160619 L-5.73585623e-12,32 L0,5 C-3.38176876e-16,2.23857625 2.23857625,2.89289747e-14 5,2.84217094e-14 L45,2.84217094e-14 C47.7614237,2.79144441e-14 50,2.23857625 50,5 L50,35 C50,37.7614237 47.7614237,40 45,40 L10.3080048,40 Z" id="Combined-Shape" fill="#262626"></path>
+                    <path d="M22,10 L28,10 L27.5157259,20 L22.4674083,20 L22,10 Z M22.5000586,25 L27.5241949,25 L27.5241949,30 L22.5000586,30 L22.5000586,25 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

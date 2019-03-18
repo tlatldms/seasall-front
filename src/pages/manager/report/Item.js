@@ -2,12 +2,12 @@ import React from 'react';
 import './List.scss';
 
 const Item = ( { title, completed, idx }) => {
-    const ifCompleted = (completed === true) ? "완수" : "미완수";
+    const ifCompleted = (completed === true) ? "TRUE" : "FALSE";
     return (
         <div class="report-item">
-            [{idx}] 
-            *Title: {title} <br></br>
-            *Completed : {ifCompleted}
+            partsId: {idx} &nbsp;
+            supervisiorId: {title}&nbsp;
+            isValid : {ifCompleted}
         </div>
     );
 };

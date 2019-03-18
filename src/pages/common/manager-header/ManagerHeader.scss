@@ -8,8 +8,9 @@ $fsize : 2vmin;
     position: relative;
     z-index:-1;
     display: flex;
+    align-items: center;
     justify-content:center;
-    flex-direction:column;
+
 }
 
 .logout-button {
@@ -21,7 +22,6 @@ $fsize : 2vmin;
     border: solid 0.1vmin #ffffff;
     border-radius: 1vmin;
     border-color: #ffffff;
-    float: right;
     padding:0.2vmin;
     margin-left:3vmin;
 
@@ -35,42 +35,45 @@ $fsize : 2vmin;
 
 .header-logo {
     width:30vmax;
-    display: inline-block;
+    display: flex;
     margin-top:0;
-    position: fixed;
+    justify-content:center;
+    flex-direction: column;
+
 }
 .on {
-    margin-top:0.7vmin;
-    margin-right:2vmin;
+    margin: 0.7vmin 2vmin 0 30%;
     width:1.7vmin;
     height:1.7vmin;
     background-color: #0cb801;
     border-radius: 100%;
-    display: inline-block;
-    float: right;
+    display: flex;
+
+    justify-content:center;
+    flex-direction: column;
+
+  
 
 }
 .hi {
     font-size: $fsize;
-    display: inline-block;
-    float: right;
-    
-}
-.welcome {
-    width:60vmax;
-    color:#ffffff;
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0 auto;
-    height:3vmin;
-
-}
-
-.logo-temp {
-    color:#ffffff;
-
-    display:inline-block;
+    display: flex;
     align-items: center;
     justify-content:center;
     flex-direction: column;
+
+  
+    
+}
+.welcome {
+    width:100%;
+    color:#ffffff;
+    display: flex;
+
+    justify-content:center;
+
+
+    margin: 0 auto;
+    height:3vmin;
+
 }

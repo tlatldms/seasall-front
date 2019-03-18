@@ -1,17 +1,23 @@
 .image-slide {
-    width:40vmin;
+   
     img {
-        width:100%;
+        width:20vmax;
     }
-    
 }
 
 .carousel {
     display:flex;
     align-items:center;
-    margin:10px auto;
-    width:auto;
+    margin:5vmin auto;
+    width:30vmax;
+    justify-content: center;
 }
+.testtest {
+    display:flex;
+}
+
 .slide-arrow {
-  margin:5vmin;
+    margin:3vmin;
 }
+
+

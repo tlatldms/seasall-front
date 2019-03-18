@@ -1,41 +1,16 @@
 import React, { Component } from 'react';
-import BuyItemList from './BuyItemList';
 import Tabs from 'pages/common/tab/Tabs';
 import 'pages/common/tab/TabStyle.scss';
 import 'styles/Box.scss';
-import './style.scss';
+import Buy_1 from './Buy_1';
+import Buy_2 from './Buy_2';
+import Buy_3 from './Buy_3';
+
+
 
 
 class Buy extends Component {
-    state= {
-        database: [
-            {
-                img: 1,
-                title: 'title1',
-                desc: 'desc1',
-            },
-            {
-                img: 2,
-                title: 'title2',
-                desc: 'desc2',
-            },
-            {
-                img: 3,
-                title: 'title3',
-                desc: 'desc3',
-            },
-            {
-                img: 3,
-                title: 'title3',
-                desc: 'desc3',
-            },
-            {
-                img: 3,
-                title: 'title3',
-                desc: 'desc3',
-            },
-        ]
-    } 
+ 
     
     render(){
         return (
@@ -53,13 +28,13 @@ class Buy extends Component {
 
 
                 <div label="1">
-                    1번
+                    <Buy_1 />
                 </div>
                 <div label="2">
-                <BuyItemList database={this.state.database} />
+                    <Buy_2 />
                 </div>
                 <div label="3">
-                    아무말
+                    <Buy_3 />
                 </div>
             </Tabs>
 

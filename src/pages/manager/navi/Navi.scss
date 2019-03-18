@@ -27,12 +27,18 @@ li a:hover {
 
 
 #menu-pic{
-    width: 2vw;
+    width: 2vmax;
+    height: 2vmax;
     display: inline-block;
 }
 
 .menu-font {
     color:white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 3vmin;
+    
 }
 .navi {
   width: 20vmin;
@@ -46,7 +52,7 @@ li a:hover {
   padding:2vmin;
 }
 
-hr {
+hr#navhr {
   width: 15vmin;
   margin: 2vmin auto;
   margin-top: 2vh;
@@ -77,4 +83,9 @@ hr {
 .mini.active {
   color: white;
   text-decoration: none;
+}
+
+.menu-and-icon {
+  display: flex;
+  height:20px;
 }

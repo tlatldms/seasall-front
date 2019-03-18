@@ -19,14 +19,16 @@ class ManageTemplate extends Component {
                     <Header></Header>
                     <UnderHeader></UnderHeader>
                     <div className={cx('both-navibox')}>
-                     
+                        <div className={cx('navibox-for-margin')}>
                             <div className={cx('navibox', 'navionly')}>
                                 <Navi></Navi>
                             </div>
+                            <div className={cx('details-box')}>
                             <div>
                             <Details></Details>
                             </div>
-                       
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <Footer></Footer>

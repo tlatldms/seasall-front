@@ -2,8 +2,13 @@ import React from 'react';
 
 const Release = () => {
     return (
-        <div>
-            일반출고
+        <div class="modal-innerbox">
+            <div class="modal-header">
+                일반 출고
+            </div>
+            <div class="modal-content">
+                내용내용
+            </div>
         </div>
     );
 };

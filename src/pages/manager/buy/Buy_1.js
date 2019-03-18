@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import './style.scss';
-
+import 'styles/Box.scss';
 class Buy_1 extends Component {
     render() {
 
