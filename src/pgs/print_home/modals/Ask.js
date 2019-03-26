@@ -1,5 +1,4 @@
 import React from 'react';
-import './Modal.scss';
 import Logo from 'images/icon.svg';
 
 const Ask = () => {

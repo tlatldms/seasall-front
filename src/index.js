@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import Root from './client/Root';
 import * as serviceWorker from './serviceWorker';
-import 'styles/base.scss';
 //import 'semantic-ui-css/semantic.min.css';
 
 ReactDOM.render(<Root />, document.getElementById('root'));

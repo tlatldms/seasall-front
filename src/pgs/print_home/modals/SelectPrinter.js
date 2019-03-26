@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import './Modal.scss';
-
 
 class SelectPrinter extends Component {
     render() {

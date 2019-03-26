@@ -2,6 +2,12 @@ import React, {Component} from 'react';
 import List from 'pgs/manager_report/List';
 import * as service from 'AxiosGetApi';
 
+import Header from 'common/Header';
+import Footer from 'common/Footer';
+import Sliders from './Sliders';
+import OtherLabels from './OtherLabels';
+import StatusAndRequire from './StatusAndRequire';
+
 
 let date = new Date(); 
 let year = date.getFullYear(); 
@@ -74,23 +80,36 @@ render() {
       const {fetching, todos, searched} = this.state;
         return (
           <div>
-              <h2>라벨대기목록 </h2><br></br>
-              {year}년 {month}월 {day}일 {hours}:{minutes} 기준 실시간 정보
-            <br></br>
-            <input 
-                value={this.state.keyword}
-                onChange={this.handleKeywordChange}
-                placeholder="검색하세요"
-            />
-            <button onClick={this.changeState}>검색</button>
-            <br></br>
-            Rack page<br></br>
-            API from: https://jsonplaceholder.typicode.com/todos<br></br><br></br>
-          <List
-            disabled= { fetching}
-            todos={searched}
-          />
+            <div class='printpage-template'>
+              <Header/>
+              <div class='main'>
+                  <div>
+                    <h2>라벨대기목록 </h2><br></br>
+                    {year}년 {month}월 {day}일 {hours}:{minutes} 기준 실시간 정보
+                  <br></br>
+                  <input 
+                      value={this.state.keyword}
+                      onChange={this.handleKeywordChange}
+                      placeholder="검색하세요"
+                  />
+                  <button onClick={this.changeState}>검색</button>
+                  <br></br>
+                  Rack page<br></br>
+                  API from: https://jsonplaceholder.typicode.com/todos<br></br><br></br>
+                <List
+                  disabled= { fetching}
+                  todos={searched}
+                />
+              </div>
+            </div>
+            <div class='both-sliders'>        
+                 <OtherLabels />           
+                  <StatusAndRequire />                                     
+            </div>
+          </div>
+          <Footer></Footer>
         </div>
+
         );
     }
 };
