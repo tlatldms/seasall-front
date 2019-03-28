@@ -5,6 +5,15 @@ import C from 'images/labelC.png';
 import D from 'images/labelD.png';
 import Modal from 'react-responsive-modal';
 import InnerModal from '../modals/InnerModal';
+import { Link } from 'react-router-dom';
+
+
+import ModalAsk from 'pgs/modals_ask/Main';
+import ModalRelease from 'pgs/modals_release/Main';
+import ModalPn from 'pgs/modals_pn/Main';
+import ModalRack from 'pgs/modals_rack/Main';
+import ModalSelectPrinter from 'pgs/modals_select_printer/Main';
+
 
 const imgUrls = [
     A, B, C, D
@@ -56,25 +65,12 @@ class Carousel extends Component {
         });
     }
 
-    func() {
-        switch (this.state.currentImageIndex) {
-            case 0:
-                console.log("00000");
-                break;
-            case 1:
-                console.log("11111");
-                break;
-            case 2:
-                console.log("22222");
-                break;
-        }
-    }
 
     render() {
         return (
             <div class="carousel">
                 <Arrow direction="left" clickFunction={this.previousSlide} glyph="&#9664;" />
-                <ImageSlide url={imgUrls[this.state.currentImageIndex]} func={this.func()} curidx={this.state.currentImageIndex} class="tmptmp"/>
+                <ImageSlide url={imgUrls[this.state.currentImageIndex]} curidx={this.state.currentImageIndex} class="tmptmp"/>
                 <Arrow direction="right" clickFunction={this.nextSlide} glyph="&#9654;" />
             </div>
         );
@@ -102,26 +98,54 @@ class ImageSlide extends Component {
         this.setState({ imgopen: true });
     };
 
-    onCloseImgModal = () => {
-        console.log("make state false");
-        this.setState({ imgopen: false });
-    };
-    rendermodal() {
 
+    rendermodal(idx) {
+        switch (idx) {
+            case 0:
+                return <ModalAsk />
+            case 1:
+                return <ModalPn />
+            case 2:
+                return <ModalRelease />
+            case 3:
+                return <ModalRack />
+            default:
+                return null
+        }
+    }
+
+    createPathname(idx) {
+        switch (idx) {
+            case 0:
+                return '/print_home/modals_ask'
+            case 1:
+                return '/print_home/modals_pn'
+            case 2:
+                return '/print_home/modals_release'
+            case 3:
+                return '/print_home/modals_rack'
+            default:
+                return null
+        }
     }
 
     render() {
-        const { url, func, curidx } = this.props;
-
+        const { url, curidx } = this.props;
         return (
+            
             <div>
-                <Modal open={this.state.imgopen} onClose={this.onCloseImgModal} center style={nopad}>
-                    <InnerModal idx={curidx} class="modal-innerbox"/>
-                </Modal>
-                <div className="image-slide">
-                    <img src={url} alt="" onClick={this.onOpenImgModal} class="testtest"></img>
-                </div>
+            <div className="image-slide">
+                <Link
+                    to={{
+                        pathname: `${this.createPathname(curidx)}`,
+                    }}
+                    class="link"
+                >
+                <img src={url} alt="" onClick={this.onOpenImgModal} class="testtest"></img>
+                </Link>
             </div>
+        </div>      
+  
         );
     }
 }
