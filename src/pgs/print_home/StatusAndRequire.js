@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import Carousel from './img-slider/Carousel';
+import Carousel from './Carousel';
 
 
 class StatusAndRequire extends Component {
-  constructor(){
-    super();
-  }
+
     render() {
 
 
