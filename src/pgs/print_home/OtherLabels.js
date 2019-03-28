@@ -8,7 +8,6 @@ class OtherLabels extends Component {
       <div class="other-labels">
       기타라벨출력
         <div class="ca-box">
-
           <Carousel />
         </div>
       </div>
