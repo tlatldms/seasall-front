@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import LoginHome from './login_home/Main';
 import LoginNewUser from './login_new_user/Main';
@@ -23,15 +23,6 @@ import ModalRelease from 'pgs/modals_release/Main';
 import ModalPn from 'pgs/modals_pn/Main';
 import ModalRack from 'pgs/modals_rack/Main';
 import ModalSelectPrinter from 'pgs/modals_select_printer/Main';
-
-
-import Logo from 'images/logo.png'
-
-
-import Footer from 'common/Footer';
-import Navi from 'common/Navi';
-import Header from 'common/Header'
-import UnderHeader from 'common/UnderHeader'
 
 const Details = () => {
     return (

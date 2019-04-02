@@ -104,7 +104,9 @@ class ImageSlide extends Component {
             
             <div>
             <div className="image-slide">
-                <Link
+                
+                {
+                /* <Link
                     to={{
                         pathname: `${this.createPathname(curidx)}`,
                     }}
@@ -112,6 +114,9 @@ class ImageSlide extends Component {
                 >
                 <img src={url} alt="" onClick={this.onOpenImgModal} class="testtest"></img>
                 </Link>
+                */}
+
+                <a href="#test"><img src={url} alt="" onClick={this.onOpenImgModal} class="testtest"></img></a>
             </div>
         </div>      
   
