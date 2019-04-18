@@ -1,23 +1,30 @@
 import React, { Component } from 'react';
-import Logo from 'images/seasall-mini-logo.png';
+import LogoSeasall from 'asset/images/logo_seasall.png';
 
 
 class ManagerHeader extends Component {
 
     render() {
         return (
-            <div>
-            <div class="header-box">
-                <div class="welcome">
-                    <div></div>
-                    <img src={Logo} class="header-logo" alt=""/>    
-                    <div class="on"></div>
-                    <div class="hi">이흥수 님, 안녕하세요</div>
-                    <div class="logout-button">로그아웃</div>
-                    
+            <header>
+                <div class="wrap">
+                    <div class="left">
+                        <div class="box_logo">
+                            <img src={LogoSeasall} alt="HYUNDAI SEASALL" />
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="box_user">
+                            <span class="user_sts good"></span>
+                            <p><span class="user_name">이종수</span> 님 안녕하세요.</p>
+                        </div>
+                        <div class="box_btn">
+                            <button class="btn_header">마이페이지</button>
+                            <button class="btn_header">로그아웃</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            </div>
+            </header>
         );
     }
 }

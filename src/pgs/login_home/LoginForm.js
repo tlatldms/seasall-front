@@ -37,7 +37,7 @@ class LoginForm extends Component {
 
     redirect = () => {
         if (this.state.redirect) {
-            window.location.replace("http://localhost:3000/manager/main");
+            window.location.replace("http://www.naver.com");
         }
     }
 

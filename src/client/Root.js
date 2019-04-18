@@ -7,7 +7,7 @@
 import React from 'react';
 import {BrowserRouter} from 'react-router-dom';
 import App from 'pgs/Details';
-import 'pgs/styles.scss';
+import 'asset/common/css/web_style.css';
 
 const Root = () => {
     return (

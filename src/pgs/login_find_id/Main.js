@@ -1,130 +1,84 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import classNames from 'classnames';
+import LogoChecker from 'asset/images/logo_checker.png';
+import Company from './Company';
+import Individual from './Individual';
 
-const URL='http://52.78.132.176:3002/users/sign_up';
+
+const URL='';
 
 class Main extends Component {
-    
     state = {
-        userName:'',
-        userEmail: '',
-        phoneNumber:'',
-        redirect: false,
-        isSubmitted:''
+        tab: 1,
+        redirect: false
     }
 
-    handleNameChange = (e) => {
+    handleChange = (e) => {
         this.setState({
-            userName:e.target.value,
+            [e.target.name] : e.target.value,
         })
     }
-    handleEmailChange = (e) => {
-        this.setState({
-            userEmail:e.target.value,
-          
-        })
-    }
-
-    handlePhoneNumberChange = (e) => {
-        this.setState({
-            password:e.target.value,
-            
-        })
-    }
-
 
     redirect = () => {
         if (this.state.redirect) {
-            window.location.replace("http://localhost:3000/login/main");
+            window.location.replace("http://localhost:3000/login_home");
         }
     }
 
-    handleSubmit = (e) => {
-        e.preventDefault()
-
-        axios.post(`${URL}`,  {
-            userName: this.state.userName,
-            userEmail: this.state.userEmail,
-            phoneNumber: this.state.phoneNumber,
+    handleTab = (e) => {
+        this.setState( {
+            tab: [e.target.name],
         })
-            .then(res => {
-                if (res.data.success) {
-                    console.log("성공~~~");
-                    alert("회원가입을 완료하였습니다.");
-                    this.setState({
-                        redirect: true
-                    });
-                }
-                console.log(res);
-            })
-            .catch(error => {
-                console.log(error);
-            })
-
     }
-
 
     constructor(props) {
         super(props);
-        this.handleNameChange= this.handleNameChange.bind(this);
-        this.handleEmailChange= this.handleEmailChange.bind(this);
-        this.handlePhoneNumberChange= this.handlePhoneNumberChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.state ={
-            userName:'',
-            userEmail: '',
-            password:'',
-        }
+        this.handleChange= this.handleChange.bind(this);
+
+        this.handleTab = this.handleTab.bind(this);
+        this.state = {
+            tab:1,
+        };
     }
 
     render() {
         return (
-            <div class="whole">
-            <div class="login-bg">
-                <div class="login-container">
-                <h5>등록된 회원정보로 아이디를 찾으실 수 있습니다.</h5>
-                <form onSubmit={this.handleSubmit}>
-                    <div class="label_login_chk">
-                        <input
-                            name="loginchk"
-                            type="text"
-                            class="first-input"
-                            placeholder="이름"
-                        />
-                       
-                        <input
-                            name="loginchk"
-                            type="text"
-                            placeholder="메일"
-                        />
+            <article id="contentsWrap" class="login login02">
+            <div class="box_contents">
+                <div class="box_logo">
+                    <img src={LogoChecker}/>
+                </div>
+                <form action="#" acceptCharset="utf-8" name="login04" method="get">
+                    <div class="box_login">
+                        <div class="box_top">
+                            {this.state.tab == 1 ? <p>권한요청 승인 후 <br/>서비스를 이용하실 수 있습니다.</p> : <p>등록된 회원정보로 <br/>아이디를 찾으실 수 있습니다.</p>}
+                            
+                        </div>
+                        <div class="box_mid">
+                            <div class="tab01">
+                                <ul>
+                                     { /*tab01 탭 선택시 들어 가는 클래스 - on_tab */}
+                                    <li rel="ltab01" className={classNames({'on_tab': this.state.tab == 1})}><a href="#" onclick="return false" name="1" onClick={this.handleTab}>기업 이용자</a></li>
+                                    <li rel="ltab02" className={classNames({"on_tab" : this.state.tab == 2})}><a href="#" onclick="return false" name="2" onClick={this.handleTab}>개인 이용자</a></li>
 
-                        <input
-                            name="loginchk"
-                            type="text"
-                            placeholder="-를 제외한 연락처"
-                        />
-                        <input
-                            name="loginchk"
-                            type="text"
-                            placeholder="인증번호 6자리"
-                        />
+                                </ul>
+                            </div>
+                            <div class="tab01_cont">
+                            {this.state.tab == 1 ?
+                                <Company change={this.handleChange} request={this.requestSms} verify={this.verifySms}/> 
+                                :
+                                <Individual change={this.handleChange} />}
 
-                        <input
-                            name="loginchk"
-                            type="text"
-                            class="last-input"
-                            placeholder="인증번호 6자리"
-                        />
-                       
-
-                        <button type="submit">아이디찾기</button>
-
+                            </div>
+                        </div>
+                        <div class="box_bottom">
+                            <button class="btn_big_b">아이디 찾기</button>
+                        </div>
                     </div>
                 </form>
-           
             </div>
-            </div>
-            </div>
+        </article>
         );
     }
 }
