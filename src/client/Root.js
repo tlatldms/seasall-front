@@ -11,7 +11,8 @@ import 'asset/common/css/web_style.css';
 
 const Root = () => {
     return (
-        <BrowserRouter>
+        <BrowserRouter
+        basename="/seasall">>
             <App/>
         </BrowserRouter>
     );

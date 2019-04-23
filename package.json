@@ -2,6 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://tlatldms.github.io/seasall",
   "dependencies": {
     "@svgr/webpack": "4.1.0",
     "@trendmicro/react-sidenav": "^0.4.5",
@@ -65,7 +66,10 @@
   "scripts": {
     "start": "cross-env NODE_PATH=src node scripts/start.js",
     "build": "cross-env NODE_PATH=src node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "eject": "react-scripts eject",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -81,6 +85,7 @@
     "@babel/preset-env": "^7.3.4",
     "babel-loader": "^8.0.5",
     "cross-env": "^5.2.0",
+    "gh-pages": "^2.0.1",
     "webpack": "^4.28.3"
   },
   "jest": {

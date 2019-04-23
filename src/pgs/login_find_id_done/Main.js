@@ -1,6 +1,6 @@
-import React, { Component } from './node_modules/react';
-import LogoChecker from './node_modules/asset/images/logo_checker.png';
-import IconComplete from './node_modules/asset/images/icon_complete.png';
+import React, { Component } from 'react';
+import LogoChecker from 'asset/images/logo_checker.png';
+import IconComplete from 'asset/images/icon_complete.png';
 
 class Main extends Component {
     render() {

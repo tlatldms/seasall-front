@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import LogoChecker from 'asset/images/logo_checker.png';
-import IconComplete from '../login_find_id_done/node_modules/asset/images/icon_complete.png';
+import IconComplete from 'asset/images/icon_complete.png';
 
 class Main extends Component {
     render() {
