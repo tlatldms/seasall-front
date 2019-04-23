@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://tlatldms.github.io/seasall",
+  "homepage": "https://tlatldms.github.io/seasall-front",
   "dependencies": {
     "@svgr/webpack": "4.1.0",
     "@trendmicro/react-sidenav": "^0.4.5",

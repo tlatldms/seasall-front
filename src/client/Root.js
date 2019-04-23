@@ -12,7 +12,7 @@ import 'asset/common/css/web_style.css';
 const Root = () => {
     return (
         <BrowserRouter
-        basename="/seasall">>
+        basename="/seasall-front">>
             <App/>
         </BrowserRouter>
     );
