@@ -37,7 +37,7 @@ const Details = () => {
 
             <Route path='/aa' component={LoginFindId} />
             <Route path='/aa/bb' component={ModalAsk} />
-            
+            <Route exact path='/' component={LoginHome} />
             <Route path='/login_home' component={LoginHome} />
             <Route path='/login_new_user' component={LoginNewUser}/>
             <Route path='/login_find_id' component={LoginFindId}/>
