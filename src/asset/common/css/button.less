@@ -1,0 +1,180 @@
+//button.less
+//
+/* 버튼 */
+//default= 검은색 
+.btn_header{ 
+	display: inline-block;
+	border-radius:4px;
+	padding: 4px 12px;
+	border: 1px solid rgba(255,255,255,.3);
+	background-color: @maincolor;
+	color: #fff;
+	font-size: 12px;
+}
+.btn_small{
+	display: inline-block;
+	border-radius:4px;
+	padding: 5px 0;
+	border: 1px solid @maincolor;
+	background-color: @maincolor;
+	width: 100%;
+	color: #fff;
+	font-size: 12px;
+	&.disable{
+		opacity: .5;
+		background-color:#fff;
+		cursor: not-allowed;
+		color: @maincolor;
+	}
+}
+.btn_small_w{
+	display: inline-block;
+	border-radius:4px;
+	padding: 5px 0;
+	border: 1px solid @maincolor;
+	background-color: #fff;
+	width: 100%;
+	color: @maincolor;
+	font-size: 12px;
+}
+.btn_medium{
+	display: inline-block;
+	border-radius:4px;
+	padding: 8px 0;
+	border: 1px solid @maincolor;
+	background-color: @maincolor;
+	width: 100%;
+	color: #fff;
+	font-size: 12px;
+	&.disable{
+		opacity: .5;
+		cursor: not-allowed;
+	}
+}
+.btn_medium_w{
+	display: inline-block;
+	border-radius:4px;
+	padding: 8px 0;
+	border: 1px solid @maincolor;
+	background-color: #fff;
+	width: 100%;
+	color: @maincolor;
+	font-size: 12px;
+}
+.btn_medium_g{
+	.btn_medium_w;
+	opacity: .3;
+}
+.btn_big{
+	display: inline-block;
+	border-radius:4px;
+	padding: 13px 0;
+	border: 1px solid @maincolor;
+	background-color: @maincolor;
+	width: 100%;
+	color: #fff;
+	font-size: 18px;
+	font-weight: 500;
+}
+.btn_big_w{
+	display: inline-block;
+	border-radius:4px;
+	padding: 13px 0;
+	border: 1px solid @maincolor;
+	background-color: #fff;
+	width: 100%;
+	color: @maincolor;
+	font-size: 18px;
+	font-weight: 500;
+}
+.btn_big_b{
+	display: inline-block;
+	border-radius:4px;
+	padding: 13px 0;
+	border: 1px solid @maincolor;
+	background-color: @pointcolor;
+	width: 100%;
+	color: #fff;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+//출력 페이지 버튼
+.btn_printpage{
+	width: 100%;
+	border-radius: 4px;
+	border: 1px solid @maincolor;
+	background-color: #fff;
+	padding: 15px 0;
+	font-weight: 500;
+	font-size: 16px;
+	span{
+		display: block;
+		width: 27px;
+		height: 7px;
+		background: url(/asset/images/icon_right.png) no-repeat center/100%;
+		margin: 0 auto 7px;
+	}
+}
+.btn_plus{
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background: url(/asset/images/btn_plus.png) no-repeat center/100%;
+}
+.btn_minus{
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background: url(/asset/images/btn_minus.png) no-repeat center/100%;
+}
+.btn_up{
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background: url(/asset/images/btn_up.png) no-repeat center/100%;
+}
+.btn_down{
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background: url(/asset/images/btn_down.png) no-repeat center/100%;
+}
+.btn_big_add{
+	width: 100%;
+	display: block;
+	border: 1px solid @maincolor;
+	background-color: #fff;
+	font-size: 16px;
+	font-weight: 500;
+	padding: 20px 0;
+	text-align: center;
+}
+.box_btn_slide{
+	span{
+		display: inline-block;
+		width: 10px;
+		height: 30px;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		cursor: pointer;
+		&.btn_prev{
+			left: 0;
+			background:url(/asset/images/btn_slide_prev.png) no-repeat center/100%;
+			&.disable{
+				background:url(/asset/images/btn_slide_prev_disable.png) no-repeat center/100%;
+				cursor: not-allowed;
+			}
+
+		}
+		&.btn_next{
+			right: 0;
+			background:url(/asset/images/btn_slide_next.png) no-repeat center/100%;
+			&.disable{
+				background:url(/asset/images/btn_slide_next_disable.png) no-repeat center/100%;
+				cursor: not-allowed;
+			}
+		}
+	}
+}

@@ -1,0 +1,176 @@
+//check_radio.less
+//체크박스 + 라디오박스
+/* 체크박스 */
+.check_box {
+    input[type="checkbox"] {
+        display: none;
+    }
+    input[type="checkbox"]+label {
+        font-size: 12px;
+        color: #616161;
+        // line-height: 29px;
+    }
+    input[type="checkbox"]+label span {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin: -2px 2px 0 0;
+        vertical-align: middle;
+        background-color: #fff;
+        border: 1px solid @maincolor;
+        border-radius: 50%;
+        cursor: pointer;
+        // &:hover {
+        //     // border: 1px solid #373737;
+        //     // background: @pointcolor url('/images/check.png') no-repeat center;
+        //     // border: 1px solid @pointcolor;
+        // }
+    }
+    input[type="checkbox"]:checked+label span {
+        background: #fff url('/asset/images/check02.png') no-repeat center/10px;
+    }
+    >span {
+        font-size: 12px;
+        color: @maincolor;
+    }
+    &.check_b{
+    	input[type="checkbox"]:checked+label span {
+	        background: #fff url('/asset/images/check01.png') no-repeat center/10px;
+	    }
+    }
+} //check_box
+
+.check_box02{
+	input[type="checkbox"] {
+        display: none;
+    }
+    input[type="checkbox"]+label {
+        font-size: 12px;
+        color: #616161;
+        // line-height: 29px;
+    }
+    input[type="checkbox"]+label span {
+        display: inline-block;
+        width: 26px;
+        height: 26px;
+        margin: -2px 2px 0 0;
+        vertical-align: middle;
+        // background-color: #fff;
+        // border: 1px solid @maincolor;
+        // border-radius: 50%;
+        background: #fff url(/asset/images/check03.png);
+        cursor: pointer;
+        // &:hover {
+        //     // border: 1px solid #373737;
+        //     // background: @pointcolor url('/images/check.png') no-repeat center;
+        //     // border: 1px solid @pointcolor;
+        // }
+    }
+    input[type="checkbox"]:checked+label span {
+        background: #fff url('/asset/images/check04.png') no-repeat center;
+    }
+    >span {
+        font-size: 14px;
+        color: @maincolor;
+    }
+}
+
+.check_box03{
+	input[type="checkbox"] {
+        display: none;
+    }
+    input[type="checkbox"]+label {
+        font-size: 12px;
+        color: #616161;
+        // line-height: 29px;
+    }
+    input[type="checkbox"]+label span {
+        display: inline-block;
+        width: 26px;
+        height: 26px;
+        margin: -2px 2px 0 0;
+        vertical-align: middle;
+        // background-color: #fff;
+        // border: 1px solid @maincolor;
+        // border-radius: 50%;
+        background: #fff url(/asset/images/icon_complete02.png);
+        cursor: pointer;
+        // &:hover {
+        //     // border: 1px solid #373737;
+        //     // background: @pointcolor url('/images/check.png') no-repeat center;
+        //     // border: 1px solid @pointcolor;
+        // }
+    }
+    input[type="checkbox"]:checked+label span {
+        background: #fff url('/asset/images/icon_complete_on.png') no-repeat center;
+    }
+    >span {
+        font-size: 14px;
+        color: @maincolor;
+        font-weight: 500;
+    }
+}
+
+/* 라디오 박스 */
+.radio_box{
+	[type="radio"]:checked,
+	[type="radio"]:not(:checked) {
+	    display: none;
+	}
+	[type="radio"]:checked + label,
+	[type="radio"]:not(:checked) + label
+	{
+	    position: relative;
+	    padding-left: 19px;
+	    cursor: pointer;
+	    line-height: 18px;
+	    display: inline-block;
+	    color: #757575;
+	    vertical-align: 13px;
+	}
+	//겉에 원
+	[type="radio"]:checked + label:before,
+	[type="radio"]:not(:checked) + label:before { //밖에 원 
+	    content: '';
+	    position: absolute;
+	    left: 0;
+	    top: 0;
+	    width: 16px;
+	    height: 16px;
+	    border: 1px solid @maincolor;
+	    border-radius: 100%;
+	    background: #fff;
+	}
+	[type="radio"]:checked + label:before{
+		border: 1px solid @maincolor;
+	}
+	//안에 원
+	[type="radio"]:checked + label:after,
+	[type="radio"]:not(:checked) + label:after { //안에 원 
+	    content: '';
+	    width: 10px;
+	    height: 10px;
+	    background: @maincolor;
+	    position: absolute;
+	    top: 4px;
+	    left: 4px;
+	    border-radius: 100%;
+	    // -webkit-transition: all 0.2s ease;
+	    // transition: all 0.2s ease;
+	}
+	[type="radio"]:not(:checked) + label:after {
+	    opacity: 0;
+	    -webkit-transform: scale(0);
+	    transform: scale(0);
+	}
+	[type="radio"]:checked + label:after {
+	    opacity: 1;
+	    -webkit-transform: scale(1);
+	    transform: scale(1);
+	}
+	>span{
+		font-size: 12px;
+		color: @maincolor;
+		// vertical-align: middle;
+	}
+}

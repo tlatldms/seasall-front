@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HYUNDAI SEASALL</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta name="keyword" content="">
+    <meta name="description" content="">
+    <meta name="og:title" content="">
+    <!-- <meta name="og:image" content="/asset/images/Og.jpg"> -->
+    <meta name="og:description" content="">
+    <meta name="WT.ti" content="">
+    <meta name="DCS.dcsuri" content="">
+    <!-- <link rel="shortcut icon" href="/asset/images/favicon.ico"> -->
+    <script src="/asset/common/js/jquery-2.2.4.min.js"></script>
+    <script src="/asset/common/js/jquery-ui.min.js"></script>
+    <!-- <script src="/asset/common/js/jquery.rotate.js"></script> -->
+    <!-- <script src="/asset/common/js/jquery.easing.1.3.js"></script> -->
+    <!-- <script src="/asset/common/js/jquery.ajaxy.js"></script>  -->
+    <script src="/asset/common/js/js.use9.kr.js"></script>
+    <!-- <script src="/asset/common/js/swiper.min.js"></script> -->
+    
+    <!-- <link href="/asset/common/css/swiper.min.css" type="text/css" rel="stylesheet"> -->
+    <link href="/asset/common/css/web_style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+	<article id="contentsWrap" class="login login02">
+		<div class="box_contents">
+			<div class="box_logo">
+				<img src="/asset/images/logo_checker.png">
+			</div>
+			<form action="#" acceptCharset="utf-8" name="login04" method="get">
+				<div class="box_login">
+					<div class="box_top">
+						<p>등록된 회원정보로 <br>아이디를 찾으실 수 있습니다.</p>
+					</div>
+					<div class="box_mid">
+						<div class="tab01">
+				            <ul>
+				                <!-- tab01 탭 선택시 들어 가는 클래스 - on_tab -->
+				                <li rel="ltab01" class="on_tab"><a href="#" onclick="return false">기업 이용자</a></li>
+				                <li rel="ltab02"><a href="#" onclick="return false">개인 이용자</a></li>
+				            </ul>
+				        </div>
+				        <div class="tab01_cont">
+				        	<div id="ltab01" class="login_tab1">
+				        		<div class="input_box01">
+				        			<div class="select_box01">
+				        				<select class="select01">
+										  <option selected>회사</option>
+										  <option>옵션1</option>
+										  <option>옵션2</option>
+										  <option>옵션3</option>
+										</select>
+									</div>
+									<div class="ip_box01"><input id="find_name01" name="user_name01" type="text" placeholder="이름"></div>
+									<div class="ip_box01"><input id="find_copNum01" name="user_num01" type="text" placeholder="사번"></div>
+									<div class="ib_box01">
+									 	<input id="find_phoneNum01" name="user_phonenum01" type="text" placeholder="연락처를 -없이 입력하세요.">
+									 	<button class="btn_medium_g">인증요청</button>
+									</div>
+									<div class="ip_box01"><input id="find_certificationNum01" name="certification_num01" type="text" placeholder="인증번호 6자리"></div>
+				        		</div>
+				        	</div>
+				        	<div id="ltab02" class="login_tab2">
+				        		<div class="input_box01">
+				        			<div class="ip_box01"><input id="find_name02" name="user_name02" type="text" placeholder="이름"></div>
+									 <div class="ib_box01">
+									 	<input id="find_phoneNum02" name="user_phonenum02" type="text" placeholder="연락처를-없이 입력하세요.">
+									 	<button class="btn_medium_g">인증요청</button>
+									 </div>
+									  <div class="ip_box01"><input id="find_certificationNum02" name="certification_num02" type="text" placeholder="인증번호 6자리"></div>
+				        		</div>
+				        	</div>
+				        </div>
+					</div>
+					<div class="box_bottom">
+						<button class="btn_big_b">아이디 찾기</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</article>
+	<footer>
+		<div class="wrap">
+			<div class="left">
+				<ul>
+					<li>서울시 영등포구 의사당대로 3 현대캐피탈빌딩</li>
+					<li>대표이사정태영</li>
+					<li>사업자 등록번호213-86-15419</li>
+				</ul>
+			</div>
+			<div class="right">
+				<p>2019 Checker Corp.</p>
+			</div>
+		</div>
+	</footer>
+</body>
+<script src="/asset/common/js/seasall.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".tab01_cont >div").hide();
+		$(".tab01_cont >div:first").show();
+
+		$(".tab01").find("li").click(function(){
+			 $(".tab01 ul li").removeClass("on_tab");
+			 $(this).addClass("on_tab");
+			 $(".tab01_cont >div").hide();
+			var tabNum =$(this).attr('rel');
+			tabNum = '#'+tabNum;
+			$(".tab01_cont").find(tabNum).fadeIn();
+
+		});
+	});
+</script>
+</html>
