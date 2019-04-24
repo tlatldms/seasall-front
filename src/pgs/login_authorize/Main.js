@@ -5,14 +5,9 @@ import Company from './Company';
 import Individual from './Individual';
 import classNames from 'classnames';
 
-const URL = 'http://dev.hchecker.org/users/requestsms';
+const requestURL = 'http://dev.hchecker.org/users/requestsms';
 const verifyURL = 'http://dev.hchecker.org/users/verifysms';
 class Main extends Component {
-    state = {
-        tab: 1,
-        redirect: false
-    }
-
     handleChange = (e) => {
         this.setState({
             [e.target.name] : e.target.value,
@@ -22,15 +17,14 @@ class Main extends Component {
     requestSms = (e) => {
         e.preventDefault();
 
-        axios.post(`${URL}`,  {
-            phoneNum: this.state.phoneNum,
+        axios.post(`${requestURL}`,  {
+            phone: this.state.phone,
         })
             .then(res => {
                 if (res.data.success) {
                     console.log("인증요청"+res.data.success);
                 }
                 console.log(res)
-                
             })
             .catch(error => {
                 console.log(error);
@@ -59,7 +53,7 @@ class Main extends Component {
     }
     redirect = () => {
         if (this.state.redirect) {
-            window.location.replace("http://localhost:3000/login_authorize_done");
+            this.props.history.push("/login_authorize_done");
         }
     }
 
@@ -67,14 +61,13 @@ class Main extends Component {
         e.preventDefault();
 
         axios.post(`${URL}`,  {
-            userEmail: this.state.userEmail,
-            userName: this.state.userName,
+            email: this.state.email,
+            name: this.state.name,
             password: this.state.password,
-            phoneNum: this.state.phoneNum,
-            
+            phone: this.state.phone,
+            isEnterprise: this.state.tab==1?true:false,
         })
             .then(res => {
-
                 if (res.data.success) {
                     console.log(res.data.success);
                     this.setState({
@@ -106,9 +99,10 @@ class Main extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleTab = this.handleTab.bind(this);
         this.verifySms = this.verifySms.bind(this);
-        this.requestSms = this.redirect.bind(this);
+        this.requestSms = this.requestSms.bind(this);
         this.state = {
             tab:1,
+            redirect: false
         };
     }
 
@@ -138,7 +132,7 @@ class Main extends Component {
                                 {this.state.tab == 1 ?
                                 <Company change={this.handleChange} request={this.requestSms} verify={this.verifySms}/> 
                                 :
-                                <Individual change={this.handleChange} />}
+                                <Individual change={this.handleChange} request={this.requestSms} verify={this.verifySms}/>}
                             </div>
                         </div>
                         <div class="box_bottom">

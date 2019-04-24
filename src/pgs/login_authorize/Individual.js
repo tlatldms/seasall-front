@@ -6,9 +6,9 @@ class Individual extends Component {
         return (
             <div id="ltab02" class="login_tab2">
                 <div class="input_box01">
-                    <div class="ip_box01"><input id="name02" onChange={props.change} name="userName" type="text" placeholder="이름을 입력하세요." /></div>
+                    <div class="ip_box01"><input id="name02" onChange={props.change} name="name" type="text" placeholder="이름을 입력하세요." /></div>
                     <div class="email_box">
-                        <input onChange={props.change} type="text" name="userEmail" id="email_id02" placeholder="입력하세요."/>
+                        <input onChange={props.change} type="text" name="email" id="email_id02" placeholder="입력하세요."/>
                         <span>@</span>
                         <div class="select_box01">
                             <select class="select01">
@@ -26,10 +26,10 @@ class Individual extends Component {
                     <div class="ip_box01"><input onChange={props.change} id="password02" name="password" type="text" placeholder="8-16자의 영문, 숫자, 특수문자 조합된 비밀번호"/></div>
                     <div class="ip_box01"><input id="password02_1" name="user_password02_1" type="text" placeholder="비밀번호 확인"/></div>
                     <div class="ib_box01">
-                        <input onChange={props.change} id="phoneNum02" name="phoneNum" type="text" placeholder="연락처를-없이 입력하세요."/>
+                        <input onChange={props.change} id="phoneNum02" name="phone" type="text" placeholder="연락처를-없이 입력하세요."/>
                         <button class="btn_medium_g">인증요청</button>
                     </div>
-                    <div class="ip_box01"><input id="certificationNum02" name="certification_num02" type="text" placeholder="인증번호 6자리"/></div>
+                    <div class="ip_box01"><input id="certificationNum02" name="authNum" type="text" placeholder="인증번호 6자리"/></div>
                 </div>
                 <div class="terms_box">
                     <div class="chk_box">

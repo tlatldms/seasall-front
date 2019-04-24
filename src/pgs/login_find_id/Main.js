@@ -5,8 +5,8 @@ import LogoChecker from 'asset/images/logo_checker.png';
 import Company from './Company';
 import Individual from './Individual';
 
-
-const URL='';
+const requestURL = 'https://dev.hchecker.org/users/requestsms';
+const verifyURL = 'https://dev.hchecker.org/users/verifysms';
 
 class Main extends Component {
     state = {
@@ -20,9 +20,83 @@ class Main extends Component {
         })
     }
 
+    requestSms = (e) => {
+        e.preventDefault();
+
+        axios.post(`${requestURL}`,  {
+            phone: this.state.phone,
+        })
+            .then(res => {
+                if (res.data.success) {
+                    console.log("인증요청"+res.data.success);
+                }
+                console.log(res)
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+    verifySms = (e) => {
+        e.preventDefault();
+
+        axios.post(`${verifyURL}`,  {
+            authNum: this.state.authNum,
+        })
+            .then(res => {
+                if (res.data.success) {
+                    console.log(res.data.success);
+                    alert("인증 완료했습니다.");
+                }
+                console.log(res)
+            })
+            .catch(error => {
+                this.setState({
+                });
+                console.log(error);
+                alert("인증 실패했습니다");
+            })
+    }
     redirect = () => {
         if (this.state.redirect) {
-            window.location.replace("http://localhost:3000/login_home");
+            this.props.history.push("/login_authorize_done");
+        }
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+
+        axios.post(`${URL}`,  {
+            email: this.state.email,
+            name: this.state.name,
+            password: this.state.password,
+            phone: this.state.phone,
+            isEnterprise: this.state.tab==1?true:false,
+        })
+            .then(res => {
+                if (res.data.success) {
+                    console.log(res.data.success);
+                    this.setState({
+                        redirect: true
+                    });
+                }
+                console.log(res)
+                
+            })
+            .catch(error => {
+                this.setState({
+                    error:true,
+                    isSubmitted: false
+                });
+                console.log(error);
+            })
+
+    }
+
+
+    redirect = () => {
+        if (this.state.redirect) {
+            this.props.history.push("/login_find_id_done");
         }
     }
 
@@ -35,7 +109,8 @@ class Main extends Component {
     constructor(props) {
         super(props);
         this.handleChange= this.handleChange.bind(this);
-
+        this.verifySms = this.verifySms.bind(this);
+        this.requestSms = this.requestSms.bind(this);
         this.handleTab = this.handleTab.bind(this);
         this.state = {
             tab:1,
@@ -68,7 +143,7 @@ class Main extends Component {
                             {this.state.tab == 1 ?
                                 <Company change={this.handleChange} request={this.requestSms} verify={this.verifySms}/> 
                                 :
-                                <Individual change={this.handleChange} />}
+                                <Individual change={this.handleChange} request={this.requestSms} verify={this.verifySms}/>}
 
                             </div>
                         </div>

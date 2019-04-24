@@ -3,17 +3,9 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import LogoCheckerBig from 'asset/images/logo_checker_big.png';
-const URL = 'http://dev.hchecker.org/users/login';
+const URL = 'https://dev.hchecker.org/users/login';
 
 class Main extends Component {
-    state = {
-        userid:'',
-        password: '',
-        isSubmitted: false,
-        error: false,
-        redirect: false
-    }
-
     handleChange = (e) => {
         this.setState({
             [e.target.name] : e.target.value,
@@ -24,7 +16,7 @@ class Main extends Component {
 
     redirect = () => {
         if (this.state.redirect) {
-            window.location.replace("http://naver.com");
+            this.props.history.push("/print_mypage");
         }
     }
 
@@ -32,7 +24,7 @@ class Main extends Component {
         e.preventDefault()
 
         axios.post(`${URL}`,  {
-            userEmail: this.state.userid,
+            email: this.state.userid,
             password: this.state.password,
             //test:this.state.test
         })
