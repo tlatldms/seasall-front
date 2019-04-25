@@ -95,8 +95,8 @@ class Main extends Component {
                                     </div>
                                     <div class="right">
                                         <ul>
-                                            <li><a href="#">아이디찾기</a></li>
-                                            <li><a href="#">비밀번호찾기</a></li>
+                                            <li><Link to="login_find_id">아이디찾기</Link></li>
+                                            <li><Link to="login_find_pw">비밀번호찾기</Link></li>
                                         </ul>
                                     </div>
                                 </div>
