@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/seasall-front/precache-manifest.5aa0483d63bbe27c672c98bdb5f0e10a.js"
+  "/seasall-front/precache-manifest.41ce915ca59e3232ed33fc45855f5dd5.js"
 );
 
 workbox.clientsClaim();
