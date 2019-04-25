@@ -18,7 +18,7 @@ class login_authorize_done extends Component {
                             <p class="txt"><span class="user_name">이흥수</span>님의 가입을 환영합니다.<br/>로그인하여 서비스를 이용해보세요.</p>
                         </div>
                         <div class="box_bottom">
-                            <button class="btn_big"><Link to="login_home">로그인 하기</Link></button>
+                            <button class="btn_big"><Link to="/">로그인 하기</Link></button>
                         </div>
                     </div>
                 </div>

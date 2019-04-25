@@ -10,5 +10,5 @@ export function getComments(postId) {
 
 
 export function getTodosList() {
-    return axios.get(`http://52.78.132.176:3000/api/parts`);
+    return axios.get(`https://jsonplaceholder.typicode.com/todos`);
 }

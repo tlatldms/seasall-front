@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import * as service from 'AxiosGetApi';
 import List from './List';
 
+
 import Footer from 'common/Footer';
 import Navi from 'common/Navi';
 import Header from 'common/Header'
@@ -32,6 +33,7 @@ class Main extends Component {
         ]);
        
         const todos = info[0].data;
+        console.log(todos);
         this.setState({
          
           todos,
