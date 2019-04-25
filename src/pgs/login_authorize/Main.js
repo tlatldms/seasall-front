@@ -5,8 +5,8 @@ import Company from './Company';
 import Individual from './Individual';
 import classNames from 'classnames';
 
-const requestURL = 'http://dev.hchecker.org/users/requestsms';
-const verifyURL = 'http://dev.hchecker.org/users/verifysms';
+const requestURL = 'https://dev.hchecker.org/users/requestsms';
+const verifyURL = 'https://dev.hchecker.org/users/verifysms';
 class Main extends Component {
     handleChange = (e) => {
         this.setState({
