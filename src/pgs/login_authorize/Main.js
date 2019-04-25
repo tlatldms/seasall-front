@@ -7,17 +7,22 @@ import classNames from 'classnames';
 
 const requestURL = 'https://dev.hchecker.org/users/requestsms';
 const verifyURL = 'https://dev.hchecker.org/users/verifysms';
+const axios1 = axios.create({
+    withCredentials: true
+  })
+
 class Main extends Component {
     handleChange = (e) => {
         this.setState({
             [e.target.name] : e.target.value,
         })
     }
+    
 
     requestSms = (e) => {
         e.preventDefault();
 
-        axios.post(`${requestURL}`,  {
+        axios1.post(`${requestURL}`,  {
             phone: this.state.phone,
         })
             .then(res => {
@@ -34,8 +39,9 @@ class Main extends Component {
     verifySms = (e) => {
         e.preventDefault();
 
-        axios.post(`${verifyURL}`,  {
+        axios1.post(`${verifyURL}`,  {
             authNum: this.state.authNum,
+            withCredentials: true
         })
             .then(res => {
                 if (res.data.success) {
@@ -60,7 +66,7 @@ class Main extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.post(`${URL}`,  {
+        axios1.post(`${URL}`,  {
             email: this.state.email,
             name: this.state.name,
             password: this.state.password,
