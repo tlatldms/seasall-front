@@ -5,6 +5,7 @@ import Company from './Company';
 import Individual from './Individual';
 import classNames from 'classnames';
 
+const URL = 'https://dev.hchecker.org/users/signup';
 const requestURL = 'https://dev.hchecker.org/users/requestsms';
 const verifyURL = 'https://dev.hchecker.org/users/verifysms';
 const axios1 = axios.create({
@@ -30,6 +31,17 @@ class Main extends Component {
                     console.log("인증요청"+res.data.success);
                 }
                 console.log(res)
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+    justTest = (e) => {
+
+        axios1.get('https://jsonplaceholder.typicode.com/todos')
+            .then(res => {
+                console.log(res.data)
             })
             .catch(error => {
                 console.log(error);
@@ -64,7 +76,11 @@ class Main extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-
+        
+        if (this.state.password != this.state.passwordVerify) {
+            alert("비밀번호 확인이 다릅니다.");
+        }
+        
         axios1.post(`${URL}`,  {
             email: this.state.email,
             name: this.state.name,
@@ -116,6 +132,7 @@ class Main extends Component {
         return (
             <article id="contentsWrap" class="login login02">
             {this.redirect()}
+            {this.justTest()}
             <div class="box_contents">
                 <div class="box_logo">
                     <img src={LogoChecker}/>
@@ -129,8 +146,8 @@ class Main extends Component {
                             <div class="tab01">
                                 <ul>
                                      { /*tab01 탭 선택시 들어 가는 클래스 - on_tab */}
-                                    <li rel="ltab01" className={classNames({'on_tab': this.state.tab == 1})}><a href="#" onclick="return false" name="1" onClick={this.handleTab}>기업 이용자</a></li>
-                                    <li rel="ltab02" className={classNames({"on_tab" : this.state.tab == 2})}><a href="#" onclick="return false" name="2" onClick={this.handleTab}>개인 이용자</a></li>
+                                    <li rel="ltab01" className={classNames({'on_tab': this.state.tab == 1})}><a onclick="return false" name="1" onClick={this.handleTab}>기업 이용자</a></li>
+                                    <li rel="ltab02" className={classNames({"on_tab" : this.state.tab == 2})}><a onclick="return false" name="2" onClick={this.handleTab}>개인 이용자</a></li>
                                 </ul>
                             </div>
                             <div class="tab01_cont">

@@ -8,6 +8,10 @@ import Individual from './Individual';
 const URL = 'https://dev.hchecker.org/users/findUserId';
 const requestURL = 'https://dev.hchecker.org/users/requestsms';
 const verifyURL = 'https://dev.hchecker.org/users/verifysms';
+const axios1 = axios.create({
+    withCredentials: true
+  })
+
 
 class Main extends Component {
     state = {
@@ -23,8 +27,7 @@ class Main extends Component {
 
     requestSms = (e) => {
         e.preventDefault();
-
-        axios.post(`${requestURL}`,  {
+        axios1.post(`${requestURL}`,  {
             phone: this.state.phone,
         })
             .then(res => {
@@ -40,8 +43,7 @@ class Main extends Component {
 
     verifySms = (e) => {
         e.preventDefault();
-
-        axios.post(`${verifyURL}`,  {
+        axios1.post(`${verifyURL}`,  {
             authNum: this.state.authNum,
         })
             .then(res => {
@@ -58,16 +60,12 @@ class Main extends Component {
                 alert("인증 실패했습니다");
             })
     }
-    redirect = () => {
-        if (this.state.redirect) {
-            this.props.history.push("/login_authorize_done");
-        }
-    }
+
 
     handleSubmit = (e) => {
         e.preventDefault();
-
-        axios.post(`${URL}`,  {
+        
+        axios1.post(`${URL}`,  {
             name: this.state.name,
             phone: this.state.phone,
         })
@@ -75,10 +73,12 @@ class Main extends Component {
                 if (res.data.success) {
                     console.log(res.data.success);
                     this.setState({
+                        email: res.data.email,
                         redirect: true
                     });
                 }
-                console.log(res)
+                console.log(res);
+                console.log(res.data.email)
                 
             })
             .catch(error => {
@@ -94,7 +94,10 @@ class Main extends Component {
 
     redirect = () => {
         if (this.state.redirect) {
-            this.props.history.push("/login_find_id_done");
+            this.props.history.push({
+                pathname: '/login_find_id_done',
+                state: { email: this.state.email}
+            });
         }
     }
 
@@ -107,6 +110,7 @@ class Main extends Component {
     constructor(props) {
         super(props);
         this.handleChange= this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.verifySms = this.verifySms.bind(this);
         this.requestSms = this.requestSms.bind(this);
         this.handleTab = this.handleTab.bind(this);
@@ -118,11 +122,12 @@ class Main extends Component {
     render() {
         return (
             <article id="contentsWrap" class="login login02">
+            {this.redirect()}
             <div class="box_contents">
                 <div class="box_logo">
                     <img src={LogoChecker}/>
                 </div>
-                <form action="#" acceptCharset="utf-8" name="login04" method="get">
+                <form action="#" onSubmit={this.handleSubmit} acceptCharset="utf-8" name="login04" method="get">
                     <div class="box_login">
                         <div class="box_top">
                             {this.state.tab == 1 ? <p>권한요청 승인 후 <br/>서비스를 이용하실 수 있습니다.</p> : <p>등록된 회원정보로 <br/>아이디를 찾으실 수 있습니다.</p>}
@@ -132,8 +137,8 @@ class Main extends Component {
                             <div class="tab01">
                                 <ul>
                                      { /*tab01 탭 선택시 들어 가는 클래스 - on_tab */}
-                                    <li rel="ltab01" className={classNames({'on_tab': this.state.tab == 1})}><a href="#" onclick="return false" name="1" onClick={this.handleTab}>기업 이용자</a></li>
-                                    <li rel="ltab02" className={classNames({"on_tab" : this.state.tab == 2})}><a href="#" onclick="return false" name="2" onClick={this.handleTab}>개인 이용자</a></li>
+                                    <li rel="ltab01" className={classNames({'on_tab': this.state.tab == 1})}><a onclick="return false" name="1" onClick={this.handleTab}>기업 이용자</a></li>
+                                    <li rel="ltab02" className={classNames({"on_tab" : this.state.tab == 2})}><a onclick="return false" name="2" onClick={this.handleTab}>개인 이용자</a></li>
 
                                 </ul>
                             </div>
@@ -146,7 +151,7 @@ class Main extends Component {
                             </div>
                         </div>
                         <div class="box_bottom">
-                            <button class="btn_big_b">아이디 찾기</button>
+                            <button class="btn_big_b" >아이디 찾기</button>
                         </div>
                     </div>
                 </form>

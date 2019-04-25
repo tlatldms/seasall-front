@@ -24,7 +24,7 @@ class Individual extends Component {
                         <p>이메일 인증이 진행되니 정확히 입력해주세요.</p>
                     </div>
                     <div class="ip_box01"><input onChange={props.change} id="password02" name="password" type="text" placeholder="8-16자의 영문, 숫자, 특수문자 조합된 비밀번호"/></div>
-                    <div class="ip_box01"><input id="password02_1" name="user_password02_1" type="text" placeholder="비밀번호 확인"/></div>
+                    <div class="ip_box01"><input onChange={props.change} id="password02_1" name="passwordVerify" type="text" placeholder="비밀번호 확인"/></div>
                     <div class="ib_box01">
                             <input id="phoneNum01" onChange= {this.props.change} name="phone" type="text" placeholder="연락처를-없이 입력하세요."/>
                             <button class="btn_medium_g" onClick={this.props.request}>인증요청</button>
