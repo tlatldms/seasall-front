@@ -5,6 +5,7 @@ import LogoChecker from 'asset/images/logo_checker.png';
 import Company from './Company';
 import Individual from './Individual';
 
+const URL = 'https://dev.hchecker.org/users/findUserId';
 const requestURL = 'https://dev.hchecker.org/users/requestsms';
 const verifyURL = 'https://dev.hchecker.org/users/verifysms';
 
@@ -67,11 +68,8 @@ class Main extends Component {
         e.preventDefault();
 
         axios.post(`${URL}`,  {
-            email: this.state.email,
             name: this.state.name,
-            password: this.state.password,
             phone: this.state.phone,
-            isEnterprise: this.state.tab==1?true:false,
         })
             .then(res => {
                 if (res.data.success) {

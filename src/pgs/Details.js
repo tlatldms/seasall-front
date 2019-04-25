@@ -47,7 +47,7 @@ const Details = () => {
             <Route path='/login_find_pw_done' component={LoginFindPwDone}/>
             <Route path='/login_new_pw' component={LoginNewPw}/>
             <Route path='/login_new_pw#1' component={ModalAsk}/>
-            <Route path='/login_authorize' component={LoginAuthorize}/>
+            <Route path='seasall-front/login_authorize' component={LoginAuthorize}/>
             <Route path='/login_authorize_done' component={LoginAuthorizeDone}/>
 
             <Route exact path="/manager_buy_product" component={ManagerBuyProduct}/>
