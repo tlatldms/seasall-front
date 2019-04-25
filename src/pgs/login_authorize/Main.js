@@ -41,7 +41,6 @@ class Main extends Component {
 
         axios1.post(`${verifyURL}`,  {
             authNum: this.state.authNum,
-            withCredentials: true
         })
             .then(res => {
                 if (res.data.success) {
