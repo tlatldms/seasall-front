@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import List from './List';
 import List2 from './List2';
+import Item from './Item';
 
 const URL = 'https://dev.hchecker.org/reports';
 const data1 = null;
@@ -19,37 +20,40 @@ class Main extends Component {
         this.state = {
             fetching: false, // tells whether the request is waiting for response or not
             reports: [],
-         
+            currentPage: 1,
+            datasPerPage: 5,
         };
+        this.handleClick = this.handleClick.bind(this);
       }
-  
-      componentDidMount() {
-        this.fetchPostInfo();
-      }
-  
-      fetchPostInfo = async() => {
-        this.setState({
-          fetching: true
-        });
-        axios1.get(`${URL}`)
-        .then(res => {
-            if (res.data.success){
 
-                
-                
-                
-                const reports = res.data.reports['reports'];
-                console.log(reports);
-                this.setState({ reports });
-            }
-        })
-        .catch(e => { console.log(e);});
+    handleClick(e) {
         this.setState({
-            fetching:false
-        })
+            currentPage: Number(e.target.id)
+        });
+    }
+        
+
+
+    componentDidMount() {
+    this.fetchPostInfo();
     }
 
-
+    fetchPostInfo = async() => {
+    this.setState({
+        fetching: true
+    });
+    axios1.get(`${URL}`, {limit:150})
+    .then(res => {
+        if (res.data.success){
+            const reports = res.data.reports['reports'];
+            this.setState({ reports });
+        }
+    })
+    .catch(e => { console.log(e);});
+    this.setState({
+        fetching:false
+    })
+}
 
   
 
@@ -70,6 +74,45 @@ class Main extends Component {
 
 
     render() {
+
+        const { currentPage, datasPerPage} = this.state;
+        const datas = this.state.reports;
+        console.log(datas);
+
+        
+        const indexOfLastData= currentPage * datasPerPage;
+        const indexOfFirstData = indexOfLastData - datasPerPage;
+        const currentDatas = datas.slice(indexOfFirstData, indexOfLastData);
+
+        const renderDatas = currentDatas.map(
+            (dat, index) =>
+            
+                
+                <Item
+                    id={dat.id}
+                    type={dat.type}
+                    parts={dat.parts}
+                    state={dat.state} 
+                />
+          );
+        const pageNumbers = [];
+        for (let i = 1; i <= Math.ceil(datas.length / datasPerPage); i++) {
+          pageNumbers.push(i);
+        }
+
+        const renderPageNumbers = pageNumbers.map(number => {
+            return (
+              <li
+                key={number}
+                id={number}
+                onClick={this.handleClick}
+              >
+                {number}
+              </li>
+            );
+          });
+
+
         return (
             <div>
                 <div class="breadscrumb">
@@ -165,132 +208,11 @@ class Main extends Component {
                                         </div>
                                     </div>
                                     <div class="panel02">
-
-
-
-
-                                              {/*  <div> 여기 <br/>
-                                                <List
-                                                    disabled= { this.state.fetching }
-                                                    reports={ this.state.reports}
-                                                />
-                                                여기 <br/> </div>
-                                                <List2 reports = {this.state.reports}/> */}
-
-
-
-
                                         <div class="panel_header">상세리스트<span><a href="#">간략보기</a></span></div>
                                         <div class="panel_contents">
-                                            <div class="box_table_area">
-                                                <div class="box_table">
-                                                    <table class="table02">
-                                                        <colgroup>
-                                                            <col width="15.6%" />
-                                                            <col width="13.7%" />
-                                                            <col width="23.3%" />
-                                                            <col width="30%" />
-                                                            <col width="17.4%" />
-                                                        </colgroup>
-                                                        <thead>
-                                                            <tr>
-                                                                <th>신고번호</th>
-                                                                <th>신고일자</th>
-                                                                <th>신고유형</th>
-                                                                <th>P/N</th>
-                                                                <th>신고인</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>1234-1234</td>
-                                                                <td>2018.12.12</td>
-                                                                <td>모조품</td>
-                                                                <td>AB12D-DG23H-EKDIG</td>
-                                                                <td>이지영</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>1234-1234</td>
-                                                                <td>2018.12.12</td>
-                                                                <td>모조품</td>
-                                                                <td>AB12D-DG23H-EKDIG</td>
-                                                                <td>이지영</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>1234-1234</td>
-                                                                <td>2018.12.12</td>
-                                                                <td>모조품</td>
-                                                                <td>AB12D-DG23H-EKDIG</td>
-                                                                <td>이지영</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>1234-1234</td>
-                                                                <td>2018.12.12</td>
-                                                                <td>모조품</td>
-                                                                <td>AB12D-DG23H-EKDIG</td>
-                                                                <td>이지영</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>1234-1234</td>
-                                                                <td>2018.12.12</td>
-                                                                <td>모조품</td>
-                                                                <td>AB12D-DG23H-EKDIG</td>
-                                                                <td>이지영</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>1234-1234</td>
-                                                                <td>2018.12.12</td>
-                                                                <td>모조품</td>
-                                                                <td>AB12D-DG23H-EKDIG</td>
-                                                                <td>이지영</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>1234-1234</td>
-                                                                <td>2018.12.12</td>
-                                                                <td>모조품</td>
-                                                                <td>AB12D-DG23H-EKDIG</td>
-                                                                <td>이지영</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>1234-1234</td>
-                                                                <td>2018.12.12</td>
-                                                                <td>모조품</td>
-                                                                <td>AB12D-DG23H-EKDIG</td>
-                                                                <td>이지영</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>1234-1234</td>
-                                                                <td>2018.12.12</td>
-                                                                <td>모조품</td>
-                                                                <td>AB12D-DG23H-EKDIG</td>
-                                                                <td>이지영</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>1234-1234</td>
-                                                                <td>2018.12.12</td>
-                                                                <td>모조품</td>
-                                                                <td>AB12D-DG23H-EKDIG</td>
-                                                                <td>이지영</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <div class="pagination">
-                                                    <div class="prev">
-                                                        <a href="#" class="prev02"></a>
-                                                        <a href="#" class="prev01"></a>
-                                                    </div>
-                                                    {/*  pageination 선택 클래스 - on_pager */}
-                                                    <a href="#" class="on_pager">1</a>
-                                                    <a href="#">2</a>
-                                                    <a href="#">3</a>
-                                                    <a href="#">4</a>
-                                                    <a href="#">5</a>
-                                                    <div class="next">
-                                                        <a href="#" class="next01"></a>
-                                                        <a href="#" class="next02"></a>
-                                                    </div>
-                                                </div>
+                                            <div class="box_table_area">                                             
+                                                   <List disabled= { this.state.fetching }
+                                                    reports = {this.state.reports} /> 
                                             </div>
                                         </div>
                                     </div>

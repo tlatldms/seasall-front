@@ -37,17 +37,6 @@ class Main extends Component {
             })
     }
 
-    justTest = (e) => {
-
-        axios1.get('https://jsonplaceholder.typicode.com/todos')
-            .then(res => {
-                console.log(res.data)
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }
-
     verifySms = (e) => {
         e.preventDefault();
 
