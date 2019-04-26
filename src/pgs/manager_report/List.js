@@ -26,9 +26,48 @@ class List extends Component {
         const datas = this.props.reports;
         console.log(datas);
 
+        
+        const indexOfLastData= currentPage * datasPerPage;
+        const indexOfFirstData = indexOfLastData - datasPerPage;
+        const currentDatas = datas.slice(indexOfFirstData, indexOfLastData);
+
+        const renderDatas = currentDatas.map(
+            (dat, index) =>      
+                <Item
+                    call={dat.call}
+                    createdAt={dat.createdAt}
+                    type={dat.type}
+                    parts={dat.parts}
+                    id={dat.id}
+                /> 
+            
+          );
+
+        const pageNumbers = [];
+        for (let i = 1; i <= Math.ceil(datas.length / datasPerPage); i++) {
+          pageNumbers.push(i);
+        }
+
+        const renderPageNumbers = pageNumbers.map(number => {
+            return (
+              <li
+                key={number}
+                id={number}
+                onClick={this.handleClick}
+              >
+                {number}
+              </li>
+            );
+          });
+
         return (
             <div>
-     
+                <div>
+                    {renderDatas}
+                </div>
+                <div>
+                    {renderPageNumbers}
+                </div>               
             </div>
         );
   

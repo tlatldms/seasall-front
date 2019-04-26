@@ -1,14 +1,19 @@
 import React from 'react';
 
-const Item = ( { id, type, parts,state }) => {
+const Item = ( { call,
+    createdAt,
+    type,
+    parts,
+    id }) => {
     
     return (
-        <div class="report-item">
-            id: {id} &nbsp;
-            type: {type} &nbsp;
-            parts : {parts}
-            state : {state}
-        </div>
+            <tr>
+                <td> {call} </td>
+                <td> {createdAt} </td>
+                <td> {type}  </td>
+                <td> {parts} </td>
+                <td> {id} </td>
+            </tr>        
     );
 };
 

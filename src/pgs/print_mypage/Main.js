@@ -27,18 +27,6 @@ class Main extends Component {
     render() {
         return (
             <div>
-                <div class="breadscrumb">
-                    <div class="innerwrap">
-                        <div class="left">
-                            <ul>
-                                <li>마이페이지</li>
-                            </ul>
-                        </div>
-                        <div class="right">
-                            <p>2018.12.12 PM 00:00 통계기준</p>
-                        </div>
-                    </div>
-                </div>
                 <article id="contentsWrap" class="mypage01">
                     <div class="innerwrap">
                         <div class="gnb_area">
