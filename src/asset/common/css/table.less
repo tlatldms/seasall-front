@@ -80,11 +80,19 @@
 				vertical-align: top;
 				border-left: none;
 			}
+			td{
+				p,span{
+					font-size: 12px;
+				}
+			}
 			.message_none{
 				padding: 99px 0;
 				text-align: center;
 				font-size: 14px;
 				border: none;
+				p{
+					font-size: 14px;
+				}
 			}
 		}
 		
@@ -133,6 +141,7 @@
 					padding: 156px;
 					font-size:14px;
 					text-align: center;
+					color: @maincolor!important;
 				}
 			}
 			
@@ -202,149 +211,9 @@
 		  	margin-bottom: 36px;
 		  	padding: 12px 0 10px 220px;
 		  	&.answer_before{
-		  		.answer_top{
-		  			margin-bottom: 4px;
-		  			&::after{
-		  				.after;
-		  			}
-					>div{
-						float: left;
-						&.ip_box02{
-							width: 335px;
-							margin-right: 3px;
-						}
-						&.select_box03{
-							width: 170px;
-						}
-					}
-		  		}
 		  		.answer_bottom{
-		  			border-radius:2px;
-		  			border: 1px solid @maincolor;
 		  			textarea{
 		  				height: 162px;
-		  			}
-		  			.box_cffile{
-		  				border-top: 1px solid @maincolor;
-		  				dl{
-		  					float: none;
-		  					width: 100%;
-		  					background-color: @bg;
-		  					overflow: hidden;
-		  					dt{
-		  						float: left;
-								padding: 15px 0;
-								width: 70px;
-								text-align: center;
-								font-size: 12px;
-								font-weight: 500;
-		  					}
-		  					dd{
-		  						width: calc(100% - 70px);
-								float: right;
-								.drop_box{
-									width: 100%;
-									position: relative;
-									padding: 15px;
-									a{
-										color: @text;
-										font-size: 12px;
-									}
-									input[type="file"], input[type="file"]+label{
-										.bld;
-									}
-								}
-		  					}
-		  				}
-		  			}
-		  		}
-		  	}
-		  	&.answer_after{
-		  		.answer_top{
-		  			padding: 13px 20px;
-		  			border: 1px solid @maincolor;
-		  			background-color: @bg;
-		  			&::after{
-		  				.after;
-		  			}
-		  			.title{
-						float: left;
-						width: calc(100% - 187px);
-						// width: 60%;
-						font-size: 14px;
-						font-weight: 500;
-						color: #0e0e0e;
-						white-space: nowrap;
-						overflow: hidden;
-						text-overflow: ellipsis;
-		  			}
-		  			.title_info{
-						float: right;
-						// width: 187px;						
-						// width:40%;
-						overflow: hidden;
-						dl{
-							margin-right: 20px;
-							&::after{
-								.after;
-							}
-							&:last-child{
-								margin-right: 0;
-							}
-							dt,dd{
-								float: left;
-								font-size: 12px;
-								color: #0e0e0e;
-							}
-						}
-		  			}
-		  		}
-		  		.answer_bottom{
-		  			border: 1px solid @maincolor;
-		  			border-top: none;
-		  			.answer_con{
-		  				padding: 13px 20px;
-		  				height: 155px;
-		  				overflow-y: auto;
-		  				p{
-		  					font-size: 14px;
-		  					line-height: 1.71;
-		  					color: #0e0e0e;
-		  				}
-		  			}
-		  			.cf_file{
-		  				padding:13px 20px;
-		  				dl{
-		  					float: none;
-		  					width: 100%;
-		  					&::after{
-		  						.after;
-		  					}
-		  					dt{
-								float: left;
-								width: 70px;
-								padding-right: 20px;
-								font-size: 12px;
-								font-weight: 500;
-		  					}
-		  					dd{
-		  						float: left;
-		  						width: calc(100% - 90px);
-		  						a{
-									font-size: 12px;
-									text-decoration: underline;
-									cursor: pointer;
-									&::before{
-										content: '';
-										display: inline-block;
-										width: 20px;
-										height: 20px;
-										background: url(/asset/images/icon_file.png) no-repeat center/100%;
-										vertical-align: middle;
-									}
-		  						}
-		  					}
-		  				}
 		  			}
 		  		}
 		  	}
@@ -385,10 +254,11 @@
 					&::before{
 						content: '';
 						display: inline-block;
-						width: 20px;
-						height: 20px;
-						outline: 1px solid red;
-						vertical-align: middle;
+						width: 18px;
+						height: 12px;
+						background: url(/asset/images/icon_required.png) no-repeat center/100%;
+						margin-right: 5px;
+						vertical-align: -2px;
 					}
 				}
 			}

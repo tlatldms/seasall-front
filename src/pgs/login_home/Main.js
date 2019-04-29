@@ -19,7 +19,7 @@ class Main extends Component {
 
     redirect = () => {
         if (this.state.redirect) {
-            this.props.history.push("/print_mypage");
+            this.props.history.push("/manager_home");
         }
     }
 

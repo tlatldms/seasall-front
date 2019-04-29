@@ -30,25 +30,28 @@ $(function(){
 			$(".sub_gnb").slideUp(200);
 		}
 	});
+	if($(".sub_gnb li a").hasClass("on_gnb")){
+		$(".sub_gnb").show();
+	}
 
 	//spinner
 	$(".spinner").find(".btn_sp_plus").click(function(){
-		var sValue = $(this).siblings("input").val();
+		var tgInput = $(this).parents(".spinner").find("input");
+		var sValue = tgInput.val();
 		sValue++;
-		// console.log("sValue: "+sValue);
-		$(this).siblings("input").val(sValue);
+		tgInput.val(sValue);
 	});
 	$(".spinner").find(".btn_sp_minus").click(function(){
-		var sValue = $(this).siblings("input").val();
+		var tgInput = $(this).parents(".spinner").find("input");
+		var sValue = tgInput.val();
 		sValue--;
-		// console.log("sValue: "+sValue);
-		$(this).siblings("input").val(sValue);
+		tgInput.val(sValue);
 		if(sValue<=0){
-			$(this).siblings("input").val(0);
+			tgInput.val(0);
 		}
 	});
 
-	//select_box06
+	//select_box
 	$(".selectBox .select_btn").click(function(){
 		$(this).parent(".selectBox").toggleClass("open");
 		var that = $(this);
@@ -68,7 +71,7 @@ $(function(){
 
 	});
 
-	//select_box05
+	
 
 	//등급관리 리스트 이벤트
 	$(".list02 li .btn_grade").click(function(){
