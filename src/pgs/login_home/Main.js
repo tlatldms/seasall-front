@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import LogoCheckerBig from 'asset/images/logo_checker_big.png';
 const URL = 'https://dev.hchecker.org/users/login';
+const axios1 = axios.create({
+    withCredentials: true
+  })
 
 class Main extends Component {
     handleChange = (e) => {
@@ -23,7 +26,7 @@ class Main extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
 
-        axios.post(`${URL}`,  {
+        axios1.post(`${URL}`,  {
             email: this.state.userid,
             password: this.state.password,
             //test:this.state.test

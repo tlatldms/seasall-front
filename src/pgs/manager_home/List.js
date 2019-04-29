@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import Item from './Item';
 import axios from 'axios';
 
-const URL = 'https://dev.hchecker.org/reports/count';
+const URL = 'https://dev.hchecker.org/reports';
+const countURL = 'https://dev.hchecker.org/reports/count';
 const axios1 = axios.create({
     withCredentials: true
   })
+
+
 
 class List extends Component {
     constructor() {
@@ -13,34 +16,77 @@ class List extends Component {
         
         this.state= {
             currentPage: 1,
-            datasPerPage: 8,
+            datasPerPage: 10,
             currentPagination: 1,
+            offset: 0,
+            limit: 10,
+            reports:[]
         };
         this.handleClick = this.handleClick.bind(this);
      
     }
+
+    
+    componentDidMount() {
+    this.getReports();
+    this.getReportsCount();
+    }
+
+    getReportsCount = (e) => {
+        axios1.get(`${countURL}`)
+        .then(res => {
+            if (res.data.success){
+                const reportsCount = res.data.count;
+                this.setState({ reportsCount });
+                console.log(this.state.reportsCount);
+            }
+        })
+        .catch(e => { console.log(e);});
+    }
+
+    getReports = (offset,limit) => {
+    this.setState({
+        fetching: true
+    });
+    axios1.get(`https://dev.hchecker.org/reports?offset=${offset}&limit=${this.state.datasPerPage}`)
+    .then(res => {
+        if (res.data.success){
+            const reports = res.data.reports['reports'];
+            this.setState({ reports });
+            console.log(res);
+        }
+    })
+    .catch(e => { console.log(e);});
+    this.setState({
+        fetching:false
+    })
+}
 
     goLowest = (e) => {
         this.setState({
             currentPage: 1
         });
     }
-    getHighest = () => {
-        axios1.get(`${URL}`).then(res => {const highest = Number(res.data.count); this.setState({highest})} ).catch(error =>{ console.log(error) });
-    }
+    
     goHighest = (e) => {
+        const highest = Number(Math.ceil(this.state.reportsCount/this.state.datasPerPage));
+        this.handleClick(e, highest);
         this.setState({
-            currentPage: Math.ceil(this.state.highest/this.state.datasPerPage)
+            currentPage: highest
         });
-        console.log(this.state.currentPage);
     }
-    handleClick(event) {
+    handleClick(event, number) {
         this.setState({
             currentPage: Number(event.target.text),
         });
+        const offset = (number-1)*(this.state.datasPerPage);
+        const limit = this.state.datasPerPage;
+        this.getReports( offset, limit);
+        
     }
     handlePrevClick = (e) => {
         if (this.state.currentPage >1 ) {
+            this.handleClick(e, this.state.currentPage-1);
             this.setState({
                 currentPage : this.state.currentPage - 1
             })
@@ -48,7 +94,8 @@ class List extends Component {
     } 
 
     handleNextClick = (e) => {
-        if (this.state.currentPage < 11 ) {
+        if (this.state.currentPage < this.state.reportsCount ) {
+            this.handleClick(e, this.state.currentPage+1);
             this.setState({
                 currentPage : this.state.currentPage + 1
             })
@@ -56,14 +103,10 @@ class List extends Component {
     }
         
     render() {
-        const { currentPage, datasPerPage} = this.state;
-        const datas = this.props.reports;
-        
-        const indexOfLastData= currentPage * datasPerPage;
-        const indexOfFirstData = indexOfLastData - datasPerPage;
-        const currentDatas = datas.slice(indexOfFirstData, indexOfLastData);
+        const { datasPerPage} = this.state;
+        const datas = this.state.reports;
 
-        const renderDatas = currentDatas.map(
+        const renderDatas = datas.map(
             (dat, index) => 
             (
                 <Item
@@ -75,9 +118,9 @@ class List extends Component {
                 />
             )
           );
-
+               
         const pageNumbers = [];
-        for (let i = 1; i <= Math.ceil(datas.length / datasPerPage); i++) {
+        for (let i = 1; i <= Math.ceil(this.state.reportsCount / datasPerPage); i++) {
           pageNumbers.push(i);
         }
 
@@ -85,13 +128,13 @@ class List extends Component {
             return (
               <a
                 key={number}
-                onClick={this.handleClick}
+                onClick={(e)=>this.handleClick(e,number)}
                 class={this.state.currentPage == number?"on_pager" : null}
                 style={ (this.state.currentPage - 2 <= number && number <= this.state.currentPage + 2)
                             ||
                          ( (this.state.currentPage < 3 && number<6)
                             ||
-                            (this.state.currentPage > pageNumbers.length-3 && number > pageNumbers.length-5)
+                            (this.state.currentPage > this.state.reportsCount -3 && number > this.state.reportsCount -5)
                             )
                              ? null : styles.nonee 
                          }
@@ -102,7 +145,7 @@ class List extends Component {
           });
         return (
             <React.Fragment>
-                {this.getHighest()}
+             
                 <div class="box_table">
                     <table class="table02">
                         <colgroup>

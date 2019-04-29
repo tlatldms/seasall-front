@@ -6,7 +6,8 @@ import List from './List';
 import List2 from './List2';
 import Item from './Item';
 
-const URL = 'https://dev.hchecker.org/reports';
+const URL = 'https://dev.hchecker.org/reports?';
+const countURL =  'https://dev.hchecker.org/reports/count';
 const data1 = null;
 const axios1 = axios.create({
     withCredentials: true
@@ -14,104 +15,9 @@ const axios1 = axios.create({
 const Div1 = styled.div`width: ${props => props.width}; height:220px; background: url("/asset/images/home0${props=>props.num}.png") no-repeat center/100%;`;
 class Main extends Component {
 
-    constructor(props) {
-        super();
-        // initializes component state
-        this.state = {
-            fetching: false, // tells whether the request is waiting for response or not
-            reports: [],
-            currentPage: 1,
-            datasPerPage: 5,
-        };
-        this.handleClick = this.handleClick.bind(this);
-      }
-
-    handleClick(e) {
-        this.setState({
-            currentPage: Number(e.target.id)
-        });
-    }
-        
-
-
-    componentDidMount() {
-    this.fetchPostInfo();
-    }
-
-    fetchPostInfo = async() => {
-    this.setState({
-        fetching: true
-    });
-    axios1.get(`${URL}`, {limit:150})
-    .then(res => {
-        if (res.data.success){
-            const reports = res.data.reports['reports'];
-            this.setState({ reports });
-        }
-    })
-    .catch(e => { console.log(e);});
-    this.setState({
-        fetching:false
-    })
-}
-
-  
-
-
-    
-/*
-        const info = await Promise.all([
-            axios1.get(`${URL}`)
-            //service.getComments(TodoId)
-          ]);
-
-        const reports = info[0].data.reports['reports'];
-        console.log("Main에서"+reports+"보냄");
-        console.log(reports);
-*/
-
-      
 
 
     render() {
-
-        const { currentPage, datasPerPage} = this.state;
-        const datas = this.state.reports;
-        console.log(datas);
-
-        
-        const indexOfLastData= currentPage * datasPerPage;
-        const indexOfFirstData = indexOfLastData - datasPerPage;
-        const currentDatas = datas.slice(indexOfFirstData, indexOfLastData);
-
-        const renderDatas = currentDatas.map(
-            (dat, index) =>
-            
-                
-                <Item
-                    id={dat.id}
-                    type={dat.type}
-                    parts={dat.parts}
-                    state={dat.state} 
-                />
-          );
-        const pageNumbers = [];
-        for (let i = 1; i <= Math.ceil(datas.length / datasPerPage); i++) {
-          pageNumbers.push(i);
-        }
-
-        const renderPageNumbers = pageNumbers.map(number => {
-            return (
-              <li
-                key={number}
-                id={number}
-                onClick={this.handleClick}
-              >
-                {number}
-              </li>
-            );
-          });
-
 
         return (
             <div>
@@ -211,8 +117,7 @@ class Main extends Component {
                                         <div class="panel_header">상세리스트<span><a href="#">간략보기</a></span></div>
                                         <div class="panel_contents">
                                             <div class="box_table_area">                                             
-                                                   <List disabled= { this.state.fetching }
-                                                    reports = {this.state.reports} /> 
+                                                   <List />
                                             </div>
                                         </div>
                                     </div>
