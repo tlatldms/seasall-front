@@ -6,6 +6,7 @@
 	border: 1px solid @border;
 	overflow-y: hidden;
 	>div{
+		position: relative;
 		&:last-child{
 			border-bottom: none;
 		} 
@@ -118,6 +119,60 @@
 			top: 7px;
 		}
 	}
+	.btn_medium{
+		&.disable{
+			.btn_medium_w;
+			opacity: .3;
+			width: 80px;
+		}
+	}
+}
+.input_box02{
+	border: 1px solid @border;
+	border-radius: 2px;
+	overflow: hidden;
+	.ib_box02{
+		border-bottom: 1px solid @border;
+		&::after{
+			.after;
+		}
+		&.disable{
+			button{
+				background-color: #9b9b9b;
+				border: 1px solid #9b9b9b;
+				cursor: not-allowed;
+			}
+		}
+		// &:last-of-type{
+		// 	border-bottom: none;
+		// }
+		input[type="text"]{
+			width: 150px;
+			float: left;
+			border: none;
+			background-color: #fff;
+			height: 34px;
+			padding: 8px;
+			font-size: 12px;
+			&::placeholder{
+				color: @border02;
+			}
+		}
+		button{
+			width: 45px;
+			float: right;
+			margin-right: 4px;
+			border-radius: 2px;
+			position:relative;
+			top: 5px;
+			padding: 2px 0;
+		}
+	}
+	.ip_box05{
+		input[type="text"]{
+			border: none;
+		}
+	}
 }
 .ip_box02{
 	input[type="text"] {
@@ -157,6 +212,24 @@
 		font-size: 12px;
 		&::placeholder{
 			color: @border;
+		}
+	}
+}
+.ip_box05{
+	input[type="text"] {
+		width: 100%;
+		background-color: #fff;
+		height: 34px;
+		border: 1px solid @border;
+		border-radius:2px;
+		padding: 8px;
+		font-size: 12px;
+		&::placeholder{
+			color: @border02;
+		}
+		&:disabled{
+			background-color: @bg;
+			color: @border02;
 		}
 	}
 }
@@ -390,6 +463,103 @@
 	    }
 	}
 }
+.select_box07{
+	position:relative;
+	&::after{
+		content: '';
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		right: 6px;
+		top: 50%;
+		transform: translateY(-50%);
+		background: url(/asset/images/icon_down.png) no-repeat center/100%;
+	}
+	.select07{
+		width: 100%;
+		background-color: #fff;
+		height: 34px;
+		border: 1px solid @border;
+		border-radius:2px;
+		padding: 8px;
+		font-size: 12px;
+		// background: url(/asset/images/check01.png) no-repeat 95% 50%;
+	}
+}
+.select_box08{
+	position:relative;
+	width: 170px;
+	margin: 0 auto;
+	&.open{
+		.select_btn{
+			border: 1px solid @maincolor;
+			border-bottom: none;
+			p{
+				&::after{
+					background:url(/asset/images/icon_up.png) no-repeat center/100%;
+				}
+			}
+		}
+		.option_list{
+			display: block;
+		}
+	}
+	.select_btn{
+		width: 100%;
+		padding: 7px 10px;
+		text-align: left;
+		margin: 0 auto;
+		cursor: pointer;
+		background-color: #fff;
+		border: 1px solid @maincolor;
+		border-radius: 2px;
+		p,span{
+			font-size: 12px;
+			position:relative;
+		}
+		p{
+			&::after{
+				content:'';
+				width: 20px;
+				height: 20px;
+				display: inline-block;
+				background:url(/asset/images/icon_down.png) no-repeat center/100%;
+				position: absolute;
+				right: 0;
+				// transition: all .2s ease-in;
+			}
+		}
+	}
+	.option_list{
+		position: absolute;
+	    top: 29px;
+	    width: 100%;
+	    background: #fff;
+	    border: 1px solid @maincolor;
+	    border-radius:0 0 2px 2px;
+	    border-top: none;
+	    display: none;
+	    padding: 7px 0;
+	    z-index: 1;
+	    li{
+	    	width: 100%;
+			padding: 9px 10px; 
+			text-align: left;
+			&:hover{
+				a{
+					text-decoration: underline;
+				}
+			}
+			a{
+		    	font-size: 12px;
+		    	line-height: 1.6;
+		    	display: block;
+			}
+	    }
+	}
+}
+
 textarea{
 	padding:8px;
 	width: 100%;
@@ -400,6 +570,7 @@ textarea{
 		color: @text;
 	}
 }
+
 
 /* spinner */
 .box_spinner01{
@@ -473,6 +644,43 @@ textarea{
 			float: left;
 			height: 100%;
 			width: 54px;
+			text-align: center;
+			border:none;
+			font-size: 12px;
+		}
+	}
+}
+.box_spinner03{
+	.tit{
+		font-size: 12px;
+		margin-bottom: 5px;
+	}
+	.spinner03{
+		border:1px solid @maincolor;
+		border-radius: 2px;
+		overflow:hidden;
+		background-color:#fff;
+		height: 32px;
+		button{
+			width: 58px;
+			height: 100%;
+			float: left;
+			background-color:#fff;
+		}
+		.btn_sp_minus{
+			border-right: 1px solid @maincolor;
+			background:url(/asset/images/icon_minus.png) no-repeat center/13px;
+			
+		}
+		.btn_sp_plus{
+			border-left: 1px solid @maincolor;
+			background:url(/asset/images/icon_add.png) no-repeat center/13px;
+		}
+
+		input[type="text"]{
+			float: left;
+			height: 100%;
+			width: 156px;
 			text-align: center;
 			border:none;
 			font-size: 12px;

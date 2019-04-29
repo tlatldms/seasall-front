@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 
 import Footer from 'common/Footer';
 import PrintHeader from 'common/Header';
+import UnderHeader from 'common/UnderHeader';
 
 import LoginHome from './login_home/Main';
 import LoginFindId from './login_find_id/Main';
@@ -16,6 +17,7 @@ import LoginAuthorizeDone from './login_authorize_done/Main';
 import ManagerBuyProduct from './manager_buy_product/Main';
 import ManagerBuyList from './manager_buy_list/Main';
 import ManagerBuyRcvPlace from './manager_buy_rcvplace/Main';
+
 import ManagerHome from './manager_home/Main';
 import ManagerHomePopup from './manager_home_popup/Main';
 import ManagerReport from './manager_report/Main';
@@ -51,14 +53,26 @@ const Details = () => {
             <Route path='/login_authorize_done' component={LoginAuthorizeDone}/>
 
             <Route exact path="/manager_buy_product" component={ManagerBuyProduct}/>
+            <Route path='/manager_buy_list' component={PrintHeader} />
+            <Route path='/manager_buy_list' component={UnderHeader} />
             <Route path="/manager_buy_list" component={ManagerBuyList} />
             <Route path="/manager_buy_rcvplace" component={ManagerBuyRcvPlace}/>
 
             <Route path='/manager_home' component={PrintHeader} />
+           
             <Route path="/manager_home" component={ManagerHome}/>
             <Route path="/manager_home/popup" component={ManagerHomePopup}/>
+
+            <Route path='/manager_report' component={PrintHeader} />
+            <Route path='/manager_report' component={UnderHeader} />
             <Route path="/manager_report" component={ManagerReport}/>
+
+            <Route path='/manager_rack' component={PrintHeader} />
+            <Route path='/manager_rack' component={UnderHeader} />
             <Route path="/manager_rack" component={ManagerRack}/>
+
+            <Route path='/manager_grade' component={PrintHeader} />
+            <Route path='/manager_grade' component={UnderHeader} />
             <Route path="/manager_grade" component={ManagerGrade}/>
             
             <Route path='/print_home' component={PrintHome} />

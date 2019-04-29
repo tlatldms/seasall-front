@@ -1,21 +1,11 @@
 import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import List from './List';
-import List2 from './List2';
-import Item from './Item';
 
-const URL = 'https://dev.hchecker.org/reports?';
-const countURL =  'https://dev.hchecker.org/reports/count';
-const data1 = null;
-const axios1 = axios.create({
-    withCredentials: true
-  })
-const Div1 = styled.div`width: ${props => props.width}; height:220px; background: url("/asset/images/home0${props=>props.num}.png") no-repeat center/100%;`;
+import Navi from 'common/Navi';
+const Div1 = styled.div`width: ${props => props.width}; height:220px; background: url('asset/images/home0${props=>props.num}.png') no-repeat center/100%;`;
 class Main extends Component {
-
-
 
     render() {
 
@@ -36,43 +26,7 @@ class Main extends Component {
                 </div>
                 <article id="contentsWrap" class="main01">
                     <div class="innerwrap">
-                        <div class="gnb_area">
-                            <aside class="box_menu">
-                                <div class="box_top">
-                                    <div class="icon_menu">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                    <span class="tit">MENU</span>
-                                </div>
-                                <nav>
-                                    <ul class="gnb">
-                                        <li>
-                                            <a href="#" class="on_gnb"><span>메인</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><span>신고처리</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><span>렉관리</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><span>등급관리</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><span>구매/청구</span></a>
-                                            <ul class="sub_gnb">
-                                                <li><a href="#">제품구매</a></li>
-                                                <li><a href="#">구매목록</a></li>
-                                                <li><a href="#">배송지관리</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </aside>
-                            <button class="btn_printpage"><span></span><Link to="/manager_home/popup">출력페이지</Link></button>
-                        </div>
+                        <Navi />
                         <div class="contents_area">
                             <div class="panel graph01">
                                 <div class="panel_header">

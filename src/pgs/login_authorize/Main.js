@@ -121,7 +121,6 @@ class Main extends Component {
         return (
             <article id="contentsWrap" class="login login02">
             {this.redirect()}
-            {this.justTest()}
             <div class="box_contents">
                 <div class="box_logo">
                     <img src={LogoChecker}/>

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Item from './Item';
 import axios from 'axios';
 
-const URL = 'https://dev.hchecker.org/reports';
 const countURL = 'https://dev.hchecker.org/reports/count';
 const axios1 = axios.create({
     withCredentials: true
@@ -16,7 +15,7 @@ class List extends Component {
         
         this.state= {
             currentPage: 1,
-            datasPerPage: 10,
+            datasPerPage: 6,
             currentPagination: 1,
             offset: 0,
             limit: 10,
@@ -63,6 +62,7 @@ class List extends Component {
 }
 
     goLowest = (e) => {
+        this.handleClick(e, 1);
         this.setState({
             currentPage: 1
         });
@@ -94,7 +94,7 @@ class List extends Component {
     } 
 
     handleNextClick = (e) => {
-        if (this.state.currentPage < this.state.reportsCount ) {
+        if (this.state.currentPage < Math.ceil(this.state.reportsCount/this.state.datasPerPage) ) {
             this.handleClick(e, this.state.currentPage+1);
             this.setState({
                 currentPage : this.state.currentPage + 1
@@ -118,9 +118,9 @@ class List extends Component {
                 />
             )
           );
-               
+        const highest=Math.ceil(this.state.reportsCount / datasPerPage);    
         const pageNumbers = [];
-        for (let i = 1; i <= Math.ceil(this.state.reportsCount / datasPerPage); i++) {
+        for (let i = 1; i <=highest; i++) {
           pageNumbers.push(i);
         }
 
@@ -134,7 +134,7 @@ class List extends Component {
                             ||
                          ( (this.state.currentPage < 3 && number<6)
                             ||
-                            (this.state.currentPage > this.state.reportsCount -3 && number > this.state.reportsCount -5)
+                            (this.state.currentPage > highest -3 && number > highest -5)
                             )
                              ? null : styles.nonee 
                          }

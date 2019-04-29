@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HYUNDAI SEASALL</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta name="keyword" content="">
+    <meta name="description" content="">
+    <meta name="og:title" content="">
+    <meta name="og:image" content="">
+    <meta name="og:description" content="">
+    <meta name="WT.ti" content="">
+    <meta name="DCS.dcsuri" content="">
+    <script src="/asset/common/js/jquery-2.2.4.min.js"></script>
+    <script src="/asset/common/js/jquery-ui.min.js"></script>
+    <link href="/asset/common/css/web_style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+	<!-- popup start -->
+	<div class="popup print_pop01">
+		<div class="pop_content">
+			<p class="print_sts">출력 중입니다 (<span class="numerator">50</span>/<span class="denominator">1000</span>)</p>
+			<div class="img_bar_bg">
+				<div class="img_bar" style="width: 70%"></div>
+			</div>
+			<p class="print_time">30:37</p>
+		</div>
+	</div>
+	<div class="pop_bg"></div>
+	<!-- popup end -->
+	<header>
+		<div class="wrap">
+			<div class="left">
+				<div class="box_logo">
+					<img src="/asset/images/logo_seasall.png" alt="HYUNDAI SEASALL">
+				</div>
+			</div>
+			<div class="right">
+				<div class="box_user">
+					<span class="user_sts good"></span>
+					<p><span class="user_name">이종수</span> 님 안녕하세요.</p>
+				</div>
+				<div class="box_btn">
+					<button class="btn_header">마이페이지</button>
+					<button class="btn_header">로그아웃</button>
+				</div>
+			</div>
+		</div>
+	</header>
+	<article id="contentsWrap" class="print01">
+		<form action="#" accept-charset="utf-8" name="print01" method="get">
+			<div class="contents_top">
+				<div class="innerwrap02">
+					<div class="panel06">
+						<div class="panel_header">
+							<h2>라벨대기목록</h2>
+							<p>현재 실시간 정보입니다 (<span>18.08.08 PM 15:00</span> 기준)</p>
+						</div>
+						<div class="panel_contents">
+							<div class="panel02">
+								<div class="panel_header">
+									<div class="left">
+										<div class="btn_delete">
+											<a href=#><span class="icon"></span><span>선택 삭제</span></a>
+										</div>
+										<div class="box_search02">
+											<button class="btn_search"></button>
+											<input id="labelSearch" name="label_search" type="text" placeholder="검색">
+											<div class="box_btn">
+												<button class="btn_small search w50">검색</button>
+												<button type="button" class="btn_small cancle w50">취소</button>
+											</div>
+										</div>
+									</div>
+									<div class="right">
+										<div class="selectBox select_box05">
+								            <div class="select_btn">
+								                <p>정렬 : <span>시간순</span></p>
+								            </div>
+								            <div class="option_list">
+								                <ul>
+								                    <li><a href="#">P/N</a></li>
+								                    <li><a href="#">품명</a></li>
+								                    <li><a href="#">작업자</a></li>
+								                    <li><a href="#">항목</a></li>
+								                </ul>
+								            </div>
+								        </div>
+								        <div class="box_btn">
+								        	<button class="btn_small w80">엑셀 업로드</button>
+								        </div>
+								        <div class="box_btn">
+								        	<button class="btn_small w70">선택출력</button>
+								        	<button class="btn_small w70">전체출력</button>
+								        </div>
+									</div>
+								</div>
+								<div class="panel_contents">
+									<!-- 리스트 숨기는 클래스 hidden -->
+									<div class="box_table_area hidden">
+										<div class="box_table">
+											<table class="table02">
+												<colgroup>
+													<col width="3%">
+													<col width="11.8%">
+													<col width="11.1%">
+													<col width="19.8%">
+													<col width="20.4%">
+													<col width="11.4%">
+													<col width="13%">
+													<col width="9.5%">
+												</colgroup>
+												<thead>
+													<tr>
+														<th>
+															<div class="check_box check_b">
+													            <input type="checkbox" id="all" name="list_all">
+													            <label for="all"><span><em class="bld"></em></span></label>
+													        </div>
+														</th>
+														<th>라벨유형</th>
+														<th>요청일자</th>
+														<th>P/N</th>
+														<th>제품명</th>
+														<th>라벨수량</th>
+														<th>총 제품수량</th>
+														<th>작업자</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>
+															<div class="check_box check_b">
+													            <input type="checkbox" id="a1" name="a1">
+													            <label for="a1"><span><em class="bld"></em></span></label>
+													        </div>
+														</td>
+														<td><p>일반출고</p></td>
+														<td><p>2018.12.12</p></td>
+														<td><p>AB12D-DG23H-EKDIG</p></td>
+														<td><p>CONTACT ASSY-CLOCK</p></td>
+														<td><p>10장</p></td>
+														<td><p>10000개</p></td>
+														<td><p>이지영</p></td>
+													</tr>
+													<tr>
+														<td>
+															<div class="check_box check_b">
+													            <input type="checkbox" id="a2" name="a2">
+													            <label for="a2"><span><em class="bld"></em></span></label>
+													        </div>
+														</td>
+														<td><p>렉라벨</p></td>
+														<td><p>2018.12.12</p></td>
+														<td><p>E-15</p></td>
+														<td><p>-</p></td>
+														<td><p>1장</p></td>
+														<td><p>-</p></td>
+														<td><p>이흥수</p></td>
+													</tr>
+													<tr>
+														<td>
+															<div class="check_box check_b">
+													            <input type="checkbox" id="a3" name="a3">
+													            <label for="a3"><span><em class="bld"></em></span></label>
+													        </div>
+														</td>
+														<td><p>P/N 라벨</p></td>
+														<td><p>2018.12.12</p></td>
+														<td><p>AB12D-DG23H-EKDIG</p></td>
+														<td><p>CONTACT ASSY-CLOCK</p></td>
+														<td><p>1000장</p></td>
+														<td><p>10000개</p></td>
+														<td><p>이지영</p></td>
+													</tr>
+													<tr>
+														<td>
+															<div class="check_box check_b">
+													            <input type="checkbox" id="a4" name="a4">
+													            <label for="a4"><span><em class="bld"></em></span></label>
+													        </div>
+														</td>
+														<td><p>일반출고</p></td>
+														<td><p>2018.12.12</p></td>
+														<td><p>52905-2V350-NEJ</p></td>
+														<td><p>WHEEL ASSY-ALUMINIUM</p></td>
+														<td><p>20장</p></td>
+														<td><p>500개</p></td>
+														<td><p>이흥수</p></td>
+													</tr>
+													<tr>
+														<td>
+															<div class="check_box check_b">
+													            <input type="checkbox" id="a5" name="a5">
+													            <label for="a5"><span><em class="bld"></em></span></label>
+													        </div>
+														</td>
+														<td><p>일반출고</p></td>
+														<td><p>2018.12.12</p></td>
+														<td><p>AB12D-DG23H-EKDIG</p></td>
+														<td><p>CONTACT ASSY-CLOCK</p></td>
+														<td><p>10장</p></td>
+														<td><p>10000개</p></td>
+														<td><p>이지영</p></td>
+													</tr>
+													<tr>
+														<td>
+															<div class="check_box check_b">
+													            <input type="checkbox" id="a6" name="a6">
+													            <label for="a6"><span><em class="bld"></em></span></label>
+													        </div>
+														</td>
+														<td><p>렉라벨</p></td>
+														<td><p>2018.12.12</p></td>
+														<td><p>E-15</p></td>
+														<td><p>-</p></td>
+														<td><p>1장</p></td>
+														<td><p>-</p></td>
+														<td><p>이흥수</p></td>
+													</tr>
+													<tr>
+														<td>
+															<div class="check_box check_b">
+													            <input type="checkbox" id="a7" name="a7">
+													            <label for="a7"><span><em class="bld"></em></span></label>
+													        </div>
+														</td>
+														<td><p>P/N 라벨</p></td>
+														<td><p>2018.12.12</p></td>
+														<td><p>AB12D-DG23H-EKDIG</p></td>
+														<td><p>CONTACT ASSY-CLOCK</p></td>
+														<td><p>1000장</p></td>
+														<td><p>10000개</p></td>
+														<td><p>이지영</p></td>
+													</tr>
+													<tr>
+														<td>
+															<div class="check_box check_b">
+													            <input type="checkbox" id="a8" name="a8">
+													            <label for="a8"><span><em class="bld"></em></span></label>
+													        </div>
+														</td>
+														<td><p>일반출고</p></td>
+														<td><p>2018.12.12</p></td>
+														<td><p>52905-2V350-NEJ</p></td>
+														<td><p>WHEEL ASSY-ALUMINIUM</p></td>
+														<td><p>20장</p></td>
+														<td><p>500개</p></td>
+														<td><p>이흥수</p></td>
+													</tr>
+													<tr>
+														<td>
+															<div class="check_box check_b">
+													            <input type="checkbox" id="a9" name="a9">
+													            <label for="a9"><span><em class="bld"></em></span></label>
+													        </div>
+														</td>
+														<td><p>일반출고</p></td>
+														<td><p>2018.12.12</p></td>
+														<td><p>AB12D-DG23H-EKDIG</p></td>
+														<td><p>CONTACT ASSY-CLOCK</p></td>
+														<td><p>10장</p></td>
+														<td><p>10000개</p></td>
+														<td><p>이지영</p></td>
+													</tr>
+													<tr>
+														<td>
+															<div class="check_box check_b">
+													            <input type="checkbox" id="a10" name="a10">
+													            <label for="a10"><span><em class="bld"></em></span></label>
+													        </div>
+														</td>
+														<td><p>렉라벨</p></td>
+														<td><p>2018.12.12</p></td>
+														<td><p>E-15</p></td>
+														<td><p>-</p></td>
+														<td><p>1장</p></td>
+														<td><p>-</p></td>
+														<td><p>이흥수</p></td>
+													</tr>
+													<tr>
+														<td>
+															<div class="check_box check_b">
+													            <input type="checkbox" id="a11" name="a11">
+													            <label for="a11"><span><em class="bld"></em></span></label>
+													        </div>
+														</td>
+														<td><p>P/N 라벨</p></td>
+														<td><p>2018.12.12</p></td>
+														<td><p>AB12D-DG23H-EKDIG</p></td>
+														<td><p>CONTACT ASSY-CLOCK</p></td>
+														<td><p>1000장</p></td>
+														<td><p>10000개</p></td>
+														<td><p>이지영</p></td>
+													</tr>
+													<tr>
+														<td>
+															<div class="check_box check_b">
+													            <input type="checkbox" id="a12" name="a12">
+													            <label for="a12"><span><em class="bld"></em></span></label>
+													        </div>
+														</td>
+														<td><p>일반출고</p></td>
+														<td><p>2018.12.12</p></td>
+														<td><p>52905-2V350-NEJ</p></td>
+														<td><p>WHEEL ASSY-ALUMINIUM</p></td>
+														<td><p>20장</p></td>
+														<td><p>500개</p></td>
+														<td><p>이흥수</p></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<div class="pagination">
+								            <div class="prev">
+								                <a href="#" class="prev02"></a>
+								                <a href="#" class="prev01"></a>
+								            </div>
+								            <!-- pageination 선택 클래스 - on_pager -->
+								            <a href="#" class="on_pager">1</a>
+								            <a href="#">2</a>
+								            <a href="#">3</a>
+								            <a href="#">4</a>
+								            <a href="#">5</a>
+								            <div class="next">
+								                <a href="#" class="next01"></a>
+								                <a href="#" class="next02"></a>
+								            </div>
+								        </div>
+								        <a href="#" class="btn_allshow">전체보기</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="contents_bottom">
+				<div class="innerwrap02">
+					<div class="box_left">
+						<div class="panel">
+							<div class="panel_header">
+								<div class="left">
+									<h2>기타라벨출력</h2>
+								</div>	
+								<div class="right"></div>
+							</div>
+							<div class="panel_contents">
+								<div class="box_slide">
+									<img src="/asset/images/img_label02.png" alt="">
+									<div class="box_btn_slide">
+										<span class="btn_prev"></span>
+										<span class="btn_next"></span>
+										<!-- 버튼 작동 안할 시 들어가는 클래스 disable -->
+								<!-- <span class="btn_prev disable"></span>
+								<span class="btn_next disable"></span> -->
+									</div>
+								</div>
+								<div class="box_info">
+									<p class="tit">렉라벨</p>
+									<p class="sub_tit">렉라인 대표라벨</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box_right">
+						<div class="panel">
+							<div class="panel_header">
+								<div class="left">
+									<h2>프린트 상태 및 요청</h2>
+								</div>	
+								<div class="right">
+									<div class="btn_box">
+										<button class="btn_small w50">문의</button>
+										<button class="btn_small w50">구매</button>
+									</div>
+								</div>
+							</div>
+							<div class="panel_contents">
+								<div class="box_slide">
+									<ul>
+										<li class="label_paper">
+											<p class="tit">라벨용지</p>
+											<div class="img_bar_bg">
+												<div class="img_bar" style="height: 62%">
+													<img src="/asset/images/img_bar.png">
+												</div>
+											</div>
+											<p class="quantity"><span>62</span>%</p>
+										</li>
+										<li class="carbon_paper">
+											<p class="tit">먹지</p>
+											<div class="img_bar_bg">
+												<div class="img_bar" style="height: 40%">
+													<img src="/asset/images/img_bar.png">
+												</div>
+											</div>
+											<p class="quantity"><span>40</span>%</p>
+										</li>
+										<li class="date_use">
+											<p class="tit">사용기한</p>
+											<div class="img_bar_bg">
+												<div class="img_bar" style="height: 90%">
+													<img src="/asset/images/img_bar.png">
+												</div>
+											</div>
+											<p class="quantity"><span>451</span>일</p>
+										</li>
+									</ul>
+									<div class="box_btn_slide">
+										<span class="btn_prev"></span>
+										<span class="btn_next"></span>
+										<!-- 버튼 작동 안할 시 들어가는 클래스 disable -->
+								<!-- <span class="btn_prev disable"></span>
+								<span class="btn_next disable"></span> -->
+									</div>
+								</div>
+								<div class="box_info">
+									<p class="tit">Label_printer_2</p>
+									<p class="sub_tit"><span class="sts_dot good"></span> 연결상태양호</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</article>
+	<footer>
+		<div class="wrap">
+			<div class="left">
+				<ul>
+					<li>서울시 영등포구 의사당대로 3 현대캐피탈빌딩</li>
+					<li>대표이사정태영</li>
+					<li>사업자 등록번호213-86-15419</li>
+				</ul>
+			</div>
+			<div class="right">
+				<p>2019 Checker Corp.</p>
+			</div>
+		</div>
+	</footer>
+</body>
+<script src="/asset/common/js/seasall.js"></script>
+</html>
