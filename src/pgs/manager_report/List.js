@@ -15,10 +15,9 @@ class List extends Component {
         
         this.state= {
             currentPage: 1,
-            datasPerPage: 6,
+            datasPerPage: 5,
             currentPagination: 1,
             offset: 0,
-            limit: 10,
             reports:[]
         };
         this.handleClick = this.handleClick.bind(this);
@@ -30,6 +29,7 @@ class List extends Component {
     this.getReports();
     this.getReportsCount();
     }
+
 
     getReportsCount = (e) => {
         axios1.get(`${countURL}`)
@@ -52,7 +52,6 @@ class List extends Component {
         if (res.data.success){
             const reports = res.data.reports['reports'];
             this.setState({ reports });
-            console.log(res);
         }
     })
     .catch(e => { console.log(e);});
@@ -60,6 +59,8 @@ class List extends Component {
         fetching:false
     })
 }
+
+
 
     goLowest = (e) => {
         this.handleClick(e, 1);
@@ -110,11 +111,17 @@ class List extends Component {
             (dat, index) => 
             (
                 <Item
+                    serial={dat.serial}
                     call={dat.call}
                     createdAt={dat.createdAt}
                     type={dat.type}
                     parts={dat.parts}
+                    state={dat.state}
                     id={dat.id}
+                    key={index}
+                    currentPage={this.state.currentPage}
+
+                    
                 />
             )
           );
@@ -147,28 +154,19 @@ class List extends Component {
             <React.Fragment>
              
                 <div class="box_table">
-                    <table class="table02">
-                        <colgroup>
-                            <col width="15.6%" />
-                            <col width="13.7%" />
-                            <col width="23.3%" />
-                            <col width="30%" />
-                            <col width="17.4%" />
-                        </colgroup>
-                        <thead>
-                            <tr>
-                                <th>신고번호</th>
-                                <th>신고일자</th>
-                                <th>신고유형</th>
-                                <th>P/N</th>
-                                <th>신고인</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {renderDatas}
-                        </tbody>
-                    </table>
-                </div>                                                                 
+                <div class="table03">
+                        <div class="thead">
+                          <div class="th">신고번호</div>
+                          <div class="th">신고번호</div>
+                          <div class="th">신고일자</div>
+                          <div class="th">신고유형</div>
+                          <div class="th">P/N</div>
+                          <div class="th">답변시간</div>
+                        </div>
+                        {/* 답변하기 보이는 클래스 open */}
+                        {renderDatas}
+              </div> 
+              </div>                                                               
                 <div class="pagination">
                     <div class="prev">
                         <a onClick={this.goLowest} class="prev02"> &lt;&lt; </a>
