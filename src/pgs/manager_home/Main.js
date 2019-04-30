@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import List from './List';
+import PrintHeader from 'common/Header';
 
 import Navi from 'common/Navi';
 const Div1 = styled.div`width: ${props => props.width}; height:220px; background: url('asset/images/home0${props=>props.num}.png') no-repeat center/100%;`;
@@ -11,6 +12,7 @@ class Main extends Component {
 
         return (
             <div>
+                <PrintHeader />
                 <div class="breadscrumb">
                     <div class="innerwrap">
                         <div class="left">

@@ -58,7 +58,7 @@ const Details = () => {
             <Route path="/manager_buy_list" component={ManagerBuyList} />
             <Route path="/manager_buy_rcvplace" component={ManagerBuyRcvPlace}/>
 
-            <Route path='/manager_home' component={PrintHeader} />
+            
            
             <Route path="/manager_home" component={ManagerHome}/>
             <Route path="/manager_home/popup" component={ManagerHomePopup}/>

@@ -12,14 +12,18 @@ class Main extends Component {
     handleChange = (e) => {
         this.setState({
             [e.target.name] : e.target.value,
-            isSubmitted: false
         })
     }
 
 
     redirect = () => {
         if (this.state.redirect) {
-            this.props.history.push("/manager_home");
+            this.props.history.push({
+                pathname: '/manager_home',
+                state: {
+                    email: this.state.email,
+                }
+            });
         }
     }
 
@@ -27,7 +31,7 @@ class Main extends Component {
         e.preventDefault()
 
         axios1.post(`${URL}`,  {
-            email: this.state.userid,
+            email: this.state.email,
             password: this.state.password,
             //test:this.state.test
         })
@@ -43,10 +47,6 @@ class Main extends Component {
                 
             })
             .catch(error => {
-                this.setState({
-                    error:true,
-                    isSubmitted: false
-                });
                 console.log(error);
             })
 
@@ -78,9 +78,9 @@ class Main extends Component {
                         <div class="box_mid">
                             <form onSubmit={this.handleSubmit} action="#" acceptCharset="utf-8" name="login01" method="get">
                                 <div class="input_box01">
-                                    <div class="ip_box01"><input id="id" name="userid" type="text" placeholder="User ID"
+                                    <div class="ip_box01"><input id="id" name="email" type="text" placeholder="User ID"
                                         onChange={this.handleChange}
-                                        value={this.state.userid}/>
+                                        value={this.state.email}/>
                                     </div>
                                     <div class="ip_box01"><input id="Password" name="password" type="text" placeholder="Password" 
                                     onChange={this.handleChange}
