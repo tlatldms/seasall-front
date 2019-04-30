@@ -4,6 +4,7 @@ import axios from 'axios';
 
 
 const URL = 'https://dev.hchecker.org/users/findUserPassword';
+const loginURL = 'https://dev.hchecker.org/users/login';
 const requestURL = 'https://dev.hchecker.org/users/requestsms';
 const verifyURL = 'https://dev.hchecker.org/users/verifysms';
 const axios1 = axios.create({
@@ -54,7 +55,7 @@ class Main extends Component {
             })
     }
 
-
+    //비밀번호 변경: findUserPassword에서 준 임시 비밀번호로 로그인 하고 /login_new_pw로 정보와 함께 redirect
     handleSubmit = (e) => {
         e.preventDefault();
 
@@ -66,9 +67,22 @@ class Main extends Component {
             .then(res => {
                 if (res.data.success) {
                     console.log(res.data.success);
-                    this.setState({
-                        redirect: true
-                    });
+
+                    axios1.post(`${loginURL}`,  {
+                        email: this.state.email,
+                        password: res.data.password,
+                    }).then(res => {
+                        if (res.data.success) {
+                            console.log("임시 로그인 성공");
+                        }
+                        this.setState({
+                            redirect: true
+                        });
+                    }
+                    ).catch(e => {
+                        console.log("임시 로그인 실패");
+                    })
+                    
                 }
                 console.log(res);
             })
@@ -81,7 +95,14 @@ class Main extends Component {
 
     redirect = () => {
         if (this.state.redirect) {
-            this.props.history.push('/login_new_pw');
+            this.props.history.push({
+                pathname: '/login_new_pw',
+                state: {
+                    email: this.state.email,
+                    name: this.state.name,
+                    phone: this.state.phone
+                }
+            });
         }
     }
 

@@ -28,7 +28,7 @@ class ManagerHeader extends Component {
                     <div class="right">
                         <div class="box_user">
                             <span class="user_sts good"></span>
-                            <p><span class="user_name">이종수</span> 님 안녕하세요.</p>
+                            <p><span class="user_name">{this.props.email}이흥수</span> 님 안녕하세요.</p>
                         </div>
                         <div class="box_btn">
                             <button class="btn_header"><Link to="print_mypage">마이페이지</Link></button>
