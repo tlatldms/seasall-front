@@ -1,6 +1,31 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
+const axios1 = axios.create({
+    withCredentials: true
+})
+const newGradeURL = 'https://dev.hchecker.org/reports/count';
 class Tab2 extends Component {
+
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
+
+
+
+    handleNewGrade = () => {
+        axios1.post(`${newGradeURL}`, {
+            name: this.state.newGrade
+        })
+            .then(res => {
+                if (res.data.success) {
+                    console.log(res)
+                }
+            })
+            .catch(e => { console.log(e); });
+    }
     render() {
         return (
             <div class="panel02">
@@ -16,9 +41,9 @@ class Tab2 extends Component {
                 </div>
                 <div class="panel_contents">
                     <ul class="list02">
-                        <li>
+                        <li >
                             <div class="grade_name"><p>G1</p></div>
-                            <div class="grade_option">
+                            <div class="grade_option open">
                                 <div class="check_box03">
                                     <input type="checkbox" id="g1_1" name="g1_1" checked />
                                     <label for="g1_1"><span></span></label>
@@ -140,7 +165,7 @@ class Tab2 extends Component {
                                     <label for="g1_10"><span></span></label>
                                     <span>렉관리</span>
                                 </div>
-
+                                <div>토글버튼</div>
                             </div>
                             <div class="box_btn">
                                 <button type="button" class="btn_grade"></button>
@@ -344,10 +369,10 @@ class Tab2 extends Component {
                     </ul>
                     <div class="box_grade_add">
                         <div class="box_grade_input">
-                            <div class="ip_box03"><input id="newGrade" name="new_grade" type="text" placeholder=" 새로운 등급의 이름을 입력하세요." /></div>
+                            <div class="ip_box03"><input onChange={this.handleChange} id="newGrade" name="newGrade" type="text" placeholder=" 새로운 등급의 이름을 입력하세요." /></div>
                             <div class="box_btn">
                                 <button class="btn_medium_w w80">취소</button>
-                                <button class="btn_medium w80">확인</button>
+                                <button onClick={this.handleNewGrade} class="btn_medium w80">확인</button>
                             </div>
                         </div>
                     </div>
