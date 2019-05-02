@@ -22,6 +22,7 @@ import ManagerHome from './manager_home/Main';
 import ManagerHomePopup from './manager_home_popup/Main';
 import ManagerReport from './manager_report/Main';
 import ManagerGrade from './manager_grade/Main';
+import ManagerGradePopup from './manager_grade_popup/Main';
 import ManagerRack from './manager_rack/Main';
 
 import PrintHome from './print_home/Main';
@@ -74,9 +75,11 @@ const Details = () => {
             <Route path='/manager_grade' component={PrintHeader} />
             <Route path='/manager_grade' component={UnderHeader} />
             <Route path="/manager_grade" component={ManagerGrade}/>
+            <Route path="/manager_grade/popup" component={ManagerGradePopup}/>
             
             <Route path='/print_home' component={PrintHome} />
             <Route path='/print_mypage' component={PrintHeader} />
+            <Route path='/print_mypage' component={UnderHeader} />
             <Route path='/print_mypage' component={PrintMypage} />
             <Route path='/print_home/modals_ask' component={ModalAsk} />
             <Route path="/print_home/modals_select_printer" component={ModalSelectPrinter} />

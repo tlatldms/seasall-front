@@ -122,6 +122,7 @@ class List extends Component {
                         id={dat.id}
                         key={index}
                         currentPage={this.state.currentPage}
+                        userId={dat.user_id}
                     />
                 } 
                 return null

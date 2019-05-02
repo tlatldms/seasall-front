@@ -3,12 +3,15 @@ import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import List from './List';
 import PrintHeader from 'common/Header';
+import classNames from 'classnames/bind';
+import EcountSellings from './EcountSellings';
 
 import Navi from 'common/Navi';
 const Div1 = styled.div`width: ${props => props.width}; height:220px; background: url('asset/images/home0${props=>props.num}.png') no-repeat center/100%;`;
 class Main extends Component {
     state={
-        long:false
+        long:false,
+        option:false,
     }
     handleLong = () => {
         this.setState({
@@ -43,7 +46,7 @@ class Main extends Component {
                                         <h2>신고현황</h2>
                                     </div>
                                     <div class="right">
-                                        <div class="selectBox select_box06">
+                                        <div onClick={()=>this.setState({option:!this.state.option})} class={classNames("selectBox select_box06", {'open':this.state.option})}>
                                             <div class="select_btn">
                                                 <p><span>2018년</span></p>
                                             </div>
@@ -67,12 +70,12 @@ class Main extends Component {
                                         </div>
                                         <div class="right">
                                             <Div1 class="bg_graph" width={"154px"} num={2}>
-                                                {/*  <div class="pie_graph">
+                                                  <div class="pie_graph">
                                                     <div class="txt">
                                                         <p>유형</p>
                                                         <span>건/개월</span>
                                                     </div>
-                                                </div> */}
+                                                </div> 
                                             </Div1>
                                         </div>
                                     </div>
@@ -93,7 +96,7 @@ class Main extends Component {
                                         <span>(건/억원)</span>
                                     </div>
                                     <div class="right">
-                                        <div class="selectBox select_box06">
+                                    <div onClick={()=>this.setState({option2:!this.state.option2})} class={classNames("selectBox select_box06", {'open':this.state.option2})}>
                                             <div class="select_btn">
                                                 <p><span>2018년</span></p>
                                             </div>
@@ -133,12 +136,17 @@ class Main extends Component {
                                                     <span>(%)</span>
                                                 </div>
                                                 <div class="right">
+
+
                                                 </div>
                                             </div>
                                             <div class="panel_contents">
                                                 <div class="box_graph">
                                                     <Div1 class="bg_graph" width={"100%"} num={5}>
-                                                        <span></span><span></span>
+                                                        <span></span>
+                                                        <EcountSellings />
+
+                                                        <span></span>
                                                     </Div1>
                                                 </div>
                                             </div>

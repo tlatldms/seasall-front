@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import * as service from 'AxiosGetApi';
 import List from './List';
 import Navi from 'common/Navi';
+import classNames from 'classnames/bind';
+
 
 class Main extends Component {
   state = {
@@ -9,7 +11,8 @@ class Main extends Component {
   }
   handleFilter = (e) => {
     this.setState({
-      filter: e.target.value
+      filter: e.target.value,
+      option:false
     })
   }
     render() { 
@@ -25,7 +28,7 @@ class Main extends Component {
                     <h2>신고현황</h2>
                   </div>
                   <div class="right">
-                    <div class="selectBox select_box06">
+                  <div onClick={()=>this.setState({option:!this.state.option})} class={classNames("selectBox select_box06", {'open':this.state.option})}>
                             <div class="select_btn">
                                 <p><span>2018년</span></p>
                             </div>
@@ -45,7 +48,7 @@ class Main extends Component {
                     <div class="panel_header">
                       <div class="select_box03">
                         <select value={this.state.filter} class="select03" onChange={this.handleFilter}>
-                          <option value="all" selected>유형 전체선택</option>
+                          <option value="all" selected>유형선택</option>
                           <option value="하나">하나</option>
                           <option value="둘">둘</option>
                           <option value="셋">셋</option>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ChangingPassword from './changingPassword';
 import ChangingPhoneNum from './changingPhoneNum';
 import ChangingEmail from './changingEmail';
+import Navi from 'common/Navi';
 
 class Main extends Component {
     constructor(props) {
@@ -29,43 +30,7 @@ class Main extends Component {
             <div>
                 <article id="contentsWrap" class="mypage01">
                     <div class="innerwrap">
-                        <div class="gnb_area">
-                            <aside class="box_menu">
-                                <div class="box_top">
-                                    <div class="icon_menu">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                    <span class="tit">MENU</span>
-                                </div>
-                                <nav>
-                                    <ul class="gnb">
-                                        <li>
-                                            <a href="#"><span>메인</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><span>신고처리</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><span>렉관리</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><span>등급관리</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><span>구매/청구</span></a>
-                                            <ul class="sub_gnb">
-                                                <li><a href="#">제품구매</a></li>
-                                                <li><a href="#">구매목록</a></li>
-                                                <li><a href="#">배송지관리</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </aside>
-                            <button class="btn_printpage"><span></span>출력페이지</button>
-                        </div>
+                        <Navi />
                         <div class="contents_area">
                             <div class="panel">
                                 <div class="panel_header">
