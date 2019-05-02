@@ -34,19 +34,19 @@ class Navi extends Component {
                     <nav>
                         <ul class="gnb">
                             <li>
-                                <a class={`${this.checkFocused("/seasall-front/manager_home")}`} ><span><Link to="/manager_home">메인</Link></span></a>
+                              <Link class={`${this.checkFocused("/seasall-front/manager_home")}`} to="/manager_home"><span>메인</span></Link>
                             </li>
                             <li>
-                                <a class={`${this.checkFocused("/seasall-front/manager_report")}`}><span><Link to="/manager_report">신고처리</Link></span></a>
+                                <Link class={`${this.checkFocused("/seasall-front/manager_report")}`} to="/manager_report"><span>신고처리</span></Link>
                             </li>
                             <li>
-                                <a class={`${this.checkFocused("/seasall-front/manager_rack")}`}><span><Link to="/manager_rack">렉관리</Link></span></a>
+                                <Link class={`${this.checkFocused("/seasall-front/manager_rack")}`} to="/manager_rack"><span>렉관리</span></Link>
                             </li>
                             <li>
-                                <a class={`${this.checkFocused("/seasall-front/manager_grade")}`}><span><Link to="/manager_grade">등급관리</Link></span></a>
+                                <Link class={`${this.checkFocused("/seasall-front/manager_grade")}`} to="/manager_grade"><span>등급관리</span></Link>
                             </li>
                             <li>
-                                <a class={`${this.checkFocused("/seasall-front/manager_buy_list")}`}><span><Link to="/manager_buy_list">구매/청구</Link></span></a>
+                                <Link class={`${this.checkFocused("/seasall-front/manager_buy_list")}`} to="/manager_buy_list"><span>구매/청구</span></Link>
                                 <ul class="sub_gnb">
                                     <li><a >제품구매</a></li>
                                     <li><a >구매목록</a></li>

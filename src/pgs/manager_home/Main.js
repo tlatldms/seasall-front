@@ -7,7 +7,14 @@ import PrintHeader from 'common/Header';
 import Navi from 'common/Navi';
 const Div1 = styled.div`width: ${props => props.width}; height:220px; background: url('asset/images/home0${props=>props.num}.png') no-repeat center/100%;`;
 class Main extends Component {
-
+    state={
+        long:false
+    }
+    handleLong = () => {
+        this.setState({
+            long:!this.state.long
+        })
+    }
     render() {
 
         return (
@@ -70,10 +77,10 @@ class Main extends Component {
                                         </div>
                                     </div>
                                     <div class="panel02">
-                                        <div class="panel_header">상세리스트<span><a href="#">간략보기</a></span></div>
+                                        <div class="panel_header">상세리스트<span><a onClick={this.handleLong}>{this.state.long?"간략보기":"전체보기"}</a></span></div>
                                         <div class="panel_contents">
                                             <div class="box_table_area">                                             
-                                                   <List />
+                                                   <List long={this.state.long }/>
                                             </div>
                                         </div>
                                     </div>

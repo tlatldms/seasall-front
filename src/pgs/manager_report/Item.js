@@ -29,7 +29,7 @@ class Item extends Component {
     }
     
     getReply = () => {
-        console.log("id = "+this.props.id);
+        //console.log("id = "+this.props.id);
         axios1.get(`https://dev.hchecker.org/replies/${this.props.id}`)
         .then(res => {
             if (res.data.success){
@@ -37,7 +37,7 @@ class Item extends Component {
                 this.setState({
                     reply
                 })
-                console.log("reply id = "+reply.id);
+                //console.log("reply id = "+reply.id);
             }
         })
         .catch(e => { console.log(e);});
@@ -54,7 +54,7 @@ class Item extends Component {
                 this.setState({
                     reply
                 })
-                console.log("reply id = "+reply.id);
+                //console.log("reply id = "+reply.id);
             }
         })
         .catch(e => { console.log(e);});
@@ -63,7 +63,7 @@ class Item extends Component {
     render () {
         
         const { call,id,createdAt,type,parts,serial,state, key} = this.props;
-        console.log(this.state.reply);
+        //console.log(this.state.reply);
         return (
             <div class= {`tr ${this.state.clicked?"open":null}`}>
             <div class="group_fixed">
