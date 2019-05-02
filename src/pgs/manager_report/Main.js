@@ -4,6 +4,14 @@ import List from './List';
 import Navi from 'common/Navi';
 
 class Main extends Component {
+  state = {
+    filter : "all"
+  }
+  handleFilter = (e) => {
+    this.setState({
+      filter: e.target.value
+    })
+  }
     render() { 
         return (
           <article id="contentsWrap" class="report01">
@@ -36,17 +44,17 @@ class Main extends Component {
                   <div class="panel02">
                     <div class="panel_header">
                       <div class="select_box03">
-                        <select class="select03">
-                          <option selected>유형선택</option>
-                          <option>1유형</option>
-                          <option>2유형</option>
-                          <option>3유형</option>
+                        <select value={this.state.filter} class="select03" onChange={this.handleFilter}>
+                          <option value="all" selected>유형 전체선택</option>
+                          <option value="하나">하나</option>
+                          <option value="둘">둘</option>
+                          <option value="셋">셋</option>
                         </select>
                       </div>
                       <span></span>
                     </div>
                     <div class="panel_contents">
-                    <List />
+                    <List filter={this.state.filter}/>
 
                     </div>
                   </div>

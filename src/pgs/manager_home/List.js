@@ -7,15 +7,13 @@ const axios1 = axios.create({
     withCredentials: true
   })
 
-
-
 class List extends Component {
     constructor() {
         super();
         
         this.state= {
             currentPage: 1,
-            datasPerPage: 6,
+            datasPerPage: 5,
             currentPagination: 1,
             offset: 0,
             limit: 10,
@@ -47,6 +45,7 @@ class List extends Component {
     this.setState({
         fetching: true
     });
+
     axios1.get(`https://dev.hchecker.org/reports?offset=${offset}&limit=${this.state.datasPerPage}`)
     .then(res => {
         if (res.data.success){
@@ -118,6 +117,18 @@ class List extends Component {
                 />
             )
           );
+        const shortDatas = datas.slice(0,4).map(
+            (dat, index) => 
+            (
+                <Item
+                    call={dat.call}
+                    createdAt={dat.createdAt}
+                    type={dat.type}
+                    parts={dat.parts}
+                    id={dat.id}
+                />
+            )
+          );
         const highest=Math.ceil(this.state.reportsCount / datasPerPage);    
         const pageNumbers = [];
         for (let i = 1; i <=highest; i++) {
@@ -165,10 +176,12 @@ class List extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {renderDatas}
+                            {this.props.long?renderDatas:shortDatas}
                         </tbody>
                     </table>
-                </div>                                                                 
+                </div>       
+
+                {this.props.long ?                                                           
                 <div class="pagination">
                     <div class="prev">
                         <a onClick={this.goLowest} class="prev02"> &lt;&lt; </a>
@@ -182,6 +195,8 @@ class List extends Component {
                         <a onClick={this.goHighest} class="next01"> &gt;&gt; </a>                       
                     </div>
                 </div> 
+                :
+                null }
             </React.Fragment>
         );
     }
