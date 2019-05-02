@@ -32,7 +32,7 @@ class Item extends Component {
                 type: this.state.type,
                 file: this.state.fileName,
                 report_id: this.props.id,
-                user_id: this.props.user_id
+                user_id: this.props.userId
             })
             .then(res => {
                 if (res.data.success){
@@ -112,16 +112,17 @@ class Item extends Component {
                 <input onChange={this.handleChange} id="reportTitle" name="title" type="text" placeholder="제목" />
                 </div>
                 <div class="select_box03">
-                <select value={this.state.type} class="select03" onChange={this.handleType}>
+                    <select value={this.state.type} class="select03" onChange={this.handleType}>
                           <option value="all" selected>유형선택</option>
-                          <option value="1">유형111</option>
-                          <option value="2">유형222</option>
-                          <option value="3">유형333</option>
-                        </select>
+                          <option value="유형11">유형111</option>
+                          <option value="유형22">유형222</option>
+                          <option value="유형33">유형333</option>
+                    </select>
                 </div>
             </div>
             <div class="answer_bottom">
                 <textarea onChange={this.handleChange} placeholder="내용" name="content"></textarea>
+                {/* 
                 <div class="box_cffile">
                 <dl>
                     <dt>첨부파일</dt>
@@ -134,14 +135,18 @@ class Item extends Component {
                     </dd>
                 </dl>
                 </div>
+                */}
             </div>
             </div>
             <div class="group_variable">
+           {/* 
             {this.state.reply ?
             <p>2018.12.31 PM 3:00</p>
             :
             <button class="btn_small w70" onClick={this.handleClick}>답변하기</button>
             }
+            */}
+            <button class="btn_small w70" onClick={this.handleClick}>답변하기</button>
             </div>
         </div>     
         );

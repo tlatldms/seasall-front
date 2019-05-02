@@ -12,7 +12,7 @@ class EcountSellings extends Component {
         .then(res => {
             if (res.data.success) {
 
-                console.log(res.data.EcountSelling_list['EcountSelling_list']);
+                console.log(res.data.EcountSelling_list['EcountSelling_list'][3].price);
             }
         })
         .catch(e => { console.log(e); });

@@ -13,7 +13,7 @@ class List extends Component {
         
         this.state= {
             currentPage: 1,
-            datasPerPage: 5,
+            datasPerPage: 10,
             currentPagination: 1,
             offset: 0,
             limit: 10,
@@ -117,7 +117,7 @@ class List extends Component {
                 />
             )
           );
-        const shortDatas = datas.slice(0,4).map(
+        const shortDatas = datas.slice(0,5).map(
             (dat, index) => 
             (
                 <Item

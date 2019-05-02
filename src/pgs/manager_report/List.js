@@ -107,9 +107,27 @@ class List extends Component {
 
     render() {
         const { datasPerPage } = this.state;
-        const datas = this.state.reports;
+        const datas = this.state.reports.map(
+            (dat, index) => {
+                if (this.props.filter=="all" || this.props.filter==dat.type) {
+                return  <Item
+                        serial={dat.serial}
+                        call={dat.call}
+                        createdAt={dat.createdAt}
+                        type={dat.type}
+                        parts={dat.parts}
+                        state={dat.state}
+                        id={dat.id}
+                        key={index}
+                        currentPage={this.state.currentPage}
+                        userId={dat.user_id}
+                    />
+                } 
+                return null
+            }
+        );
         console.log(this.props.filter);
-        const renderDatas = datas.map(
+/*         const renderDatas = datas.map(
             (dat, index) => {
                 if (this.props.filter=="all" || this.props.filter==dat.type) {
                 return  <Item
@@ -131,6 +149,7 @@ class List extends Component {
             }
 
         );
+*/
         const highest = Math.ceil(this.state.reportsCount / datasPerPage);
         const pageNumbers = [];
         for (let i = 1; i <= highest; i++) {
@@ -177,7 +196,7 @@ class List extends Component {
                             </div>
                         </div>
                         :
-                        renderDatas
+                        datas
                         }
                     </div>
                 </div>
