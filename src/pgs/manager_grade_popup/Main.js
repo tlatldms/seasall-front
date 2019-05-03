@@ -3,7 +3,6 @@ import Modal from 'react-responsive-modal';
 import classNames from 'classnames/bind';
 import axios from 'axios';
 
-const acceptURL = 'https://dev.hchecker.org/groups';
 const axios1 = axios.create({
     withCredentials: true
 })
@@ -14,18 +13,42 @@ const nopad = {
 }
 
 class Main extends Component {
-    handleAccept =() => {
-        axios1.post(`${acceptURL}`)
-        .then(res => {
-            if (res.data.success) {
-                console.log(res);
-            }
+    setGrade = (e) => {
+        this.setState({
+            grade: e.target.text
         })
-        .catch(e => { console.log(e); });
     }
+    componentDidMount() {
+        this.getUser();
+    }
+    getUser = () => {
+        this.setState({
+            fetching: true
+        });
+        const { email } = this.props.location.state;
+        const arr = email.split('@');
+        axios1.get(`https://dev.hchecker.org/users/${arr[0]}%40${arr[1]}`)
+            .then(res => {
+                if (res.data.success) {
+                    const user=res.data.user;
+                    this.setState({
+                        name : user.name,
+                        id: user.companyId,
+                        company: user.company_name,
+                        phone: user.phone
+                    })
+                }
+            })
+            .catch(e => { console.log(e); });
+        this.setState({
+            fetching: false
+        })     
+    }
+
     state= {
         option:false
     }
+    
     onCloseModal = () => {
         console.log("make state false");
         this.setState({ open: false });
@@ -34,38 +57,38 @@ class Main extends Component {
     render() {
         return (
             <Modal open={true} onClose={this.onCloseModal} center style={nopad}>
-                <div class="popup pop01 grade_pop01">
-                    <div class="pop_header">
+                <div className="popup pop01 grade_pop01">
+                    <div className="pop_header">
                         권한요청
-                <button class="btn_close" type="button" onClick={this.onCloseModal}></button>
+                <button className="btn_close" type="button" onClick={this.onCloseModal}></button>
                     </div>
-                    <div class="pop_content">
-                        <div class="pop_top">
-                            <p class="tit">권한요청을 수락하시겠습니까?</p>
-                            <p class="txt">해당 요청자에 부여할 등급을 선택해 주세요.</p>
-                            <div class="box_grade">
-                                <div class="requester_info">
-                                    <p>요청자 : <span class="requester_name">이흥수 </span>[사번 : <span class="requester_num">123456</span>]</p>
-                                    <p>소속 : <span class="requester_belong bar">현대씨즈올</span> 부서명 : <span class="requester_department">영업</span></p>
+                    <div className="pop_content">
+                        <div className="pop_top">
+                            <p className="tit">권한요청을 수락하시겠습니까?</p>
+                            <p className="txt">해당 요청자에 부여할 등급을 선택해 주세요.</p>
+                            <div className="box_grade">
+                                <div className="requester_info">
+                                    <p>요청자 : <span className="requester_name">{this.state.name} </span>[사번 : <span className="requester_num">{this.state.id}</span>]</p>
+                                    <p>소속 : <span className="requester_belong bar">{this.state.company}</span> 부서명 : <span className="requester_department">{this.state.phone}</span></p>
                                 </div>
                                 
-                                <div onClick={() => this.setState({ option: !this.state.option })} class={classNames("selectBox select_box08", { 'open': this.state.option })}>
-                                    <div class="select_btn">
+                                <div onClick={() => this.setState({ option: !this.state.option })} className={classNames("selectBox select_box08", { 'open': this.state.option })}>
+                                    <div className="select_btn">
                                         <p><span>등급선택</span></p>
                                     </div>
-                                    <div class="option_list">
+                                    <div className="option_list">
                                         <ul>
-                                            <li><a href="#">G1</a></li>
-                                            <li><a href="#">G2</a></li>
-                                            <li><a href="#">G3</a></li>
-                                            <li><a href="#">G4</a></li>
+                                            <li><a onClick={this.setGrade}>G1</a></li>
+                                            <li><a onClick={this.setGrade}>G2</a></li>
+                                            <li><a onClick={this.setGrade}>G3</a></li>
+                                            <li><a onClick={this.setGrade}>G4</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="pop_bottom">
-                            <button class="btn_big" onClick={this.handleAccept}>요청수락하기</button>
+                        <div className="pop_bottom">
+                            <button className="btn_big" onClick={this.handleAccept}>요청수락하기</button>
                         </div>
                     </div>
                 </div>

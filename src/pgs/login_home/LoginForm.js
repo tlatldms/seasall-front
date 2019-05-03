@@ -89,7 +89,7 @@ class LoginForm extends Component {
             <div>
             {this.redirect()}
             <form onSubmit={this.handleSubmit}>
-            <div class="label_login_chk">
+            <div className="label_login_chk">
                 <input
                     name="loginchk"
                     type="checkbox"
@@ -102,7 +102,7 @@ class LoginForm extends Component {
                     name="userid"
                     type="text"
                     placeholder="User ID"
-                    class="form-control front-input"
+                    className="form-control front-input"
                     onChange={this.handleIdChange}
                     value={this.state.userid}
                 />
@@ -110,7 +110,7 @@ class LoginForm extends Component {
                     name="password"
                     type="password"
                     placeholder="Password"
-                    class="form-control last-input"
+                    className="form-control last-input"
                     onChange={this.handlePasswordChange}
                     value={this.state.password}
                 />

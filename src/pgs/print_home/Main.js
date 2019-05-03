@@ -80,9 +80,9 @@ render() {
       const {fetching, todos, searched} = this.state;
         return (
           <div>
-            <div class='printpage-template'>
+            <div className='printpage-template'>
               <Header/>
-              <div class='main'>
+              <div className='main'>
                   <div>
                     <h2>라벨대기목록 </h2><br></br>
                     {year}년 {month}월 {day}일 {hours}:{minutes} 기준 실시간 정보
@@ -102,7 +102,7 @@ render() {
                 />
               </div>
             </div>
-            <div class='both-sliders'>        
+            <div className='both-sliders'>        
                  <OtherLabels />           
                   <StatusAndRequire />                                     
             </div>

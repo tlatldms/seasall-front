@@ -110,43 +110,43 @@ class Main extends Component {
 
     render() {
         return (
-            <article id="contentsWrap" class="login login02">
+            <article id="contentsWrap" className="login login02">
             {this.redirect()}
-                <div class="box_contents">
+                <div className="box_contents">
                 
-                    <div class="box_logo">
-                        <img src={LogoChecker} />
+                    <div className="box_logo">
+                        <img src={LogoChecker} alt=""/>
                     </div>
                     <form action="#" onSubmit={this.handleSubmit} acceptCharset="utf-8" name="login05" method="get">
-                        <div class="box_login">
-                            <div class="box_top">
+                        <div className="box_login">
+                            <div className="box_top">
                                 <p>등록된 회원정보로 <br/>비밀번호를 찾으실 수 있습니다.</p>
                             </div>
-                            <div class="box_mid">
-                                <div class="input_box01">
-                                    <div class="ip_box01"><input onChange={this.handleChange} id="find_name03" name="name" type="text" placeholder="이름" /></div>
-                                    <div class="email_box">
+                            <div className="box_mid">
+                                <div className="input_box01">
+                                    <div className="ip_box01"><input onChange={this.handleChange} id="find_name03" name="name" type="text" placeholder="이름" /></div>
+                                    <div className="email_box">
                                         <input type="text" onChange={this.handleChange} name="email" id="find_email_id03" placeholder="입력하세요." />
                                         <span>@</span>
-                                        <div class="select_box01">
-                                            <select class="select01">
-                                                <option selected>선택</option>
+                                        <div className="select_box01">
+                                            <select className="select01">
+                                                <option defaultValue>선택</option>
                                                 <option>naver.com</option>
                                                 <option>gmail.com</option>
                                                 <option>nate.com</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="ib_box01">
+                                    <div className="ib_box01">
                                         <input id="find_phoneNum03" onChange={this.handleChange} name="phone" type="text" placeholder="연락처를 -없이 입력하세요." />
-                                        <button class="btn_medium_g" onClick={this.requestSms}>인증요청</button>
+                                        <button className="btn_medium_g" onClick={this.requestSms}>인증요청</button>
                                     </div>
                                     <input id="find_certificationNum03" onChange={this.handleChange} name="authNum" type="text" placeholder="인증번호 6자리" />
-                                    <button class="btn_medium_g" onClick={this.verifySms}>인증확인</button>
+                                    <button className="btn_medium_g" onClick={this.verifySms}>인증확인</button>
                                 </div>
                             </div>
-                            <div class="box_bottom">
-                                <button class="btn_big_b">비밀번호 변경하기</button>
+                            <div className="box_bottom">
+                                <button className="btn_big_b">비밀번호 변경하기</button>
                             </div>
                         </div>
                     </form>

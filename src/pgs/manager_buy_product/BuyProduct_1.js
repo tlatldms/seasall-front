@@ -3,7 +3,7 @@ class Buy_1 extends Component {
     render() {
 
         return (
-            <div class="box sw">
+            <div className="box sw">
                 1번
             </div>
         );

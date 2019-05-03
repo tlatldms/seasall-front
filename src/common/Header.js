@@ -19,20 +19,20 @@ class ManagerHeader extends Component {
     render() {
         return (
             <header>
-                <div class="wrap">
-                    <div class="left">
-                        <div class="box_logo">
-                            <img src={LogoSeasall} alt="HYUNDAI SEASALL" />
+                <div className="wrap">
+                    <div className="left">
+                        <div className="box_logo">
+                            <Link to="/manager_home"><img src={LogoSeasall} alt="HYUNDAI SEASALL" /></Link>
                         </div>
                     </div>
-                    <div class="right">
-                        <div class="box_user">
-                            <span class="user_sts good"></span>
-                            <p><span class="user_name">{this.props.email}이흥수</span> 님 안녕하세요.</p>
+                    <div className="right">
+                        <div className="box_user">
+                            <span className="user_sts good"></span>
+                            <p><span className="user_name">{this.props.email}이흥수</span> 님 안녕하세요.</p>
                         </div>
-                        <div class="box_btn">
-                            <button class="btn_header"><Link to="print_mypage">마이페이지</Link></button>
-                            <button class="btn_header">로그아웃</button>
+                        <div className="box_btn">
+                            <button className="btn_header"><Link to="print_mypage">마이페이지</Link></button>
+                            <button className="btn_header">로그아웃</button>
                         </div>
                     </div>
                 </div>

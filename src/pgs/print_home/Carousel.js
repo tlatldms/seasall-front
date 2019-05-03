@@ -58,9 +58,9 @@ class Carousel extends Component {
 
     render() {
         return (
-            <div class="carousel">
+            <div className="carousel">
                 <Arrow direction="left" clickFunction={this.previousSlide} glyph="&#9664;" />
-                <ImageSlide url={imgUrls[this.state.currentImageIndex]} curidx={this.state.currentImageIndex} class="tmptmp"/>
+                <ImageSlide url={imgUrls[this.state.currentImageIndex]} curidx={this.state.currentImageIndex} className="tmptmp"/>
                 <Arrow direction="right" clickFunction={this.nextSlide} glyph="&#9654;" />
             </div>
         );
@@ -69,7 +69,7 @@ class Carousel extends Component {
 
 const Arrow = ({ direction, clickFunction, glyph }) => (
     <div
-        className={`slide-arrow ${direction} testtest`}
+        classNameName={`slide-arrow ${direction} testtest`}
         onClick={clickFunction}>
         {glyph}
     </div>
@@ -103,20 +103,20 @@ class ImageSlide extends Component {
         return (
             
             <div>
-            <div className="image-slide">
+            <div classNameName="image-slide">
                 
                 {
                 /* <Link
                     to={{
                         pathname: `${this.createPathname(curidx)}`,
                     }}
-                    class="link"
+                    className="link"
                 >
-                <img src={url} alt="" onClick={this.onOpenImgModal} class="testtest"></img>
+                <img src={url} alt="" onClick={this.onOpenImgModal} className="testtest"></img>
                 </Link>
                 */}
 
-                <a href="#test"><img src={url} alt="" onClick={this.onOpenImgModal} class="testtest"></img></a>
+                <a href="#test"><img src={url} alt="" onClick={this.onOpenImgModal} className="testtest"></img></a>
             </div>
         </div>      
   

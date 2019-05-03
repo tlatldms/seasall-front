@@ -28,22 +28,22 @@ class Main extends Component {
     render() {
         return (
             <div>
-                <article id="contentsWrap" class="mypage01">
-                    <div class="innerwrap">
+                <article id="contentsWrap" className="mypage01">
+                    <div className="innerwrap">
                         <Navi />
-                        <div class="contents_area">
-                            <div class="panel">
-                                <div class="panel_header">
-                                    <div class="left">
+                        <div className="contents_area">
+                            <div className="panel">
+                                <div className="panel_header">
+                                    <div className="left">
                                         <h2>마이페이지</h2>
                                     </div>
-                                    <div class="right"></div>
+                                    <div className="right"></div>
                                 </div>
-                                <div class="panel_contents">
-                                    <div class="panel02">
-                                        <div class="panel_header">개인정보<span></span></div>
-                                        <div class="panel_contents">
-                                            <table class="table01">
+                                <div className="panel_contents">
+                                    <div className="panel02">
+                                        <div className="panel_header">개인정보<span></span></div>
+                                        <div className="panel_contents">
+                                            <table className="table01">
                                                 <colgroup>
                                                     <col width="15.5%" />
                                                     <col width="84.5%" />
@@ -62,7 +62,7 @@ class Main extends Component {
                                                         <td>
                                                             {this.state.isChangingPassword == false
                                                             ?
-                                                            <button onClick={this.handleOpening} name="isChangingPassword" class="btn_small w70">변경하기</button>
+                                                            <button onClick={this.handleOpening} name="isChangingPassword" className="btn_small w70">변경하기</button>
                                                             :
                                                             <ChangingPassword closing={this.handleClosing} /> }
                                                         </td>
@@ -73,8 +73,8 @@ class Main extends Component {
                                                             <p>+82 10-1234-5678</p>
                                                             {this.state.isChangingPhoneNum == false
                                                             ?
-                                                            <div class="box_btn">
-                                                                <button onClick={this.handleOpening} name="isChangingPhoneNum" class="btn_small w70">변경하기</button>
+                                                            <div className="box_btn">
+                                                                <button onClick={this.handleOpening} name="isChangingPhoneNum" className="btn_small w70">변경하기</button>
                                                             </div>
                                                             :
                                                             <ChangingPhoneNum closing={this.handleClosing} /> }
@@ -88,8 +88,8 @@ class Main extends Component {
 
                                                             {this.state.isChangingEmail == false
                                                             ?
-                                                            <div class="box_btn">
-                                                                <button onClick={this.handleOpening} name="isChangingEmail" class="btn_small w70">변경하기</button>
+                                                            <div className="box_btn">
+                                                                <button onClick={this.handleOpening} name="isChangingEmail" className="btn_small w70">변경하기</button>
                                                             </div>
                                                             :
                                                             <ChangingEmail closing={this.handleClosing} />

@@ -11,24 +11,23 @@ class Main extends Component {
 		this.setState({
 			tab: e.target.text,
 		})
-
 	}
     render() {
         return (
-            <article id="contentsWrap" class="grade01">
-			<div class="innerwrap">
-				<form action="#" accept-charset="utf-8" name="grade01" method="get">
+            <article id="contentsWrap" className="grade01">
+			<div className="innerwrap">
+				<form action="#" acceptCharset="utf-8" name="grade01" method="get">
                 <Navi />
-				<div class="contents_area">
-					<div class="tab02">
+				<div className="contents_area">
+					<div className="tab02">
 			            <ul>
 			                {/*  tab02 탭 선택시 들어 가는 클래스 - on_tab */}
-			                <li onClick={this.handleClick}><a class={this.state.tab=="권한요청"?"on_tab":null}>권한요청</a></li>
-			                <li onClick={this.handleClick}><a class={this.state.tab=="권한편집"?"on_tab":null}>권한편집</a></li>
+			                <li onClick={this.handleClick}><a className={this.state.tab=="권한요청"?"on_tab":null}>권한요청</a></li>
+			                <li onClick={this.handleClick}><a className={this.state.tab=="권한편집"?"on_tab":null}>권한편집</a></li>
 			            </ul>
 			        </div>
-			        <div class="tab02_cont">
-			        	<div class="gtab02">
+			        <div className="tab02_cont">
+			        	<div className="gtab02">
 						{this.state.tab=="권한요청"? <Tab1 /> : <Tab2 />}
 
 						</div>

@@ -5,7 +5,7 @@ class Item extends Component {
     render() {
         const {img, title, desc} = this.props.database;
         return ( 
-            <div class="buy-item">
+            <div className="buy-item">
                 {img} {title} {desc}
             </div>
         );

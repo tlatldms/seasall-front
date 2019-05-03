@@ -8,10 +8,10 @@ class StatusAndRequire extends Component {
 
 
         return (
-            <div class="other-labels">
+            <div className="other-labels">
             
                 프린트 상태 및 요청
-                <div class="ca-box">
+                <div className="ca-box">
                 <Carousel />
                 </div>
             </div>
