@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 let date = new Date(); 
 let year = date.getFullYear(); 
@@ -16,15 +16,15 @@ if(day.length == 1){
 const UnderHeader = () => {
 
         return (
-          <div class="breadscrumb">
-            <div class="innerwrap">
-              <div class="left">
+          <div className="breadscrumb">
+            <div className="innerwrap">
+              <div className="left">
                 <ul>
                   <li>메인</li>
                   <li>대표통계</li>
                 </ul>
               </div>
-              <div class="right">
+              <div className="right">
                 <p>{year}.{month}.{day} 통계기준</p>
               </div>
             </div>

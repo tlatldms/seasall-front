@@ -7,8 +7,6 @@ const axios1 = axios.create({
     withCredentials: true
 })
 
-
-
 class List extends Component {
     constructor() {
         super();
@@ -16,20 +14,18 @@ class List extends Component {
         this.state = {
             currentPage: 1,
             datasPerPage: 7,
-            currentPagination: 1,
             offset: 0,
+            limit: 7,
             reports: []
         };
         this.handleClick = this.handleClick.bind(this);
 
     }
 
-
     componentDidMount() {
         this.getReports();
         this.getReportsCount();
     }
-
 
     getReportsCount = (e) => {
         axios1.get(`${countURL}`)
@@ -43,7 +39,7 @@ class List extends Component {
             .catch(e => { console.log(e); });
     }
 
-    getReports = (offset, limit) => {
+    getReports = (offset) => {
         this.setState({
             fetching: true
         });
@@ -53,16 +49,14 @@ class List extends Component {
                 if (res.data.success) {
                     const reports = res.data.reports['reports'];
                     this.setState({ reports });
+                    console.log(res);
                 }
             })
             .catch(e => { console.log(e); });
         this.setState({
             fetching: false
         })
-        
     }
-
-
 
     goLowest = (e) => {
         this.handleClick(e, 1);
@@ -84,7 +78,7 @@ class List extends Component {
         });
         const offset = (number - 1) * (this.state.datasPerPage);
         const limit = this.state.datasPerPage;
-        this.getReports(offset, limit);
+        this.getReports(offset);
 
     }
     handlePrevClick = (e) => {
@@ -105,51 +99,61 @@ class List extends Component {
         }
     }
 
-    render() {
-        const { datasPerPage } = this.state;
-        const datas = this.state.reports.map(
-            (dat, index) => {
-                if (this.props.filter=="all" || this.props.filter==dat.type) {
-                return  <Item
-                        serial={dat.serial}
-                        call={dat.call}
-                        createdAt={dat.createdAt}
-                        type={dat.type}
-                        parts={dat.parts}
-                        state={dat.state}
-                        id={dat.id}
-                        key={index}
-                        currentPage={this.state.currentPage}
-                        userId={dat.user_id}
-                    />
-                } 
-                return null
-            }
-        );
-        console.log(this.props.filter);
-/*         const renderDatas = datas.map(
-            (dat, index) => {
-                if (this.props.filter=="all" || this.props.filter==dat.type) {
-                return  <Item
-                        serial={dat.serial}
-                        call={dat.call}
-                        createdAt={dat.createdAt}
-                        type={dat.type}
-                        parts={dat.parts}
-                        state={dat.state}
-                        id={dat.id}
-                        key={index}
-                        currentPage={this.state.currentPage}
-                        userId={dat.user_id}
-                    />
-                } 
-                return null
-            
-            
-            }
 
-        );
-*/
+    postReply = (tit,con,type,f,ri,ui) => {
+        axios1.post(`https://dev.hchecker.org/replies`, {
+            title: tit,
+            content: con,
+            type: type,
+            file: f,
+            report_id: ri,
+            user_id: ui
+        })
+        .then(res => {
+            if (res.data.success){
+                
+                axios1.put(`https://dev.hchecker.org/reports/${ri}`,{
+                    reply_id: res.data.reply.id,
+                    state: 4
+                })
+                .then(res => {
+                    if (res.data.success){
+                        console.log(res);
+                    }
+                })
+                .catch(e => { console.log(e);});
+            }
+        })
+        .catch(e => { console.log(e);});
+    }
+    
+
+    render() {
+
+
+                const { datasPerPage } = this.state;
+                const datas = this.state.reports.map(
+                    (dat, index) => {
+                        if (this.props.filter==="all" || this.props.filter===dat.type) {
+                        return  <Item
+                                serial={dat.serial}
+                                call={dat.call}
+                                createdAt={dat.createdAt}
+                                type={dat.type}
+                                parts={dat.parts}
+                                state={dat.state}
+                                id={dat.id}
+                                currentPage={this.state.currentPage}
+                                userId={dat.user_id}
+                                postReply={this.postReply}
+                                currentPage={this.state.currentPage}
+                            />
+                        } 
+                        return null
+                    }
+                );
+
+
         const highest = Math.ceil(this.state.reportsCount / datasPerPage);
         const pageNumbers = [];
         for (let i = 1; i <= highest; i++) {
@@ -158,10 +162,10 @@ class List extends Component {
 
         const renderPageNumbers = pageNumbers.map(number => {
             return (
-                <a
+                <a 
                     key={number}
                     onClick={(e) => this.handleClick(e, number)}
-                    class={this.state.currentPage == number ? "on_pager" : null}
+                    className={Number(this.state.currentPage) === number ? "on_pager" : null}
                     style={(this.state.currentPage - 2 <= number && number <= this.state.currentPage + 2)
                         ||
                         ((this.state.currentPage < 3 && number < 6)
@@ -178,43 +182,43 @@ class List extends Component {
         return (
             <React.Fragment>
 
-                <div class="box_table">
-                    <div class="table03">
-                        <div class="thead">
-                            <div class="th">신고번호</div>
-                            <div class="th">신고번호</div>
-                            <div class="th">신고일자</div>
-                            <div class="th">신고유형</div>
-                            <div class="th">P/N</div>
-                            <div class="th">답변시간</div>
+                <div className="box_table">
+                    <div className="table03">
+                        <div className="thead">
+                            <div className="th">신고번호</div>
+                            <div className="th">신고번호</div>
+                            <div className="th">신고일자</div>
+                            <div className="th">신고유형</div>
+                            <div className="th">P/N</div>
+                            <div className="th">답변시간</div>
                         </div>
                         {/* 답변하기 보이는 클래스 open */}
-                        {this.state.reportsCount == 0 ?
-                        <div class="tr none">
-                            <div class="td">
-                                <p>신고처리 목록이 없습니다.</p>
+                        {Number(this.state.reportsCount) === 0 ?
+                            <div className="tr none">
+                                <div className="td">
+                                    <p>신고처리 목록이 없습니다.</p>
+                                </div>
                             </div>
-                        </div>
-                        :
-                        datas
+                            :
+                            datas
                         }
                     </div>
                 </div>
-                
-                <div class="pagination">
-                    <div class="prev">
-                        <a onClick={this.goLowest} class="prev02"> &lt;&lt; </a>
-                        <a onClick={this.handlePrevClick} class="prev01"> &lt; </a>
+
+                <div className="pagination">
+                    <div className="prev">
+                        <a onClick={this.goLowest} className="prev02"> &lt;&lt; </a>
+                        <a onClick={this.handlePrevClick} className="prev01"> &lt; </a>
                     </div>
                     {/*  pageination 선택 클래스 - on_pager */}
 
                     {renderPageNumbers}
-                    <div class="next">
-                        <a onClick={this.handleNextClick} class="next02"> &gt;</a>
-                        <a onClick={this.goHighest} class="next01"> &gt;&gt; </a>
+                    <div className="next">
+                        <a onClick={this.handleNextClick} className="next02"> &gt;</a>
+                        <a onClick={this.goHighest} className="next01"> &gt;&gt; </a>
                     </div>
                 </div>
-  
+
             </React.Fragment>
         );
     }

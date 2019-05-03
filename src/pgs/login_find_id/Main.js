@@ -103,7 +103,7 @@ class Main extends Component {
 
     handleTab = (e) => {
         this.setState( {
-            tab: [e.target.name],
+            tab: e.target.name,
         })
     }
 
@@ -121,37 +121,37 @@ class Main extends Component {
 
     render() {
         return (
-            <article id="contentsWrap" class="login login02">
+            <article id="contentsWrap" className="login login02">
             {this.redirect()}
-            <div class="box_contents">
-                <div class="box_logo">
-                    <img src={LogoChecker}/>
+            <div className="box_contents">
+                <div className="box_logo">
+                    <img src={LogoChecker} alt=""/>
                 </div>
                 <form action="#" onSubmit={this.handleSubmit} acceptCharset="utf-8" name="login04" method="get">
-                    <div class="box_login">
-                        <div class="box_top">
-                            {this.state.tab == 1 ? <p>권한요청 승인 후 <br/>서비스를 이용하실 수 있습니다.</p> : <p>등록된 회원정보로 <br/>아이디를 찾으실 수 있습니다.</p>}
+                    <div className="box_login">
+                        <div className="box_top">
+                            {Number(this.state.tab) === 1 ? <p>권한요청 승인 후 <br/>서비스를 이용하실 수 있습니다.</p> : <p>등록된 회원정보로 <br/>아이디를 찾으실 수 있습니다.</p>}
                             
                         </div>
-                        <div class="box_mid">
-                            <div class="tab01">
+                        <div className="box_mid">
+                            <div className="tab01">
                                 <ul>
                                      { /*tab01 탭 선택시 들어 가는 클래스 - on_tab */}
-                                    <li rel="ltab01" className={classNames({'on_tab': this.state.tab == 1})}><a onclick="return false" name="1" onClick={this.handleTab}>기업 이용자</a></li>
-                                    <li rel="ltab02" className={classNames({"on_tab" : this.state.tab == 2})}><a onclick="return false" name="2" onClick={this.handleTab}>개인 이용자</a></li>
+                                    <li rel="ltab01" className={classNames({'on_tab': Number(this.state.tab) === 1})}><a href="#" name={1} onClick={this.handleTab}>기업 이용자</a></li>
+                                    <li rel="ltab02" className={classNames({"on_tab" : Number(this.state.tab) === 2})}><a href="#" name={2} onClick={this.handleTab}>개인 이용자</a></li>
 
                                 </ul>
                             </div>
-                            <div class="tab01_cont">
-                            {this.state.tab == 1 ?
+                            <div className="tab01_cont">
+                            {Number(this.state.tab) === 1 ?
                                 <Company change={this.handleChange} request={this.requestSms} verify={this.verifySms}/> 
                                 :
                                 <Individual change={this.handleChange} request={this.requestSms} verify={this.verifySms}/>}
 
                             </div>
                         </div>
-                        <div class="box_bottom">
-                            <button class="btn_big_b" >아이디 찾기</button>
+                        <div className="box_bottom">
+                            <button className="btn_big_b" >아이디 찾기</button>
                         </div>
                     </div>
                 </form>

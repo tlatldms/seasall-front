@@ -70,33 +70,33 @@ class Main extends Component {
     render() {
         return (
 
-            <article id="contentsWrap" class="login login01">
+            <article id="contentsWrap" className="login login01">
             {this.redirect()}
-                <div class="box_contents">
-                    <div class="box_login">
-                        <div class="box_top"><img class="login_logo" src={LogoCheckerBig} alt="checker" /></div>
-                        <div class="box_mid">
+                <div className="box_contents">
+                    <div className="box_login">
+                        <div className="box_top"><img className="login_logo" src={LogoCheckerBig} alt="checker" /></div>
+                        <div className="box_mid">
                             <form onSubmit={this.handleSubmit} action="#" acceptCharset="utf-8" name="login01" method="get">
-                                <div class="input_box01">
-                                    <div class="ip_box01"><input id="id" name="email" type="text" placeholder="User ID"
+                                <div className="input_box01">
+                                    <div className="ip_box01"><input id="id" name="email" type="text" placeholder="User ID"
                                         onChange={this.handleChange}
                                         value={this.state.email}/>
                                     </div>
-                                    <div class="ip_box01"><input id="Password" name="password" type="text" placeholder="Password" 
+                                    <div className="ip_box01"><input id="Password" name="password" type="text" placeholder="Password" 
                                     onChange={this.handleChange}
                                     value={this.state.password}/></div>
                                 </div>
-                                <button class="btn_big_b">로그인</button>
+                                <button className="btn_big_b">로그인</button>
 
-                                <div class="login_etc">
-                                    <div class="left">
-                                        <div class="check_box check_b">
+                                <div className="login_etc">
+                                    <div className="left">
+                                        <div className="check_box check_b">
                                             <input type="checkbox" id="a2" name="personal" defaultChecked />
-                                            <label for="a2"><span><em class="bld">자동로그인</em></span></label>
+                                            <label for="a2"><span><em className="bld">자동로그인</em></span></label>
                                             <span>자동로그인</span>
                                         </div>
                                     </div>
-                                    <div class="right">
+                                    <div className="right">
                                         <ul>
                                             <li><Link to="login_find_id">아이디찾기</Link></li>
                                             <li><Link to="login_find_pw">비밀번호찾기</Link></li>
@@ -105,9 +105,9 @@ class Main extends Component {
                                 </div>
                             </form>
                         </div>
-                        <div class="box_bottom">
+                        <div className="box_bottom">
                             <p>‘Checker’서비스를 시작해보시겠어요?</p>
-                            <button class="btn_big_b"><Link to="login_authorize">회원가입</Link> </button>
+                            <button className="btn_big_b"><Link to="login_authorize">회원가입</Link> </button>
                         </div>
                     </div>
                 </div>

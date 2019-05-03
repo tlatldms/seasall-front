@@ -17,10 +17,10 @@ class Main extends Component {
         return (
 
             <Modal open='true' onClose={this.onCloseImgModal} center style={nopad}>       
-                <div class="modal-innerbox">
-                    <div class="modal-header">프린터 문의</div>
-                    <img src={Logo} class="ask-logo"/>
-                    <div class="modal-content">라벨 프린터에 문제가 발생하였나요?
+                <div className="modal-innerbox">
+                    <div className="modal-header">프린터 문의</div>
+                    <img src={Logo} className="ask-logo" alt=""/>
+                    <div className="modal-content">라벨 프린터에 문제가 발생하였나요?
                     <hr id="askhr"></hr>
                     전화문의 01000000
                     이메일문의 aa@aa.com

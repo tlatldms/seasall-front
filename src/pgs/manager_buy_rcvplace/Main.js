@@ -11,16 +11,16 @@ class Main extends Component {
     render() {
         return (
             <div>
-                <div class='page-template'>
+                <div className='page-template'>
                     <Header></Header>
                     <UnderHeader></UnderHeader>
-                    <div class='both-navibox'>
-                        <div class='navibox-for-margin'>
-                            <div class='navibox navionly'>
+                    <div className='both-navibox'>
+                        <div className='navibox-for-margin'>
+                            <div className='navibox navionly'>
                                 <Navi></Navi>
                             </div>
-                            <div class='details-box'>                      
-                                <div class='box first'>
+                            <div className='details-box'>                      
+                                <div className='box first'>
                                     배송지관리페이지
                                 </div>                        
                             </div>

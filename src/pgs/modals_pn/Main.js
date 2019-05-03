@@ -15,11 +15,11 @@ class Main extends Component {
         return (
 
             <Modal open='true' onClose={this.onCloseImgModal} center style={nopad}>           
-                <div class="modal-innerbox">
-                    <div class="modal-header">
+                <div className="modal-innerbox">
+                    <div className="modal-header">
                     P / N 라벨
                     </div>
-                    <div class="modal-content">
+                    <div className="modal-content">
                         내용내용
                     </div>
                 </div>

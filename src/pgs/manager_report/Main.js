@@ -17,22 +17,22 @@ class Main extends Component {
   }
     render() { 
         return (
-          <article id="contentsWrap" class="report01">
-          <div class="innerwrap">
-            <form action="#" accept-charset="utf-8" name="report01" method="get">
+          <article id="contentsWrap" className="report01">
+          <div className="innerwrap">
+            <form action="#" acceptCharset="utf-8" name="report01" method="get">
             <Navi />
-            <div class="contents_area">
-              <div class="panel">
-                <div class="panel_header">
-                  <div class="left">
+            <div className="contents_area">
+              <div className="panel">
+                <div className="panel_header">
+                  <div className="left">
                     <h2>신고현황</h2>
                   </div>
-                  <div class="right">
-                  <div onClick={()=>this.setState({option:!this.state.option})} class={classNames("selectBox select_box06", {'open':this.state.option})}>
-                            <div class="select_btn">
+                  <div className="right">
+                  <div onClick={()=>this.setState({option:!this.state.option})} className={classNames("selectBox select_box06", {'open':this.state.option})}>
+                            <div className="select_btn">
                                 <p><span>2018년</span></p>
                             </div>
-                            <div class="option_list">
+                            <div className="option_list">
                                 <ul>
                                     <li><a href="#">2018년</a></li>
                                     <li><a href="#">2017년</a></li>
@@ -43,12 +43,12 @@ class Main extends Component {
                         </div>
                   </div>
                 </div>
-                <div class="panel_contents">
-                  <div class="panel02">
-                    <div class="panel_header">
-                      <div class="select_box03">
-                        <select value={this.state.filter} class="select03" onChange={this.handleFilter}>
-                          <option value="all" selected>유형선택</option>
+                <div className="panel_contents">
+                  <div className="panel02">
+                    <div className="panel_header">
+                      <div className="select_box03">
+                        <select value={this.state.filter} className="select03" onChange={this.handleFilter}>
+                          <option value="all" defaultValue>유형선택</option>
                           <option value="하나">하나</option>
                           <option value="둘">둘</option>
                           <option value="셋">셋</option>
@@ -56,7 +56,7 @@ class Main extends Component {
                       </div>
                       <span></span>
                     </div>
-                    <div class="panel_contents">
+                    <div className="panel_contents">
                     <List filter={this.state.filter}/>
 
                     </div>

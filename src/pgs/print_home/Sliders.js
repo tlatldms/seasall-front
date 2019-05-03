@@ -4,7 +4,7 @@ import StatusAndRequire from './StatusAndRequire';
 class Sliders extends Component {
     render() {
         return (
-            <div class="sliders">
+            <div className="sliders">
                 <OtherLabels />
                 <StatusAndRequire />
             </div>
