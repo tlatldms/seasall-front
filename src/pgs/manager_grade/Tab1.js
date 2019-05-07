@@ -21,9 +21,9 @@ class Tab1 extends Component {
                         <div className="list_button">
                             <ul>
                                 {/*  버튼 선택시 들어가는 클래스  - on_button */}
-                                <li onClick={this.handleTabs}><a className={Number(this.state.tab)==="전체"?"on_button":null}>전체</a></li>
-                                <li onClick={this.handleTabs}><a className={Number(this.state.tab)==="대기중"?"on_button":null}>대기중</a></li>
-                                <li onClick={this.handleTabs}><a className={Number(this.state.tab)==="완료"?"on_button":null}>완료</a></li>
+                                <li onClick={this.handleTabs}><a className={this.state.tab==="전체"?"on_button":null}>전체</a></li>
+                                <li onClick={this.handleTabs}><a className={this.state.tab==="대기중"?"on_button":null}>대기중</a></li>
+                                <li onClick={this.handleTabs}><a className={this.state.tab==="완료"?"on_button":null}>완료</a></li>
                             </ul>
                         </div>
                     </div>

@@ -33,7 +33,7 @@ class List extends Component {
                 if (res.data.success) {
                     const reportsCount = res.data.count;
                     this.setState({ reportsCount });
-                    console.log(this.state.reportsCount);
+                    console.log("reports count: ",this.state.reportsCount);
                 }
             })
             .catch(e => { console.log(e); });
@@ -100,36 +100,12 @@ class List extends Component {
     }
 
 
-    postReply = (tit, con, type, f, ri, ui) => {
-        axios1.post(`https://dev.hchecker.org/replies`, {
-            title: tit,
-            content: con,
-            type: type,
-            file: f,
-            report_id: ri,
-            user_id: ui
-        })
-            .then(res => {
-                if (res.data.success) {
 
-                    axios1.put(`https://dev.hchecker.org/reports/${ri}`, {
-                        reply_id: res.data.reply.id,
-                        state: 4
-                    })
-                        .then(res => {
-                            if (res.data.success) {
-                                console.log(res);
-                            }
-                        })
-                        .catch(e => { console.log(e); });
-                }
-            })
-            .catch(e => { console.log(e); });
-    }
 
 
     render() {
         const { datasPerPage } = this.state;
+        console.log(this.props.filter);
         const datas = this.state.reports.map(
             (dat, index) => {
                 if (this.props.filter === "all" || this.props.filter === dat.type) {

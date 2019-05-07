@@ -15,8 +15,6 @@ class Item extends Component {
             clicked: 0,
             type: "all",
             registered: false,
-            reply_id: this.props.reply_id,
-            state: this.props.state
         }
         
     }
@@ -30,22 +28,7 @@ class Item extends Component {
     }
 
 
-    postReply = (tit, con, type, f, ri, ui) => {
-        axios1.post(`https://dev.hchecker.org/replies`, {
-            title: tit,
-            content: con,
-            type: type,
-            file: f,
-            report_id: ri,
-            user_id: ui
-        })
-            .then(res => {
-                if (res.data.success) {
-                    console.log(res);
-                }
-            })
-            .catch(e => { console.log(e); });
-    }
+
     
     handleClick = () => {
         const { title, content, type, file, clicked } = this.state;
@@ -54,13 +37,29 @@ class Item extends Component {
             clicked: clicked + 1
         })
         if (this.state.clicked > 1) {
-            this.postReply(title, content, type, file, id, userId);
+
+            
+                axios1.post(`https://dev.hchecker.org/replies`, {
+                    title: title,
+                    content: content,
+                    type: type,
+                    file: file,
+                    report_id: id,
+                    user_id: userId
+                })
+                    .then(res => {
+                        if (res.data.success) {
+                            console.log(res);
+                            this.getReply(res.data.reply.id);
+                        }
+                    })
+                    .catch(e => { console.log(e); });
+            
+
             this.setState({
                 registered: true
             });
             
-            
-           
         }
 
     }
@@ -101,7 +100,7 @@ class Item extends Component {
 
     render() {
 
-        const { call, id, createdAt, type, parts, state, reply_updatedAt } = this.props;
+        const { call, id, createdAt, type, parts, state, reply_id, reply_updatedAt } = this.props;
 
         const reply=this.state.reply;
         //console.log(this.state.reply);
@@ -120,7 +119,7 @@ class Item extends Component {
                     <div className="td"><p className="serial_code">{parts}<br />CONTACT ASSY-CLOCK</p></div>
                 </div>
 
-                {this.state.reply_id!=null
+                {reply_updatedAt!=null || this.state.registered
                     ?
                     <div className="box_answer answer_after" >
                         <div className="answer_top">
@@ -192,9 +191,9 @@ class Item extends Component {
             <p>2018.12.31 PM 3:00</p>
             :
             <button className="btn_small w70" onClick={this.handleClick}>답변하기</button>
-            }*/} {state == 4
+            }*/} {reply_updatedAt!= null
                         ?
-                        <p onClick={()=>this.getReply(this.state.reply_id)}>{reply_updatedAt ? reply_updatedAt.slice(0, 10) : null}</p>
+                        <p onClick={()=>this.getReply(reply_id)}>{reply_updatedAt ? reply_updatedAt.slice(0, 10) : null}</p>
                         :
                         <p className="btn_small w70" onClick={this.handleClick}>답변하기</p>
                     }
