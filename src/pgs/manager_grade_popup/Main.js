@@ -3,6 +3,7 @@ import Modal from 'react-responsive-modal';
 import classNames from 'classnames/bind';
 import axios from 'axios';
 
+
 const axios1 = axios.create({
     withCredentials: true
 })
@@ -20,19 +21,53 @@ class Main extends Component {
     }
     componentDidMount() {
         this.getUser();
+        this.Test();
+
     }
+
+    acceptGrade = () => {
+        const { email, id } = this.props.location.state;
+
+        console.log("selected grade is :", this.state.grade);
+        axios1.put(`https://dev.hchecker.org/users/${email}`, {
+            group_name: this.state.grade
+        })
+            .then(res => {
+                if (res.data.success) {
+                    axios1.put(`https://dev.hchecker.org/promotions/${id}`, {
+                        state: 1
+                    })
+                        .then(res => {
+                            if (res.data.success) {
+                                console.log("state (완료/대기중) put 완료 ");
+
+                            }
+                        })
+                        .catch(e => { console.log(e); });
+                    alert("수락했습니다.");
+                }
+                console.log(res)
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        this.onCloseModal();
+    }
+
+
     getUser = () => {
         this.setState({
             fetching: true
         });
         const { email } = this.props.location.state;
         const arr = email.split('@');
+
         axios1.get(`https://dev.hchecker.org/users/${arr[0]}%40${arr[1]}`)
             .then(res => {
                 if (res.data.success) {
-                    const user=res.data.user;
+                    const user = res.data.user;
                     this.setState({
-                        name : user.name,
+                        name: user.name,
                         id: user.companyId,
                         company: user.company_name,
                         phone: user.phone
@@ -40,17 +75,18 @@ class Main extends Component {
                 }
             })
             .catch(e => { console.log(e); });
+
+
         this.setState({
             fetching: false
-        })     
+        })
     }
 
-    state= {
-        option:false
+    state = {
+        option: false
     }
-    
+
     onCloseModal = () => {
-        console.log("make state false");
         this.setState({ open: false });
         this.props.history.goBack();
     };
@@ -71,7 +107,7 @@ class Main extends Component {
                                     <p>요청자 : <span className="requester_name">{this.state.name} </span>[사번 : <span className="requester_num">{this.state.id}</span>]</p>
                                     <p>소속 : <span className="requester_belong bar">{this.state.company}</span> 부서명 : <span className="requester_department">{this.state.phone}</span></p>
                                 </div>
-                                
+
                                 <div onClick={() => this.setState({ option: !this.state.option })} className={classNames("selectBox select_box08", { 'open': this.state.option })}>
                                     <div className="select_btn">
                                         <p><span>등급선택</span></p>
@@ -88,7 +124,7 @@ class Main extends Component {
                             </div>
                         </div>
                         <div className="pop_bottom">
-                            <button className="btn_big" onClick={this.handleAccept}>요청수락하기</button>
+                            <button className="btn_big" onClick={this.acceptGrade}>요청수락하기</button>
                         </div>
                     </div>
                 </div>
