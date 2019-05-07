@@ -56,7 +56,7 @@ class Main extends Component {
                       </div>
                       <span></span>
                     </div>
-                    <div className="panel_contents">
+                    <div className="panel_contents" >
                     <List filter={this.state.filter}/>
 
                     </div>

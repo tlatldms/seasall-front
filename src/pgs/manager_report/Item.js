@@ -14,8 +14,11 @@ class Item extends Component {
         this.state = {
             clicked: 0,
             type: "all",
-            registered: false
+            registered: false,
+            reply_id: this.props.reply_id,
+            state: this.props.state
         }
+        
     }
 
 
@@ -25,6 +28,25 @@ class Item extends Component {
             type: e.target.value,
         })
     }
+
+
+    postReply = (tit, con, type, f, ri, ui) => {
+        axios1.post(`https://dev.hchecker.org/replies`, {
+            title: tit,
+            content: con,
+            type: type,
+            file: f,
+            report_id: ri,
+            user_id: ui
+        })
+            .then(res => {
+                if (res.data.success) {
+                    console.log(res);
+                }
+            })
+            .catch(e => { console.log(e); });
+    }
+    
     handleClick = () => {
         const { title, content, type, file, clicked } = this.state;
         const { id, userId } = this.props;
@@ -32,13 +54,17 @@ class Item extends Component {
             clicked: clicked + 1
         })
         if (this.state.clicked > 1) {
-            this.props.postReply(title, content, type, file, id, userId);
+            this.postReply(title, content, type, file, id, userId);
             this.setState({
-                registered : true
-            })
+                registered: true
+            });
+            
+            
+           
         }
 
     }
+
     componentWillReceiveProps(nextProps) {
         this.setState({
             clicked: 0
@@ -51,12 +77,14 @@ class Item extends Component {
         });
     }
 
-    getReply = () => {
+    getReply = (x) => {
+
         //console.log("id = "+this.props.id);
-        axios1.get(`https://dev.hchecker.org/replies/${this.props.id}`)
+        axios1.get(`https://dev.hchecker.org/replies/${x}`)
             .then(res => {
                 if (res.data.success) {
                     const reply = res.data.reply;
+                    console.log(reply);
                     this.setState({
                         reply
                     })
@@ -65,11 +93,17 @@ class Item extends Component {
             })
             .catch(e => { console.log(e); });
 
+            this.setState({
+                clicked:1
+            })
+
     }
 
     render() {
 
-        const { call, id, createdAt, type, parts, state } = this.props;
+        const { call, id, createdAt, type, parts, state, reply_updatedAt } = this.props;
+
+        const reply=this.state.reply;
         //console.log(this.state.reply);
         return (
             <div className={`tr ${this.state.clicked > 0 ? "open" : null}`}>
@@ -77,7 +111,7 @@ class Item extends Component {
                     <div className="td">
                         <p className="report_sts complete">
                             <span className="icon"></span>
-                            <span className="txt">{state == 1 ? "완료" : "대기중"}</span>
+                            <span className="txt" >{state == 1 ? "완료" : "대기중"}</span>
                         </p>
                     </div>
                     <div className="td"><p>{id}</p></div>
@@ -86,26 +120,26 @@ class Item extends Component {
                     <div className="td"><p className="serial_code">{parts}<br />CONTACT ASSY-CLOCK</p></div>
                 </div>
 
-                {this.state.registere
+                {this.state.reply_id!=null
                     ?
-                    <div className="box_answer answer_after">
+                    <div className="box_answer answer_after" >
                         <div className="answer_top">
-                            <div className="title">작업오류로 인한 신고 답변드립니다.작업오류로 인한 신고 답변드립니다.</div>
+                            <div className="title"> { reply ? reply.title : null} </div>
                             <div className="title_info">
                                 <dl>
                                     <dt>담당자 : </dt>
-                                    <dd>이지영</dd>
+                                    <dd> {reply ? reply.id : null }</dd>
                                 </dl>
                                 <dl>
                                     <dt>유형 : </dt>
-                                    <dd>작업오류</dd>
+                                    <dd>{reply? reply.type : null }</dd>
                                 </dl>
                             </div>
                         </div>
                         <div className="answer_bottom">
                             <div className="answer_con">
-                                <p>최근 현대오토넷을 사칭하여 내비게이션 멀티미디어관련 상품을 판매하는 사례가접수되고 있습니다. 고객센터1588-7278로 확인하시기 바랍니다. 최근 현대오토넷을 사칭하여 내비게이션 멀티미디어관련 상품을 판매하는 사례가 접수되고 있습니다. 고객센터1588-7278로 확인하시기 바랍니다.</p>
-                                <p>최근 현대오토넷을 사칭하여 내비게이션 멀티미디어관련 상품을 판매하는 사례가접수되고 있습니다. 고객센터1588-7278로 확인하시기 바랍니다. 최근 현대오토넷을 사칭하여 내비게이션 멀티미디어관련 상품을 판매하는 사례가 접수되고 있습니다. 고객센터1588-7278로 확인하시기 바랍니다.</p>
+                                <p>{reply? reply.content : null}</p>
+                                
                             </div>
                             <div className="cf_file">
                                 <dl>
@@ -132,7 +166,7 @@ class Item extends Component {
                                 </select>
                             </div>
                         </div>
-                        <div className="answer_bottom">
+                        <div className="answer_bottom" >
                             <textarea onChange={this.handleChange} placeholder="내용" name="content"></textarea>
                             {/* 
                         <div className="box_cffile">
@@ -152,15 +186,20 @@ class Item extends Component {
                     </div>
                 }
 
-                <div className="group_variable">
+                <div className="group_variable" >
                     {/* 
             {this.state.reply ?
             <p>2018.12.31 PM 3:00</p>
             :
             <button className="btn_small w70" onClick={this.handleClick}>답변하기</button>
-            }*/}
+            }*/} {state == 4
+                        ?
+                        <p onClick={()=>this.getReply(this.state.reply_id)}>{reply_updatedAt ? reply_updatedAt.slice(0, 10) : null}</p>
+                        :
+                        <p className="btn_small w70" onClick={this.handleClick}>답변하기</p>
+                    }
 
-                    <p className="btn_small w70" onClick={this.handleClick}>답변하기</p>
+
 
                 </div>
             </div>
