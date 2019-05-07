@@ -49,9 +49,9 @@ class Main extends Component {
                       <div className="select_box03">
                         <select value={this.state.filter} className="select03" onChange={this.handleFilter}>
                           <option value="all" defaultValue>유형선택</option>
-                          <option value="하나">하나</option>
-                          <option value="둘">둘</option>
-                          <option value="셋">셋</option>
+                          <option value="모조품">모조품</option>
+                          <option value="불량품">불량품</option>
+                          <option value="테스트">테스트</option>
                         </select>
                       </div>
                       <span></span>

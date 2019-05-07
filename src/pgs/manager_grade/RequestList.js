@@ -112,6 +112,7 @@ class RequestList extends Component {
                         group_name={dat.group_name}
                         state={dat.state}
                         id={dat.id}
+                        key={dat.id}
                         currentPage={this.state.currentPage}
                         user_email={dat.user_email}
                         user_name={dat.user_name}
