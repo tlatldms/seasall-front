@@ -108,9 +108,9 @@ class RequestList extends Component {
                 if (this.props.filter === "all" || this.props.filter === dat.type) {
                     return <Item
                         companyId={dat.companyId}
+                        state={dat.state}
                         createdAt={dat.createdAt}
                         group_name={dat.group_name}
-                        state={dat.state}
                         id={dat.id}
                         key={dat.id}
                         currentPage={this.state.currentPage}
