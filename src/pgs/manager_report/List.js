@@ -100,7 +100,7 @@ class List extends Component {
     }
 
 
-    postReply = (tit,con,type,f,ri,ui) => {
+    postReply = (tit, con, type, f, ri, ui) => {
         axios1.post(`https://dev.hchecker.org/replies`, {
             title: tit,
             content: con,
@@ -109,49 +109,48 @@ class List extends Component {
             report_id: ri,
             user_id: ui
         })
-        .then(res => {
-            if (res.data.success){
-                
-                axios1.put(`https://dev.hchecker.org/reports/${ri}`,{
-                    reply_id: res.data.reply.id,
-                    state: 4
-                })
-                .then(res => {
-                    if (res.data.success){
-                        console.log(res);
-                    }
-                })
-                .catch(e => { console.log(e);});
-            }
-        })
-        .catch(e => { console.log(e);});
+            .then(res => {
+                if (res.data.success) {
+
+                    axios1.put(`https://dev.hchecker.org/reports/${ri}`, {
+                        reply_id: res.data.reply.id,
+                        state: 4
+                    })
+                        .then(res => {
+                            if (res.data.success) {
+                                console.log(res);
+                            }
+                        })
+                        .catch(e => { console.log(e); });
+                }
+            })
+            .catch(e => { console.log(e); });
     }
-    
+
 
     render() {
-
-
-                const { datasPerPage } = this.state;
-                const datas = this.state.reports.map(
-                    (dat, index) => {
-                        if (this.props.filter==="all" || this.props.filter===dat.type) {
-                        return  <Item
-                                serial={dat.serial}
-                                call={dat.call}
-                                createdAt={dat.createdAt}
-                                type={dat.type}
-                                parts={dat.parts}
-                                state={dat.state}
-                                id={dat.id}
-                                currentPage={this.state.currentPage}
-                                userId={dat.user_id}
-                                postReply={this.postReply}
-                                currentPage={this.state.currentPage}
-                            />
-                        } 
-                        return null
-                    }
-                );
+        const { datasPerPage } = this.state;
+        const datas = this.state.reports.map(
+            (dat, index) => {
+                if (this.props.filter === "all" || this.props.filter === dat.type) {
+                    return <Item
+                        serial={dat.serial}
+                        call={dat.call}
+                        createdAt={dat.createdAt}
+                        type={dat.type}
+                        parts={dat.parts}
+                        state={dat.state}
+                        id={dat.id}
+                        currentPage={this.state.currentPage}
+                        userId={dat.user_id}
+                        postReply={this.postReply}
+                        reply_id={dat.reply_id}
+                        reply_updatedAt={dat.reply_updatedAt}
+                    />
+                }
+                return null
+            }
+        );
 
 
         const highest = Math.ceil(this.state.reportsCount / datasPerPage);
@@ -162,7 +161,7 @@ class List extends Component {
 
         const renderPageNumbers = pageNumbers.map(number => {
             return (
-                <a 
+                <a
                     key={number}
                     onClick={(e) => this.handleClick(e, number)}
                     className={Number(this.state.currentPage) === number ? "on_pager" : null}
