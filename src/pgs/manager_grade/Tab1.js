@@ -4,15 +4,37 @@ import RequestList from './RequestList';
 
 class Tab1 extends Component {
     state = {
+        filter: "all",
         option: false,
-        tab:"전체"
+        tab:-1
     }
 
     handleTabs=(e)=> {
+        e.stopPropagation();
         this.setState({
-            tab: e.target.text, 
+            tab: e.currentTarget.value, 
         })
     }
+
+    handleFilter = (e) => {
+        this.setState({
+            filter: e.target.text,
+            option:false
+        });
+        console.log(this.state.filter);
+    }
+    handleClickAll=()=> {
+        if (this.state.option==false)
+        this.setState({
+            option: !this.state.option
+        })
+        else this.setState({
+            filter: "all",
+            option:false
+        })
+        
+    }
+
     render() {
         return (
             <div className="panel02">
@@ -21,29 +43,29 @@ class Tab1 extends Component {
                         <div className="list_button">
                             <ul>
                                 {/*  버튼 선택시 들어가는 클래스  - on_button */}
-                                <li onClick={this.handleTabs}><a className={this.state.tab==="전체"?"on_button":null}>전체</a></li>
-                                <li onClick={this.handleTabs}><a className={this.state.tab==="대기중"?"on_button":null}>대기중</a></li>
-                                <li onClick={this.handleTabs}><a className={this.state.tab==="완료"?"on_button":null}>완료</a></li>
+                                <li value={-1} onClick={this.handleTabs}><a className={this.state.tab==-1?"on_button":null}>전체</a></li>
+                                <li value={0} onClick={this.handleTabs}><a className={this.state.tab==0?"on_button":null}>대기중</a></li>
+                                <li value={1} onClick={this.handleTabs}><a className={this.state.tab==1?"on_button":null}>완료</a></li>
                             </ul>
                         </div>
                     </div>
                     <div className="right">
-                        <div onClick={() => this.setState({ option: !this.state.option })} className={classNames("selectBox select_box08", { 'open': this.state.option })}>
-                            <div className="select_btn">
-                                <p><span>등급선택</span></p>
+                        <div  className={classNames("selectBox select_box08", { 'open': this.state.option })}>
+                            <div className="select_btn" onClick={this.handleClickAll}>
+                                <p><span >{this.state.filter=="all" || this.state.option==true?"등급 전체보기":this.state.filter}</span></p>
                             </div>
                             <div className="option_list">
                                 <ul>
-                                    <li><a >G1</a></li>
-                                    <li><a >G2</a></li>
-                                    <li><a >G3</a></li>
-                                    <li><a >G4</a></li>
+                                    <li><a onClick={this.handleFilter}>G1</a></li>
+                                    <li><a onClick={this.handleFilter}>G2</a></li>
+                                    <li><a onClick={this.handleFilter}>G3</a></li>
+                                    <li><a onClick={this.handleFilter}>G4</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-                <RequestList />
+                <RequestList tab={this.state.tab} filter={this.state.filter}/>
             </div>
         );
     }

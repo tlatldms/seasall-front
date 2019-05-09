@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Modal from 'react-responsive-modal';
 import classNames from 'classnames/bind';
 import axios from 'axios';
-
+import { Redirect } from 'react-router-dom';
 
 const axios1 = axios.create({
     withCredentials: true
@@ -21,8 +21,6 @@ class Main extends Component {
     }
     componentDidMount() {
         this.getUser();
-        this.Test();
-
     }
 
     acceptGrade = () => {
@@ -51,7 +49,7 @@ class Main extends Component {
             .catch(error => {
                 console.log(error);
             })
-        this.onCloseModal();
+
     }
 
 
@@ -83,10 +81,12 @@ class Main extends Component {
     }
 
     state = {
-        option: false
+        option: false,
+        redirect: false
     }
 
     onCloseModal = () => {
+        console.log("closing");
         this.setState({ open: false });
         this.props.history.goBack();
     };

@@ -9,11 +9,9 @@ const axios1 = axios.create({
 class List extends Component {
     constructor() {
         super();
-
         this.state = {
             currentPage: 1,
-            datasPerPage: 7,
-            offset: 0,
+            datasPerPage: 10,
             limit: 7,
             reports: []
         };
@@ -22,12 +20,12 @@ class List extends Component {
     }
 
     componentDidMount() {
-        this.getReports();
+        this.getReports(0);
         this.getReportsCount();
     }
     componentDidUpdate(prevProps) {
         if (this.props.filter !== prevProps.filter) {
-            this.getReports();
+            this.getReports(0);
             this.getReportsCount();
             this.setState({
                 currentPage:1
@@ -96,7 +94,6 @@ class List extends Component {
                 currentPage: Number(event.target.text),
             });
             const offset = (number - 1) * (this.state.datasPerPage);
-            const limit = this.state.datasPerPage;
             this.getReports(offset);
 
         }
@@ -128,7 +125,7 @@ class List extends Component {
             console.log("num+",this.state.reports.length);
             const datas = this.state.reports.map(
                 (dat, index) => {
-                    if (this.props.filter === "all" || this.props.filter === dat.type) {
+                    
                         return <Item
                             serial={dat.serial}
                             call={dat.call}
@@ -143,8 +140,7 @@ class List extends Component {
                             reply_id={dat.reply_id}
                             reply_updatedAt={dat.reply_updatedAt}
                         />
-                    }
-                    return null
+
                 }
             );
 

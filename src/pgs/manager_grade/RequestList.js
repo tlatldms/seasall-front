@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Item from './RequestItem';
 
-const countURL = 'https://dev.hchecker.org/promotions/count';
+
 const axios1 = axios.create({
     withCredentials: true
 })
@@ -12,6 +12,8 @@ const styles = {
         display: 'none',
     },
 }
+
+
 class RequestList extends Component {
     constructor() {
         super();
@@ -19,24 +21,47 @@ class RequestList extends Component {
         this.state = {
             currentPage: 1,
             datasPerPage: 7,
-            offset: 0,
             requests: []
         };
         this.handleClick = this.handleClick.bind(this);
 
     }
+    componentDidUpdate(prevProps) {
+        if (this.props.filter !== prevProps.filter || this.props.tab != prevProps.tab) {
+            console.log("componentDidUpdate");
+            this.getRequests(0);
+            this.getRequestCount();
+            this.setState({
+                currentPage:1
+            })
+        }
+    }
 
     componentDidMount() {
-        this.getRequests();
+        this.getRequests(0);
         this.getRequestCount();
     }
 
+
+
     getRequestCount = (e) => {
-        axios1.get(`${countURL}`)
+
+        var URL = 'https://dev.hchecker.org/promotions/count';
+
+        if (this.props.filter!="all" && this.props.tab != -1) { // grade와 state filter가 둘 다 있을 때 
+            URL=`https://dev.hchecker.org/promotions/count?filter=group_name&condition=${this.props.filter}&filter2=state&condition2=${this.props.tab}`;
+        } else if (this.props.filter!="all") { // grade filter만 있을 때
+            URL=`https://dev.hchecker.org/promotions/count?filter=group_name&condition=${this.props.filter}`;
+        } else if (this.props.tab != -1 ) { // state filter만 있을 때
+            URL=`https://dev.hchecker.org/promotions/count?filter=state&condition=${this.props.tab}`;
+        }
+
+        axios1.get(URL)
             .then(res => {
                 if (res.data.success) {
                     const requestsCount = res.data.count;
                     this.setState({ requestsCount });
+                    console.log("requestCount: ",requestsCount);
                 }
             })
             .catch(e => { console.log(e); });
@@ -46,13 +71,21 @@ class RequestList extends Component {
         this.setState({
             fetching: true
         });
-
-        axios1.get(`https://dev.hchecker.org/promotions?offset=${offset}&limit=${this.state.datasPerPage}`)
+        var URL=`https://dev.hchecker.org/promotions?offset=${offset}&limit=${this.state.datasPerPage}`;
+        
+        if (this.props.filter!="all" && this.props.tab != -1) { // grade와 state filter가 둘 다 있을 때 
+            URL=`https://dev.hchecker.org/promotions?offset=${offset}&limit=${this.state.datasPerPage}&filter=group_name&condition=${this.props.filter}&filter2=state&condition2=${this.props.tab}`;
+        } else if (this.props.filter!="all") { // grade filter만 있을 때
+            URL=`https://dev.hchecker.org/promotions?offset=${offset}&limit=${this.state.datasPerPage}&filter=group_name&condition=${this.props.filter}`;
+        } else if (this.props.tab != -1 ){ // state filter만 있을 때
+            URL=`https://dev.hchecker.org/promotions?offset=${offset}&limit=${this.state.datasPerPage}&filter=state&condition=${this.props.tab}`;
+        }
+        axios1.get(URL)
             .then(res => {
                 if (res.data.success) {
                     const requests = res.data.promotions['promotions'];
                     this.setState({ requests });
-                }
+                }                
             })
             .catch(e => { console.log(e); });
         this.setState({
@@ -79,7 +112,7 @@ class RequestList extends Component {
             currentPage: Number(event.target.text),
         });
         const offset = (number - 1) * (this.state.datasPerPage);
-        this.getReports(offset);
+        this.getRequests(offset);
 
     }
     handlePrevClick = (e) => {
@@ -104,8 +137,7 @@ class RequestList extends Component {
     render() {
         const { datasPerPage } = this.state;
         const datas = this.state.requests.map(
-            (dat, index) => {
-                if (this.props.filter === "all" || this.props.filter === dat.type) {
+            (dat, index) => {     
                     return <Item
                         companyId={dat.companyId}
                         state={dat.state}
@@ -117,8 +149,6 @@ class RequestList extends Component {
                         user_email={dat.user_email}
                         user_name={dat.user_name}
                     />
-                }
-                return null
             }
         );
 

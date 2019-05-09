@@ -37,9 +37,6 @@ import ModalSelectPrinter from 'pgs/modals_select_printer/Main';
 const Details = () => {
     return (
         <div>
-
-            <Route path='/aa' component={LoginFindId} />
-            <Route path='/aa/bb' component={ModalAsk} />
             <Route exact path='/' component={LoginHome} />
 
             <Route path='/login_find_id' component={LoginFindId}/>
@@ -57,9 +54,7 @@ const Details = () => {
             <Route path='/manager_buy_list' component={PrintHeader} />
             <Route path='/manager_buy_list' component={UnderHeader} />
             <Route path="/manager_buy_list" component={ManagerBuyList} />
-            <Route path="/manager_buy_rcvplace" component={ManagerBuyRcvPlace}/>
-
-            
+            <Route path="/manager_buy_rcvplace" component={ManagerBuyRcvPlace}/>         
            
             <Route path="/manager_home" component={ManagerHome}/>
             <Route path="/manager_home/popup" component={ManagerHomePopup}/>
@@ -86,10 +81,7 @@ const Details = () => {
             <Route path="/print_home/modals_pn" component={ModalPn} />
             <Route path="/print_home/modals_release" component={ModalRelease} />
             <Route path="/print_home/modals_rack" component={ModalRack} />
-
             <Route path='/' component={Footer} />
-   
-
         </div>
     );
 };
