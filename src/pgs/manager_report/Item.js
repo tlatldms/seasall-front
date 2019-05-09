@@ -110,7 +110,7 @@ class Item extends Component {
                     <div className="td">
                         <p className="report_sts complete">
                             <span className="icon"></span>
-                            <span className="txt" >{reply_updatedAt!=null ? "완료" : "대기중"}</span>
+                            <span className="txt" >{reply_updatedAt==null ? "대기중" : "완료"}</span>
                         </p>
                     </div>
                     <div className="td"><p>{id}</p></div>
@@ -196,10 +196,7 @@ class Item extends Component {
                         <p onClick={()=>this.getReply(reply_id)}>{reply_updatedAt ? reply_updatedAt.slice(0, 10) : null}</p>
                         :
                         <p className="btn_small w70" onClick={this.handleClick}>답변하기</p>
-                    }
-
-
-
+                }
                 </div>
             </div>
         );
