@@ -45,7 +45,7 @@ class List extends Component {
                     if (res.data.success) {
                         const reportsCount = res.data.count;
                         this.setState({ reportsCount });
-                        console.log("reports count: ", this.state.reportsCount);
+                        //console.log("reports count: ", this.state.reportsCount);
                     }
                 })
                 .catch(e => { console.log(e); });
@@ -66,10 +66,11 @@ class List extends Component {
                     if (res.data.success) {
                         const reports = res.data.reports['reports'];
                         this.setState({ reports });
-                        console.log(res);
+                        //console.log(res);
                     }
                 })
                 .catch(e => { console.log(e); });
+                console.log("TESTTESTTESTSTSETSTSET", this.state.reports);
             this.setState({
                 fetching: false
             })
@@ -121,8 +122,8 @@ class List extends Component {
 
         render() {
             const { datasPerPage } = this.state;
-            console.log(this.props.filter);
-            console.log("num+",this.state.reports.length);
+            console.log("RENDERREDENRDERENDERNERDNERN", this.state.reports);
+            
             const datas = this.state.reports.map(
                 (dat, index) => {
                     
