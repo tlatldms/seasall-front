@@ -6,6 +6,7 @@ import PrintHeader from 'common/Header';
 import classNames from 'classnames/bind';
 import EcountSellings from './EcountSellings';
 import StockAndPrice from './StockAndPrice';
+import ReportStatus from './ReportStatus';
 
 import Navi from 'common/Navi';
 const Div1 = styled.div`width: ${props => props.width}; height:220px; background: no-repeat center/100%; background-image: url('asset/images/home0${props=>props.num}.png'); `;
@@ -72,6 +73,7 @@ class Main extends Component {
                                         <div className="right">
                                             <Div1 className="bg_graph" width={"154px"} num={2}>
                                                   <div className="pie_graph">
+                                                  <ReportStatus />
                                                     <div className="txt">
                                                         <p>유형</p>
                                                         <span>건/개월</span>
