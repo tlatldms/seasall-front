@@ -83,7 +83,7 @@ class Item extends Component {
             .then(res => {
                 if (res.data.success) {
                     const reply = res.data.reply;
-                    console.log(reply);
+                    //console.log(reply);
                     this.setState({
                         reply
                     })
