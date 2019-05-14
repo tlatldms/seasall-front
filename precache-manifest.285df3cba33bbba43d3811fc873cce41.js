@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/seasall-front/static/media/thumb_detail.4e43a73d.png"
   },
   {
-    "revision": "1c7f9ed56702ff90cfd5",
+    "revision": "dba8dc7a66b8dce5e8de",
     "url": "/seasall-front/static/css/main.5a3477ac.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = [
     "url": "/seasall-front/static/js/runtime~main.2320c09e.js"
   },
   {
-    "revision": "c26d88553cc75b40d958",
-    "url": "/seasall-front/static/js/2.c26d8855.chunk.js"
+    "revision": "dfa0391e881369276dc8",
+    "url": "/seasall-front/static/js/2.dfa0391e.chunk.js"
   },
   {
     "revision": "1a30ca51f8efc99ca9e066737b19fcca",
@@ -24,8 +24,8 @@ self.__precacheManifest = [
     "url": "/seasall-front/static/media/logo_checker_big.5a8a1612.png"
   },
   {
-    "revision": "1c7f9ed56702ff90cfd5",
-    "url": "/seasall-front/static/js/main.1c7f9ed5.chunk.js"
+    "revision": "dba8dc7a66b8dce5e8de",
+    "url": "/seasall-front/static/js/main.dba8dc7a.chunk.js"
   },
   {
     "revision": "4cdf8553f6865afdb62b49bd0ab0ed3b",
@@ -48,7 +48,7 @@ self.__precacheManifest = [
     "url": "/seasall-front/static/media/icon.fa022749.svg"
   },
   {
-    "revision": "f7b78f6cb9dd2e07f1da81fd65fa0226",
+    "revision": "97f3f5224d937074caabef61a3cbdf1c",
     "url": "/seasall-front/index.html"
   }
 ];
