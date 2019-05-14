@@ -90,9 +90,10 @@ class Slice extends React.Component {
   render() {
     let {value, fill, innerRadius = 0, outerRadius} = this.props;
     // https://github.com/d3/d3/wiki/SVG-Shapes#arc
+    var radius = Math.min(500, 500) / 2 - 40;
     let arc = d3.arc()
-      .innerRadius(innerRadius)
-      .outerRadius(outerRadius);
+      .innerRadius(100)
+      .outerRadius(50);
     return (
       <path d={arc(value)} fill={fill} />
     );
@@ -104,7 +105,7 @@ class Pie extends React.Component {
     super(props);
     // https://github.com/d3/d3/wiki/Ordinal-Scales#category10
     this.renderSlice = this.renderSlice.bind(this);
-    this.color = d3.scaleOrdinal(["#66c2a5","#fc8d62","#8da0cb","#e78ac3","#a6d854","#ffd92f"]);
+    this.color = d3.scaleOrdinal(d3.schemeCategory10);
   }
 
   render() {
@@ -129,6 +130,7 @@ class Pie extends React.Component {
     );
   }
 }
+
 class PieTest extends React.Component {
   render() {
     // For a real world project, use something like
@@ -146,7 +148,8 @@ class PieTest extends React.Component {
     return (
       <svg width="100%" height="100%">
         {/* We'll create this component in a minute */}
-        <Pie x={x} y={y} radius={radius} data={this.props.data} />
+        <Pie x={x} y={y} radius={radius} padAngle={.02}
+        innerRadius={radius* .35} outerRadius={radius} cornerRadius={7} data={this.props.data} />
       </svg>
     );
   }
@@ -217,7 +220,7 @@ console.log("STSTSTST", this.state.test1)
 
     return (
       <div className="hihi">
-        <BarChart width={500} height={200} data={this.state.test1}/>
+        <BarChart width={500} height={200} data={this.state.test1} />
         <PieTest data={[5,2,7,6,3,1,3] } />
       </div>
     );
