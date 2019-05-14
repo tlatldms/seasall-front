@@ -37,6 +37,7 @@ import ModalSelectPrinter from 'pgs/modals_select_printer/Main';
 const Details = () => {
     return (
         <div>
+
             <Route exact path='/' component={LoginHome} />
 
             <Route path='/login_find_id' component={LoginFindId}/>

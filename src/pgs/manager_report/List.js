@@ -11,7 +11,7 @@ class List extends Component {
         super();
         this.state = {
             currentPage: 1,
-            datasPerPage: 10,
+            datasPerPage: 6,
             limit: 7,
             reports: []
         };

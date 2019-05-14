@@ -5,6 +5,7 @@ import List from './List';
 import PrintHeader from 'common/Header';
 import classNames from 'classnames/bind';
 import EcountSellings from './EcountSellings';
+import StockAndPrice from './StockAndPrice';
 
 import Navi from 'common/Navi';
 const Div1 = styled.div`width: ${props => props.width}; height:220px; background: no-repeat center/100%; background-image: url('asset/images/home0${props=>props.num}.png'); `;
@@ -93,6 +94,7 @@ class Main extends Component {
                                 <div className="panel_header">
                                     <div className="left">
                                         <h2>재고/금액</h2>
+                                        
                                         <span>(건/억원)</span>
                                     </div>
                                     <div className="right">
@@ -121,6 +123,7 @@ class Main extends Component {
                                         <div className="right">
                                             <Div1 className="bg_graph" width={"100%"} num={4}>
                                                 <span></span><span></span>
+                                                <StockAndPrice />
                                             </Div1>
                                         </div>
                                     </div>
