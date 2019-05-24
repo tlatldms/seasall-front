@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import * as service from 'AxiosGetApi';
 import List from './List';
 import Navi from 'common/Navi';
 import classNames from 'classnames/bind';

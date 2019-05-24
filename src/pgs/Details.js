@@ -73,6 +73,7 @@ const Details = () => {
             <Route path="/manager_grade" component={ManagerGrade}/>
             <Route path="/manager_grade/popup" component={ManagerGradePopup}/>
             
+            {/* 
             <Route path='/print_home' component={PrintHome} />
             <Route path='/print_mypage' component={PrintHeader} />
             <Route path='/print_mypage' component={UnderHeader} />
@@ -82,6 +83,7 @@ const Details = () => {
             <Route path="/print_home/modals_pn" component={ModalPn} />
             <Route path="/print_home/modals_release" component={ModalRelease} />
             <Route path="/print_home/modals_rack" component={ModalRack} />
+            */}
             <Route path='/' component={Footer} />
         </div>
     );

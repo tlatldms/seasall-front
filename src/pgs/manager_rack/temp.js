@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import * as service from 'AxiosGetApi';
 import Test from './Test';
 import { Button } from 'semantic-ui-react';
 
